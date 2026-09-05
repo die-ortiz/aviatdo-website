@@ -38,6 +38,7 @@
     .ghost-link::after{content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
     .ghost-link:hover::after{transform:scaleX(1);}
     .ghost-link:visited{opacity:0.72;}
+    #contact .ghost-link::after{ content:none; }
 
     /* buttons — flat, no shadow; feedback via subtle scale + tone shift only */
     .btn-primary{background:var(--brand-red); transition:transform .2s ease, filter .2s ease;}
@@ -767,7 +768,7 @@
           </a>
         </div>
       </div>
-      <form class="reveal reveal-slide-right card-flat card-sheen sheen-dark" style="background:var(--paper-white); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:16px; animation-delay:.1s;">
+      <form class="reveal reveal-slide-right card-flat" style="background:var(--paper-white); border-radius:16px; padding:32px; display:flex; flex-direction:column; gap:16px; animation-delay:.1s;">
         <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
           <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">First name
             <input type="text" placeholder="Jane" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
