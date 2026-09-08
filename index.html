@@ -754,31 +754,15 @@
 
       <div class="booking-field">
         <div class="booking-field-label">Choose your specialist</div>
-        <div class="booking-select" id="booking-expert-select">
-          <button type="button" id="booking-expert-trigger" class="btn-focus booking-select-trigger" aria-haspopup="listbox" aria-expanded="false">
-            <span class="booking-expert-chip">
-              <span class="booking-avatar booking-avatar-placeholder" id="booking-expert-avatar" aria-hidden="true">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"></path></svg>
-              </span>
-              <span class="booking-expert-chip-text">
-                <span class="booking-expert-chip-name" id="booking-expert-chip-name">Select a specialist</span>
-                <span class="booking-expert-chip-role" id="booking-expert-chip-role"></span>
-              </span>
-            </span>
-            <svg class="booking-select-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
-          </button>
-          <div id="booking-expert-list" class="booking-select-panel" role="listbox" aria-label="Specialists" hidden></div>
-        </div>
+        <div id="booking-expert-row" class="booking-expert-row" role="listbox" aria-label="Specialists"></div>
       </div>
 
       <div class="booking-cal">
-        <div class="booking-cal-head">
-          <button type="button" id="booking-prev-month" class="btn-focus booking-nav-btn" aria-label="Previous month">‹</button>
-          <div id="booking-month-label" class="booking-month-label"></div>
-          <button type="button" id="booking-next-month" class="btn-focus booking-nav-btn" aria-label="Next month">›</button>
+        <div class="booking-strip-wrap">
+          <button type="button" id="booking-strip-prev" class="btn-focus booking-strip-nav" aria-label="Scroll to earlier dates">‹</button>
+          <div id="booking-day-strip" class="booking-strip" role="listbox" aria-label="Available dates"></div>
+          <button type="button" id="booking-strip-next" class="btn-focus booking-strip-nav" aria-label="Scroll to later dates">›</button>
         </div>
-        <div class="booking-weekdays"></div>
-        <div id="booking-calendar-body" class="booking-days"></div>
 
         <div id="booking-times-section" class="booking-times-section" hidden>
           <div class="booking-times-label">Available times</div>

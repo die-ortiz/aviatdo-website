@@ -380,31 +380,26 @@ class Component extends DCLogic {
       const modal = overlay.querySelector('.booking-modal');
       const closeBtn = document.getElementById('booking-close');
       const doneBtn = document.getElementById('booking-done');
-      const prevBtn = document.getElementById('booking-prev-month');
-      const nextBtn = document.getElementById('booking-next-month');
-      const monthLabel = document.getElementById('booking-month-label');
-      const calendarBody = document.getElementById('booking-calendar-body');
+      const stripPrevBtn = document.getElementById('booking-strip-prev');
+      const stripNextBtn = document.getElementById('booking-strip-next');
+      const stripEl = document.getElementById('booking-day-strip');
       const timesSection = document.getElementById('booking-times-section');
       const timesWrap = document.getElementById('booking-times');
       const confirmBtn = document.getElementById('booking-confirm');
       const pickView = document.getElementById('booking-pick-view');
       const successView = document.getElementById('booking-success-view');
       const summaryEl = document.getElementById('booking-summary');
-      const weekdaysRow = overlay.querySelector('.booking-weekdays');
-      const expertSelect = document.getElementById('booking-expert-select');
-      const expertTrigger = document.getElementById('booking-expert-trigger');
-      const expertAvatar = document.getElementById('booking-expert-avatar');
-      const expertChipName = document.getElementById('booking-expert-chip-name');
-      const expertChipRole = document.getElementById('booking-expert-chip-role');
-      const expertList = document.getElementById('booking-expert-list');
+      const expertRow = document.getElementById('booking-expert-row');
       const successExpertEl = document.getElementById('booking-success-expert');
       const nameInput = document.getElementById('booking-name');
       const emailInput = document.getElementById('booking-email');
       const phoneInput = document.getElementById('booking-phone');
       const successNote = document.getElementById('booking-success-note');
 
-      const WEEKDAY_LABELS = isES ? ['D', 'L', 'M', 'M', 'J', 'V', 'S'] : ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       const TIME_SLOTS = ['09:00', '10:30', '13:00', '14:30', '16:00'];
+      // How many upcoming days the horizontal strip renders — enough to
+      // scroll through, no month-jump navigation needed.
+      const STRIP_DAYS = 60;
       // Same four specialists shown as the curated preview in #experts — the
       // only ones the site has photos/bios for yet, so the picker doesn't
       // reference people it can't actually show.
@@ -414,30 +409,21 @@ class Component extends DCLogic {
         { name: 'Armando Portillo', role: isES ? 'Consultor de Operaciones de Vuelo' : 'Flight Ops Consultant', img: 'images/armando-portillo.jpg' },
         { name: 'Gessica Gomez', role: isES ? 'Consultora de Entrenamiento' : 'Training Consultant', img: 'images/gessica-gomez.jpg' },
       ];
-      const EXPERT_PLACEHOLDER = isES ? 'Elegí un especialista' : 'Select a specialist';
-      const monthFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { month: 'long', year: 'numeric' });
       const dateFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
-      if (weekdaysRow) weekdaysRow.innerHTML = WEEKDAY_LABELS.map((d) => `<span>${d}</span>`).join('');
-      if (expertList) {
-        expertList.innerHTML = EXPERTS.map((ex, idx) => `
-          <button type="button" class="booking-expert-option" role="option" data-idx="${idx}">
+      const dowFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { weekday: 'short' });
+      const monthAbbrFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { month: 'short' });
+      if (expertRow) {
+        expertRow.innerHTML = EXPERTS.map((ex, idx) => `
+          <button type="button" class="booking-expert-card" role="option" aria-selected="false" data-idx="${idx}">
             <span class="booking-avatar"><img src="${ex.img}" alt="" loading="lazy"></span>
-            <span class="booking-expert-option-text">
-              <span class="booking-expert-option-name">${ex.name}</span>
-              <span class="booking-expert-option-role">${ex.role}</span>
-            </span>
-            <span class="booking-expert-check" aria-hidden="true">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>
-            </span>
+            <span class="booking-expert-card-name">${ex.name}</span>
+            <span class="booking-expert-card-role">${ex.role}</span>
           </button>`).join('');
       }
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
-      const minMonth = new Date(today.getFullYear(), today.getMonth(), 1);
-      const maxMonth = new Date(today.getFullYear(), today.getMonth() + 2, 1);
 
-      let viewDate = new Date(minMonth);
       let selectedDate = null;
       let selectedTime = null;
       let selectedExpert = null;
@@ -452,28 +438,21 @@ class Component extends DCLogic {
       const isTimeBooked = (d, idx) => (d.getDate() + idx) % 5 === 0;
       const isValidEmail = (v) => /^\S+@\S+\.\S+$/.test(v.trim());
 
-      function renderCalendar() {
-        monthLabel.textContent = monthFormatter.format(viewDate);
-        prevBtn.disabled = viewDate.getFullYear() === minMonth.getFullYear() && viewDate.getMonth() === minMonth.getMonth();
-        nextBtn.disabled = viewDate.getFullYear() === maxMonth.getFullYear() && viewDate.getMonth() === maxMonth.getMonth();
-
-        const year = viewDate.getFullYear();
-        const month = viewDate.getMonth();
-        const firstWeekday = new Date(year, month, 1).getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
-
+      function renderStrip() {
         let html = '';
-        for (let i = 0; i < firstWeekday; i++) html += '<span class="booking-day-empty" aria-hidden="true"></span>';
-        for (let d = 1; d <= daysInMonth; d++) {
-          const date = new Date(year, month, d);
-          const disabled = date < today || date.getDay() === 0 || date.getDay() === 6 || isDateBooked(date);
-          const classes = ['booking-day'];
+        for (let i = 0; i < STRIP_DAYS; i++) {
+          const date = new Date(today.getFullYear(), today.getMonth(), today.getDate() + i);
+          const disabled = date.getDay() === 0 || date.getDay() === 6 || isDateBooked(date);
+          const isSelected = sameDay(date, selectedDate);
+          const classes = ['booking-date-chip'];
           if (sameDay(date, today)) classes.push('is-today');
-          if (sameDay(date, selectedDate)) classes.push('is-selected');
-          const iso = `${year}-${String(month + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
-          html += `<button type="button" class="${classes.join(' ')}" data-date="${iso}"${disabled ? ' disabled' : ''}>${d}</button>`;
+          if (isSelected) classes.push('is-selected');
+          const isFirstOfMonth = i === 0 || date.getDate() === 1;
+          const monthLabel = isFirstOfMonth ? monthAbbrFormatter.format(date).replace('.', '') : '';
+          const iso = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}-${String(date.getDate()).padStart(2, '0')}`;
+          html += `<button type="button" class="${classes.join(' ')}" data-date="${iso}"${disabled ? ' disabled' : ''} role="option" aria-selected="${isSelected ? 'true' : 'false'}"><span class="booking-date-chip-month">${monthLabel}</span><span class="booking-date-chip-dow">${dowFormatter.format(date).replace('.', '')}</span><span class="booking-date-chip-num">${date.getDate()}</span></button>`;
         }
-        calendarBody.innerHTML = html;
+        stripEl.innerHTML = html;
       }
 
       function renderTimes() {
@@ -494,66 +473,36 @@ class Component extends DCLogic {
       if (nameInput) nameInput.addEventListener('input', updateConfirmState);
       if (emailInput) emailInput.addEventListener('input', updateConfirmState);
 
-      function isExpertPanelOpen() {
-        return expertSelect && expertSelect.getAttribute('data-open') === 'true';
-      }
-
-      function openExpertPanel() {
-        if (!expertSelect) return;
-        expertSelect.setAttribute('data-open', 'true');
-        expertTrigger.setAttribute('aria-expanded', 'true');
-        expertList.hidden = false;
-      }
-
-      function closeExpertPanel() {
-        if (!expertSelect) return;
-        expertSelect.removeAttribute('data-open');
-        expertTrigger.setAttribute('aria-expanded', 'false');
-        expertList.hidden = true;
-      }
-
       function selectExpert(idx) {
         selectedExpert = EXPERTS[idx];
-        expertAvatar.classList.remove('booking-avatar-placeholder');
-        expertAvatar.innerHTML = `<img src="${selectedExpert.img}" alt="" loading="lazy">`;
-        expertChipName.textContent = selectedExpert.name;
-        expertChipRole.textContent = selectedExpert.role;
-        expertList.querySelectorAll('.booking-expert-option').forEach((opt, i) => {
-          opt.classList.toggle('is-selected', i === idx);
-          opt.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        if (expertRow) expertRow.querySelectorAll('.booking-expert-card').forEach((card, i) => {
+          card.classList.toggle('is-selected', i === idx);
+          card.setAttribute('aria-selected', i === idx ? 'true' : 'false');
         });
-        closeExpertPanel();
         updateConfirmState();
       }
 
       function resetBooking() {
-        viewDate = new Date(minMonth);
         selectedDate = null;
         selectedTime = null;
         selectedExpert = null;
         pickView.hidden = false;
         successView.hidden = true;
-        closeExpertPanel();
-        if (expertAvatar) {
-          expertAvatar.classList.add('booking-avatar-placeholder');
-          expertAvatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"></path></svg>';
-        }
-        if (expertChipName) expertChipName.textContent = EXPERT_PLACEHOLDER;
-        if (expertChipRole) expertChipRole.textContent = '';
-        if (expertList) expertList.querySelectorAll('.booking-expert-option').forEach((opt) => {
-          opt.classList.remove('is-selected');
-          opt.setAttribute('aria-selected', 'false');
+        if (expertRow) expertRow.querySelectorAll('.booking-expert-card').forEach((card) => {
+          card.classList.remove('is-selected');
+          card.setAttribute('aria-selected', 'false');
         });
         if (nameInput) nameInput.value = '';
         if (emailInput) emailInput.value = '';
         if (phoneInput) phoneInput.value = '';
-        renderCalendar();
+        renderStrip();
         renderTimes();
         updateConfirmState();
+        if (stripEl) stripEl.scrollLeft = 0;
       }
 
       function onKeydown(e) {
-        if (e.key === 'Escape') { if (isExpertPanelOpen()) closeExpertPanel(); else closeModal(); return; }
+        if (e.key === 'Escape') { closeModal(); return; }
         if (e.key !== 'Tab') return;
         const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href], input:not([disabled])')).filter((el) => el.offsetParent !== null);
         if (!focusable.length) return;
@@ -585,33 +534,25 @@ class Component extends DCLogic {
       closeBtn.addEventListener('click', closeModal);
       doneBtn.addEventListener('click', closeModal);
       overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
-      prevBtn.addEventListener('click', () => { viewDate.setMonth(viewDate.getMonth() - 1); renderCalendar(); });
-      nextBtn.addEventListener('click', () => { viewDate.setMonth(viewDate.getMonth() + 1); renderCalendar(); });
 
-      if (expertTrigger) {
-        expertTrigger.addEventListener('click', () => { isExpertPanelOpen() ? closeExpertPanel() : openExpertPanel(); });
-      }
-      if (expertList) {
-        expertList.addEventListener('click', (e) => {
-          const opt = e.target.closest('.booking-expert-option');
-          if (!opt) return;
-          selectExpert(Number(opt.dataset.idx));
+      if (stripPrevBtn) stripPrevBtn.addEventListener('click', () => { stripEl.scrollBy({ left: -208, behavior: 'smooth' }); });
+      if (stripNextBtn) stripNextBtn.addEventListener('click', () => { stripEl.scrollBy({ left: 208, behavior: 'smooth' }); });
+
+      if (expertRow) {
+        expertRow.addEventListener('click', (e) => {
+          const card = e.target.closest('.booking-expert-card');
+          if (!card) return;
+          selectExpert(Number(card.dataset.idx));
         });
       }
-      // Click outside the specialist dropdown closes it without touching the
-      // rest of the modal (a plain document listener, same as the overlay's
-      // own outside-click-to-close above).
-      document.addEventListener('click', (e) => {
-        if (isExpertPanelOpen() && expertSelect && !expertSelect.contains(e.target)) closeExpertPanel();
-      });
 
-      calendarBody.addEventListener('click', (e) => {
-        const btn = e.target.closest('.booking-day:not(:disabled)');
+      stripEl.addEventListener('click', (e) => {
+        const btn = e.target.closest('.booking-date-chip:not(:disabled)');
         if (!btn) return;
         const [y, m, d] = btn.dataset.date.split('-').map(Number);
         selectedDate = new Date(y, m - 1, d);
         selectedTime = null;
-        renderCalendar();
+        renderStrip();
         renderTimes();
         updateConfirmState();
       });

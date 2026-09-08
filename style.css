@@ -484,39 +484,6 @@
     }
     .booking-close:hover{ background:var(--obsidian); color:var(--on-obsidian); }
 
-    /* Scheduling card — calendar + time grid wrapped in a warm sand-tint
-       panel (the same --sand-beige token the "Why AviatDo" section uses)
-       so the whole date/time picker reads as one elevated widget inside
-       the modal, instead of a plain grid sitting directly on white. Day
-       cells are full circles — friendlier touch targets than a square
-       grid, and it echoes the rounded-chip calendar Diego referenced. */
-    .booking-cal{ background:var(--sand-beige); border-radius:20px; padding:22px 20px; }
-    .booking-cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:16px; }
-    .booking-month-label{ font-family:var(--font-condensed); font-size:14px; font-weight:700; letter-spacing:0.03em; text-transform:capitalize; }
-    .booking-nav-btn{
-      width:34px; height:34px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
-      background:var(--paper-white); color:var(--obsidian); font-size:16px; line-height:1; transition:background .2s ease, color .2s ease;
-    }
-    .booking-nav-btn:hover{ background:var(--obsidian); color:var(--on-obsidian); }
-    .booking-nav-btn:disabled{ opacity:.35; pointer-events:none; }
-
-    .booking-weekdays{
-      display:grid; grid-template-columns:repeat(7,1fr); text-align:center; margin-bottom:10px;
-      font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);
-    }
-    .booking-days{ display:grid; grid-template-columns:repeat(7,1fr); gap:6px; }
-    .booking-day{
-      aspect-ratio:1; border-radius:50%; font-family:var(--font-display); font-size:13px; font-weight:600;
-      background:var(--paper-white); color:var(--obsidian); border:1.5px solid transparent;
-      transition:background .15s ease, color .15s ease, border-color .15s ease;
-      display:flex; align-items:center; justify-content:center;
-    }
-    .booking-day:not(:disabled):hover{ border-color:var(--obsidian); }
-    .booking-day:disabled{ background:transparent; color:var(--muted); opacity:.5; cursor:not-allowed; }
-    .booking-day.is-today{ color:var(--brand-red); border-color:var(--brand-red); font-weight:800; }
-    .booking-day.is-selected{ background:var(--brand-red) !important; border-color:var(--brand-red) !important; color:var(--on-obsidian) !important; font-weight:800; }
-    .booking-day-empty{ visibility:hidden; }
-
     .booking-field{ margin-bottom:24px; }
     .booking-field-label{ display:block; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:8px; }
     .booking-input{
@@ -525,25 +492,25 @@
     }
     .booking-input::placeholder{ color:var(--muted); }
 
-    /* Specialist picker — a custom dropdown (a native <select> can't carry a
-       photo), built as a button that opens an absolutely-positioned panel of
-       options. Reuses the same avatar/name/role layout in both the closed
-       trigger and each option so the selected state reads as "the same row,
-       now collapsed" rather than a different component. */
-    .booking-select{ position:relative; }
-    .booking-select-trigger{
-      width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px;
-      padding:10px 14px; border:1.5px solid var(--cloud-gray); border-radius:14px; background:var(--paper-white);
-      transition:border-color .15s ease;
+    /* Specialist picker — an always-visible horizontal row of cards (no
+       open/close dropdown), so there's nothing that can pinch/overlap the
+       way stacked list options did. Each card reuses the avatar layout the
+       success view also uses. */
+    .booking-expert-row{ display:grid; grid-template-columns:repeat(4, 1fr); gap:8px; }
+    .booking-expert-card{
+      display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px;
+      padding:12px 8px; border-radius:14px; border:1.5px solid var(--cloud-gray); background:var(--paper-white);
+      transition:border-color .15s ease, background .15s ease;
     }
-    .booking-select-trigger:hover{ border-color:var(--obsidian); }
-    .booking-select[data-open="true"] .booking-select-trigger{ border-color:var(--brand-red); }
-    .booking-expert-chip{ display:flex; align-items:center; gap:12px; min-width:0; }
+    .booking-expert-card:hover{ border-color:var(--obsidian); }
+    .booking-expert-card.is-selected{ background:rgba(204,36,44,0.06); border-color:var(--brand-red); }
     .booking-avatar{
       width:42px; height:42px; border-radius:50%; overflow:hidden; flex-shrink:0;
       background:var(--cloud-gray); color:var(--graphite); display:flex; align-items:center; justify-content:center;
     }
     .booking-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .booking-expert-card-name{ font-family:var(--font-display); font-size:12px; font-weight:700; color:var(--obsidian); line-height:1.25; }
+    .booking-expert-card-role{ font-size:10.5px; color:var(--graphite); line-height:1.25; }
     .booking-expert-chip-text{ display:flex; flex-direction:column; min-width:0; text-align:left; }
     .booking-expert-chip-name{
       font-family:var(--font-display); font-size:14px; font-weight:700; color:var(--obsidian);
@@ -551,28 +518,40 @@
     }
     .booking-expert-chip-role{ font-size:12px; color:var(--graphite); }
     .booking-expert-chip-role:empty{ display:none; }
-    .booking-select-caret{ flex-shrink:0; color:var(--graphite); transition:transform .15s ease, color .15s ease; }
-    .booking-select[data-open="true"] .booking-select-caret{ transform:rotate(180deg); color:var(--brand-red); }
 
-    .booking-select-panel{
-      position:absolute; top:calc(100% + 8px); left:0; right:0; z-index:5;
-      background:var(--paper-white); border:1px solid var(--cloud-gray); border-radius:14px;
-      box-shadow:0 20px 40px -12px rgba(0,0,0,0.25); padding:8px; max-height:260px; overflow-y:auto;
+    /* Scheduling card — a compact sand-tint panel (the same --sand-beige
+       token the "Why AviatDo" section uses) holding a single horizontal,
+       scrollable strip of upcoming days instead of a full month grid, so
+       it stays small and needs no month-jump navigation. */
+    .booking-cal{ background:var(--sand-beige); border-radius:18px; padding:16px; }
+    .booking-strip-wrap{ display:flex; align-items:center; gap:6px; }
+    .booking-strip{
+      display:flex; gap:8px; flex:1; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x proximity;
+      padding:2px 1px; scrollbar-width:none;
     }
-    .booking-expert-option{
-      width:100%; display:flex; align-items:center; gap:12px; padding:9px 10px; border-radius:10px;
-      text-align:left; border:1.5px solid transparent; transition:background .15s ease, border-color .15s ease;
+    .booking-strip::-webkit-scrollbar{ display:none; }
+    .booking-date-chip{
+      scroll-snap-align:start; flex:0 0 auto; width:50px; padding:9px 0 7px; border-radius:13px;
+      display:flex; flex-direction:column; align-items:center; gap:1px;
+      background:var(--paper-white); color:var(--obsidian); border:1.5px solid transparent;
+      font-family:var(--font-display); transition:background .15s ease, border-color .15s ease, color .15s ease;
     }
-    .booking-expert-option:hover, .booking-expert-option:focus-visible{ background:var(--cloud-gray); }
-    .booking-expert-option.is-selected{ background:rgba(204,36,44,0.06); border-color:var(--brand-red); }
-    .booking-expert-option-text{ flex:1; min-width:0; }
-    .booking-expert-option-name{ display:block; font-size:14px; font-weight:600; color:var(--obsidian); }
-    .booking-expert-option-role{ display:block; font-size:12px; color:var(--graphite); margin-top:1px; }
-    .booking-expert-check{
-      flex-shrink:0; color:var(--brand-red); opacity:0; transform:scale(.6);
-      transition:opacity .15s ease, transform .15s ease; display:flex;
+    .booking-date-chip:not(:disabled):hover{ border-color:var(--obsidian); }
+    .booking-date-chip:disabled{ background:transparent; color:var(--muted); opacity:.5; cursor:not-allowed; }
+    .booking-date-chip.is-today{ color:var(--brand-red); border-color:var(--brand-red); }
+    .booking-date-chip.is-selected{ background:var(--brand-red) !important; border-color:var(--brand-red) !important; color:var(--on-obsidian) !important; }
+    .booking-date-chip-month{
+      font-family:var(--font-condensed); font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
+      color:var(--brand-red); height:11px;
     }
-    .booking-expert-option.is-selected .booking-expert-check{ opacity:1; transform:scale(1); }
+    .booking-date-chip.is-selected .booking-date-chip-month{ color:var(--on-obsidian); }
+    .booking-date-chip-dow{ font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; opacity:.65; }
+    .booking-date-chip-num{ font-size:15px; font-weight:800; }
+    .booking-strip-nav{
+      flex-shrink:0; width:28px; height:28px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+      background:var(--paper-white); color:var(--obsidian); font-size:15px; line-height:1; transition:background .2s ease, color .2s ease;
+    }
+    .booking-strip-nav:hover{ background:var(--obsidian); color:var(--on-obsidian); }
 
     .booking-success-expert{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
     .booking-success-expert .booking-expert-chip-name{ font-weight:700; }
@@ -607,6 +586,6 @@
 
     @media (max-width: 640px){
       .booking-modal{ padding:28px 20px; max-height:92vh; }
-      .booking-day{ font-size:12px; }
+      .booking-expert-row{ grid-template-columns:repeat(2, 1fr); }
       .booking-contact-row{ grid-template-columns:1fr !important; }
     }
