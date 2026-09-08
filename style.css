@@ -52,8 +52,13 @@
     .card-sheen.sheen-light::after{background:linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.22) 48%, rgba(255,255,255,0.5) 50%, rgba(255,255,255,0.22) 52%, transparent 62%);}
     .card-sheen.sheen-dark::after{background:linear-gradient(115deg, transparent 38%, rgba(94,93,92,0.10) 48%, rgba(94,93,92,0.22) 50%, rgba(94,93,92,0.10) 52%, transparent 62%);}
     .card-sheen.sheen-service::after{background:linear-gradient(115deg, transparent 38%, rgba(255,178,181,0.32) 48%, rgba(255,214,216,0.62) 50%, rgba(255,178,181,0.32) 52%, transparent 62%);}
+    /* Testimonials — a lighter, more neutral gray sweep than sheen-dark's
+       graphite tint, plus a subtle grow-on-hover lift for the three cards. */
+    .card-sheen.sheen-testimonial::after{background:linear-gradient(115deg, transparent 38%, rgba(190,189,188,0.16) 48%, rgba(210,209,208,0.4) 50%, rgba(190,189,188,0.16) 52%, transparent 62%);}
     .card-sheen:hover::after{opacity:1; animation:sheenSweep .85s cubic-bezier(.4,0,.2,1);}
     .card-sheen.sheen-service:hover::after{animation-duration:1.35s;}
+    .testi-card{transition:transform .25s cubic-bezier(.16,1,.3,1), box-shadow .25s ease;}
+    .testi-card:hover{transform:scale(1.03); box-shadow:0 20px 40px -18px rgba(0,0,0,0.18);}
     @keyframes sheenSweep{ from{transform:translateX(-130%);} to{transform:translateX(130%);} }
 
     /* services grid — cards invert to obsidian on hover, echoing the nav/footer/Talks
@@ -219,6 +224,7 @@
     @media (prefers-reduced-motion: reduce){
       .magnetic{ transition:none !important; }
       .tilt-card{ transition:none !important; }
+      .testi-card{ transition:none !important; }
       .accent-bar{ transform:scaleX(1) !important; }
       .photo-wipe{ clip-path:inset(0 0 0 0) !important; }
       .hero-parallax{ transform:none !important; }
