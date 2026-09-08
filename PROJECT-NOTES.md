@@ -9,8 +9,9 @@ porción, sin cargar los ~140KB completos de cada archivo.
 Mockup del homepage de AviatDo (consultoría de aviación B2B para
 aerolíneas/aeropuertos/reguladores en LatAm), para iCorporate Lab. Es un sitio
 estático de una sola página, en dos idiomas (`index.html` EN / `index-es.html`
-ES), pensado como demo/mockup — no como el sitio final (ver sección
-"Decisiones pendientes" abajo).
+ES), pensado como demo/mockup — no como el sitio final: el destino
+confirmado es WordPress (ver sección "Decisiones confirmadas / próximos
+pasos" abajo).
 
 ## Archivos
 
@@ -191,11 +192,12 @@ ningún dato de contacto. Campos `#booking-name`/`#booking-email`/
 `#booking-phone`, se limpian en `resetBooking()`, y el mensaje de
 éxito repite el email ingresado.
 
-## Decisiones pendientes / en pausa
+## Decisiones confirmadas / próximos pasos
 
-- Migración a WordPress (sitio completo, multi-página, autoadministrable
-  por el cliente) — **pausada**, Diego la va a consultar con su jefe. No
-  retomar sin que él lo pida de nuevo.
+- Migración a WordPress **confirmada** (sitio completo, multi-página,
+  autoadministrable por el cliente) — ya no está en pausa.
 - Reemplazo de ACF Pro por Custom Post Types nativos + ACF free, y Polylang
-  (free) para EN/ES — decidido en principio, pendiente de la conversación
-  de arriba.
+  (free) para EN/ES — decidido.
+- El proyecto se traslada de Cowork a Claude Code (CLI) para el trabajo que
+  sigue. Este archivo (PROJECT-NOTES.md) sirve como onboarding rápido al
+  retomarlo ahí — léelo antes de abrir los HTML completos.
