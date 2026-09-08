@@ -152,6 +152,23 @@ animaciones de reveal por scroll necesitan ese tiempo), chequear
 horizontal, usar `page.mouse.move()` + `boundingBox()` para probar estados
 de hover, screenshot antes de dar por terminado.
 
+## Modal de reserva (booking)
+
+El botón del hero "Book a consultation" / "Agendar una consulta"
+(`#book-consultation-btn`) abre un modal de calendario mockup — sin
+backend real, es 100% visual (elección explícita de Diego, frente a un
+embed funcional tipo Calendly). Markup: `#booking-overlay` en ambos
+HTML, como **hermano de `#page-root`** (no anidado adentro) — a
+propósito, porque `#page-root` lleva el `transform` del smooth-scroll
+en desktop y un `position:fixed` anidado ahí quedaría fijo relativo a
+ese transform, no al viewport real. CSS en `style.css` (busca
+`#booking-overlay`), lógica en `script.js` (busca `Booking modal`,
+cerca del final de `componentDidMount`) — un solo bloque JS sirve a
+los dos idiomas vía el mismo `isES` que usa el resto del archivo.
+
+Convención si se agrega otro modal/overlay nuevo: mismo patrón —
+markup como hermano de `#page-root`, no dentro.
+
 ## Decisiones pendientes / en pausa
 
 - Migración a WordPress (sitio completo, multi-página, autoadministrable
