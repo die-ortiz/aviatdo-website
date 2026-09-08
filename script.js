@@ -391,12 +391,39 @@ class Component extends DCLogic {
       const successView = document.getElementById('booking-success-view');
       const summaryEl = document.getElementById('booking-summary');
       const weekdaysRow = overlay.querySelector('.booking-weekdays');
+      const expertSelect = document.getElementById('booking-expert-select');
+      const expertTrigger = document.getElementById('booking-expert-trigger');
+      const expertAvatar = document.getElementById('booking-expert-avatar');
+      const expertChipName = document.getElementById('booking-expert-chip-name');
+      const expertChipRole = document.getElementById('booking-expert-chip-role');
+      const expertList = document.getElementById('booking-expert-list');
+      const successExpertEl = document.getElementById('booking-success-expert');
 
       const WEEKDAY_LABELS = isES ? ['D', 'L', 'M', 'M', 'J', 'V', 'S'] : ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       const TIME_SLOTS = ['09:00', '10:30', '13:00', '14:30', '16:00'];
+      // Same four specialists shown as the curated preview in #experts — the
+      // only ones the site has photos/bios for yet, so the picker doesn't
+      // reference people it can't actually show.
+      const EXPERTS = [
+        { name: 'Ana Persiani', role: isES ? 'Cofundadora y CEO' : 'Co-Founder & CEO', img: 'images/ana-persiani.jpg' },
+        { name: 'Alfredo Sol', role: isES ? 'Estrategias Financieras' : 'Financial Strategies', img: 'images/alfredo-sol.jpg' },
+        { name: 'Armando Portillo', role: isES ? 'Consultor de Operaciones de Vuelo' : 'Flight Ops Consultant', img: 'images/armando-portillo.jpg' },
+        { name: 'Gessica Gomez', role: isES ? 'Consultora de Entrenamiento' : 'Training Consultant', img: 'images/gessica-gomez.jpg' },
+      ];
+      const EXPERT_PLACEHOLDER = isES ? 'Elegí un especialista' : 'Select a specialist';
       const monthFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { month: 'long', year: 'numeric' });
       const dateFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       if (weekdaysRow) weekdaysRow.innerHTML = WEEKDAY_LABELS.map((d) => `<span>${d}</span>`).join('');
+      if (expertList) {
+        expertList.innerHTML = EXPERTS.map((ex, idx) => `
+          <button type="button" class="booking-expert-option" role="option" data-idx="${idx}">
+            <span class="booking-avatar"><img src="${ex.img}" alt="" loading="lazy"></span>
+            <span class="booking-expert-option-text">
+              <span class="booking-expert-option-name">${ex.name}</span>
+              <span class="booking-expert-option-role">${ex.role}</span>
+            </span>
+          </button>`).join('');
+      }
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
@@ -406,6 +433,7 @@ class Component extends DCLogic {
       let viewDate = new Date(minMonth);
       let selectedDate = null;
       let selectedTime = null;
+      let selectedExpert = null;
       let lastFocused = null;
 
       const sameDay = (a, b) => !!a && !!b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate();
@@ -451,22 +479,66 @@ class Component extends DCLogic {
       }
 
       function updateConfirmState() {
-        confirmBtn.disabled = !(selectedDate && selectedTime);
+        confirmBtn.disabled = !(selectedExpert && selectedDate && selectedTime);
+      }
+
+      function isExpertPanelOpen() {
+        return expertSelect && expertSelect.getAttribute('data-open') === 'true';
+      }
+
+      function openExpertPanel() {
+        if (!expertSelect) return;
+        expertSelect.setAttribute('data-open', 'true');
+        expertTrigger.setAttribute('aria-expanded', 'true');
+        expertList.hidden = false;
+      }
+
+      function closeExpertPanel() {
+        if (!expertSelect) return;
+        expertSelect.removeAttribute('data-open');
+        expertTrigger.setAttribute('aria-expanded', 'false');
+        expertList.hidden = true;
+      }
+
+      function selectExpert(idx) {
+        selectedExpert = EXPERTS[idx];
+        expertAvatar.classList.remove('booking-avatar-placeholder');
+        expertAvatar.innerHTML = `<img src="${selectedExpert.img}" alt="" loading="lazy">`;
+        expertChipName.textContent = selectedExpert.name;
+        expertChipRole.textContent = selectedExpert.role;
+        expertList.querySelectorAll('.booking-expert-option').forEach((opt, i) => {
+          opt.classList.toggle('is-selected', i === idx);
+          opt.setAttribute('aria-selected', i === idx ? 'true' : 'false');
+        });
+        closeExpertPanel();
+        updateConfirmState();
       }
 
       function resetBooking() {
         viewDate = new Date(minMonth);
         selectedDate = null;
         selectedTime = null;
+        selectedExpert = null;
         pickView.hidden = false;
         successView.hidden = true;
+        closeExpertPanel();
+        if (expertAvatar) {
+          expertAvatar.classList.add('booking-avatar-placeholder');
+          expertAvatar.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"></path></svg>';
+        }
+        if (expertChipName) expertChipName.textContent = EXPERT_PLACEHOLDER;
+        if (expertChipRole) expertChipRole.textContent = '';
+        if (expertList) expertList.querySelectorAll('.booking-expert-option').forEach((opt) => {
+          opt.classList.remove('is-selected');
+          opt.setAttribute('aria-selected', 'false');
+        });
         renderCalendar();
         renderTimes();
         updateConfirmState();
       }
 
       function onKeydown(e) {
-        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key === 'Escape') { if (isExpertPanelOpen()) closeExpertPanel(); else closeModal(); return; }
         if (e.key !== 'Tab') return;
         const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href]')).filter((el) => el.offsetParent !== null);
         if (!focusable.length) return;
@@ -501,6 +573,23 @@ class Component extends DCLogic {
       prevBtn.addEventListener('click', () => { viewDate.setMonth(viewDate.getMonth() - 1); renderCalendar(); });
       nextBtn.addEventListener('click', () => { viewDate.setMonth(viewDate.getMonth() + 1); renderCalendar(); });
 
+      if (expertTrigger) {
+        expertTrigger.addEventListener('click', () => { isExpertPanelOpen() ? closeExpertPanel() : openExpertPanel(); });
+      }
+      if (expertList) {
+        expertList.addEventListener('click', (e) => {
+          const opt = e.target.closest('.booking-expert-option');
+          if (!opt) return;
+          selectExpert(Number(opt.dataset.idx));
+        });
+      }
+      // Click outside the specialist dropdown closes it without touching the
+      // rest of the modal (a plain document listener, same as the overlay's
+      // own outside-click-to-close above).
+      document.addEventListener('click', (e) => {
+        if (isExpertPanelOpen() && expertSelect && !expertSelect.contains(e.target)) closeExpertPanel();
+      });
+
       calendarBody.addEventListener('click', (e) => {
         const btn = e.target.closest('.booking-day:not(:disabled)');
         if (!btn) return;
@@ -521,9 +610,17 @@ class Component extends DCLogic {
       });
 
       confirmBtn.addEventListener('click', () => {
-        if (!selectedDate || !selectedTime) return;
+        if (!selectedExpert || !selectedDate || !selectedTime) return;
         const dateStr = dateFormatter.format(selectedDate);
         summaryEl.textContent = isES ? `${dateStr} a las ${selectedTime}` : `${dateStr} at ${selectedTime}`;
+        if (successExpertEl) {
+          successExpertEl.innerHTML = `
+            <span class="booking-avatar"><img src="${selectedExpert.img}" alt="" loading="lazy"></span>
+            <span class="booking-expert-chip-text">
+              <span class="booking-expert-chip-name">${selectedExpert.name}</span>
+              <span class="booking-expert-chip-role">${selectedExpert.role}</span>
+            </span>`;
+        }
         pickView.hidden = true;
         successView.hidden = false;
       });

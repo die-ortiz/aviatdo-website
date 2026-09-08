@@ -509,6 +509,55 @@
     .booking-day.is-selected{ background:var(--brand-red) !important; color:var(--on-obsidian); font-weight:700; }
     .booking-day-empty{ visibility:hidden; }
 
+    .booking-field{ margin-bottom:24px; }
+    .booking-field-label{ font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:8px; }
+
+    /* Specialist picker — a custom dropdown (a native <select> can't carry a
+       photo), built as a button that opens an absolutely-positioned panel of
+       options. Reuses the same avatar/name/role layout in both the closed
+       trigger and each option so the selected state reads as "the same row,
+       now collapsed" rather than a different component. */
+    .booking-select{ position:relative; }
+    .booking-select-trigger{
+      width:100%; display:flex; align-items:center; justify-content:space-between; gap:12px;
+      padding:8px 12px; border:1px solid var(--cloud-gray); border-radius:10px; background:var(--paper-white);
+      transition:border-color .15s ease;
+    }
+    .booking-select-trigger:hover{ border-color:var(--obsidian); }
+    .booking-select[data-open="true"] .booking-select-trigger{ border-color:var(--obsidian); }
+    .booking-expert-chip{ display:flex; align-items:center; gap:10px; min-width:0; }
+    .booking-avatar{
+      width:34px; height:34px; border-radius:50%; overflow:hidden; flex-shrink:0;
+      background:var(--cloud-gray); color:var(--graphite); display:flex; align-items:center; justify-content:center;
+    }
+    .booking-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+    .booking-expert-chip-text{ display:flex; flex-direction:column; min-width:0; text-align:left; }
+    .booking-expert-chip-name{
+      font-family:var(--font-display); font-size:14px; font-weight:600; color:var(--obsidian);
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    }
+    .booking-expert-chip-role{ font-size:12px; color:var(--graphite); }
+    .booking-expert-chip-role:empty{ display:none; }
+    .booking-select-caret{ flex-shrink:0; color:var(--graphite); transition:transform .15s ease; }
+    .booking-select[data-open="true"] .booking-select-caret{ transform:rotate(180deg); }
+
+    .booking-select-panel{
+      position:absolute; top:calc(100% + 6px); left:0; right:0; z-index:5;
+      background:var(--paper-white); border:1px solid var(--cloud-gray); border-radius:10px;
+      box-shadow:0 20px 40px -12px rgba(0,0,0,0.25); padding:6px; max-height:240px; overflow-y:auto;
+    }
+    .booking-expert-option{
+      width:100%; display:flex; align-items:center; gap:10px; padding:8px; border-radius:8px;
+      text-align:left; transition:background .15s ease;
+    }
+    .booking-expert-option:hover, .booking-expert-option:focus-visible{ background:var(--cloud-gray); }
+    .booking-expert-option.is-selected{ background:rgba(204,36,44,0.08); }
+    .booking-expert-option-name{ display:block; font-size:14px; font-weight:600; color:var(--obsidian); }
+    .booking-expert-option-role{ display:block; font-size:12px; color:var(--graphite); margin-top:1px; }
+
+    .booking-success-expert{ display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+    .booking-success-expert .booking-expert-chip-name{ font-weight:700; }
+
     .booking-times-section{ margin-top:24px; }
     .booking-times-label{ font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:12px; }
     .booking-times{ display:flex; flex-wrap:wrap; gap:8px; }

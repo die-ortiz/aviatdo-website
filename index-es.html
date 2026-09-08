@@ -753,6 +753,25 @@
       <h3 id="booking-title" style="margin:0 0 8px; font-size:24px; font-weight:800; letter-spacing:-0.02em;">Agendar una consulta</h3>
       <p style="margin:0 0 28px; font-size:14px; line-height:1.5; color:var(--graphite); max-width:420px;">Elegí una fecha y un horario que te quede cómodo. Te confirmamos por email dentro de un día hábil.</p>
 
+      <div class="booking-field">
+        <div class="booking-field-label">Elegí a tu especialista</div>
+        <div class="booking-select" id="booking-expert-select">
+          <button type="button" id="booking-expert-trigger" class="btn-focus booking-select-trigger" aria-haspopup="listbox" aria-expanded="false">
+            <span class="booking-expert-chip">
+              <span class="booking-avatar booking-avatar-placeholder" id="booking-expert-avatar" aria-hidden="true">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.6"></circle><path d="M4.5 20c1.4-4 4.2-6 7.5-6s6.1 2 7.5 6"></path></svg>
+              </span>
+              <span class="booking-expert-chip-text">
+                <span class="booking-expert-chip-name" id="booking-expert-chip-name">Elegí un especialista</span>
+                <span class="booking-expert-chip-role" id="booking-expert-chip-role"></span>
+              </span>
+            </span>
+            <svg class="booking-select-caret" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9l6 6 6-6"></path></svg>
+          </button>
+          <div id="booking-expert-list" class="booking-select-panel" role="listbox" aria-label="Especialistas" hidden></div>
+        </div>
+      </div>
+
       <div class="booking-cal">
         <div class="booking-cal-head">
           <button type="button" id="booking-prev-month" class="btn-focus booking-nav-btn" aria-label="Mes anterior">‹</button>
@@ -776,8 +795,9 @@
         <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--on-obsidian)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>
       </div>
       <h3 style="margin:0 0 8px; font-size:22px; font-weight:800; letter-spacing:-0.02em;">Solicitud recibida</h3>
+      <div id="booking-success-expert" class="booking-success-expert"></div>
       <p id="booking-summary" style="margin:0 0 12px; font-size:15px; line-height:1.5; color:var(--obsidian); font-weight:600;"></p>
-      <p style="margin:0 0 28px; font-size:13px; line-height:1.5; color:var(--muted);">Uno de nuestros especialistas va a confirmar tu horario por email en breve.</p>
+      <p style="margin:0 0 28px; font-size:13px; line-height:1.5; color:var(--muted);">Te confirmamos el horario por email en breve.</p>
       <button type="button" id="booking-done" class="btn-focus btn-obsidian booking-confirm">Listo</button>
     </div>
   </div>
