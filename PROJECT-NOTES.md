@@ -169,6 +169,12 @@ los dos idiomas vía el mismo `isES` que usa el resto del archivo.
 Convención si se agrega otro modal/overlay nuevo: mismo patrón —
 markup como hermano de `#page-root`, no dentro.
 
+Suma un selector de especialista (`#booking-expert-select`) arriba del
+calendario — un dropdown custom (un `<select>` nativo no puede llevar
+foto), armado 100% por JS desde un array `EXPERTS` en `script.js` (los
+mismos 4 expertos del preview de `#experts`, único set con foto/bio
+disponible). Confirmar ahora exige especialista + fecha + hora.
+
 ## Decisiones pendientes / en pausa
 
 - Migración a WordPress (sitio completo, multi-página, autoadministrable
