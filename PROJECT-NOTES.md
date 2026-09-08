@@ -169,11 +169,23 @@ los dos idiomas vía el mismo `isES` que usa el resto del archivo.
 Convención si se agrega otro modal/overlay nuevo: mismo patrón —
 markup como hermano de `#page-root`, no dentro.
 
-Suma un selector de especialista (`#booking-expert-select`) arriba del
-calendario — un dropdown custom (un `<select>` nativo no puede llevar
-foto), armado 100% por JS desde un array `EXPERTS` en `script.js` (los
-mismos 4 expertos del preview de `#experts`, único set con foto/bio
-disponible). Confirmar ahora exige especialista + fecha + hora + nombre + email
+Selector de especialista: fila horizontal siempre visible de tarjetas
+(`#booking-expert-row`, clase `.booking-expert-card`) — reemplazó un
+dropdown custom que abría un panel vertical (`#booking-expert-select`)
+porque sus opciones apiladas se pisaban visualmente sin gap entre ellas.
+Armado 100% por JS desde un array `EXPERTS` en `script.js` (los mismos 4
+expertos del preview de `#experts`, único set con foto/bio disponible).
+Sin abrir/cerrar: clic en una tarjeta selecciona (`selectExpert(idx)`),
+sin estado de panel que mantener.
+
+El calendario también se rediseñó: en vez de grilla mensual con
+navegación prev/mes-siguiente, es una tira horizontal scrolleable de
+próximos días (`#booking-day-strip`, clase `.booking-date-chip`, ~60
+días desde hoy, `STRIP_DAYS` en `script.js`) con flechas de scroll
+(`#booking-strip-prev`/`#booking-strip-next`) — más chica, sin
+necesidad de saltar de mes. Cada chip muestra abreviatura de día +
+número, y el mes solo aparece en el primer chip de cada mes (`is-first-
+of-month`). Confirmar exige especialista + fecha + hora + nombre + email
 válido (teléfono queda opcional) — antes el que agendaba no dejaba
 ningún dato de contacto. Campos `#booking-name`/`#booking-email`/
 `#booking-phone`, se limpian en `resetBooking()`, y el mensaje de
