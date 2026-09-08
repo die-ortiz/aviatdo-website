@@ -360,7 +360,7 @@ class Component extends DCLogic {
           const rect = card.getBoundingClientRect();
           const relX = (e.clientX - rect.left) / rect.width - 0.5;
           const relY = (e.clientY - rect.top) / rect.height - 0.5;
-          card.style.transform = `perspective(800px) rotateX(${relY * -6}deg) rotateY(${relX * 6}deg) scale3d(1.015, 1.015, 1.015)`;
+          card.style.transform = `perspective(800px) rotateX(${relY * -6}deg) rotateY(${relX * 6}deg) scale3d(1.03, 1.03, 1.03)`;
         });
         card.addEventListener('mouseleave', () => {
           card.style.transform = 'none';

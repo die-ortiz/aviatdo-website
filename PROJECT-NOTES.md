@@ -71,9 +71,14 @@ Para saltar directo a una sección sin abrir todo el archivo:
   (graphite, para tarjetas blancas genéricas), `.sheen-service` (rojo tenue,
   tarjetas de servicios), `.sheen-testimonial` (gris claro, testimonios).
   Antes de crear una variante nueva, revisar si alguna de estas ya sirve.
-- **Hover "grow" en tarjetas** (testimonials): `.testi-card:hover{transform:
-  scale(1.03); box-shadow:...}`. Ver gotcha del reveal loop antes de aplicar
-  este patrón a una tarjeta nueva.
+- **Hover "grow" en tarjetas** — dos variantes, mismo resultado (~3% de
+  escala): en `#testimonials`, CSS puro (`.testi-card:hover{transform:
+  scale(1.03); box-shadow:...}`); en `#services`, ya existía un tilt 3D por
+  JS en mousemove (`.tilt-card`, listener en `script.js`) que incluye
+  `scale3d(1.03,1.03,1.03)` — se aumentó desde 1.015 para igualar la
+  magnitud de testimonials. Ambas dependían del mismo fix de estructura de
+  abajo para funcionar. Ver gotcha del reveal loop antes de aplicar este
+  patrón a una tarjeta nueva.
 - **Iconos sociales** (`.social-icon`): 44px por defecto vía clase; en
   `#experts` se usa override inline `style="width:36px;height:36px"` con
   `<svg width="15" height="15">` explícito — tamaño elegido tras iterar con
@@ -114,6 +119,11 @@ tarjeta nueva con hover-transform): separar en dos niveles —
 
 El loop solo consulta `.reveal`, nunca toca hijos anidados, así que el
 `:hover` del div interno queda libre.
+
+Ya aplicado en `#testimonials` (3 tarjetas) y `#services` (las 8 tarjetas de
+la grilla, incluida la CTA negra "Not sure which service fits..."). El fix
+en `#services` además destrabó el tilt 3D por mousemove, que estaba
+silenciosamente roto por este mismo motivo desde antes.
 
 ## Flujo de publicación
 
