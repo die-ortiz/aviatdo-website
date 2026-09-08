@@ -8,9 +8,11 @@ Mockup del homepage de AviatDo (consultoría de aviación B2B, LatAm), exportado
 
 - `index.html` — versión en inglés. Un único layout fluido responsive (desktop, tablet y mobile en el mismo archivo, con drawer de navegación por hamburguesa debajo de los 900px).
 - `index-es.html` — versión en español, misma estructura que `index.html`. El switch EN/ES del header navega entre ambos.
+- `style.css` — todo el CSS del sitio, compartido por `index.html` e `index-es.html` (un solo archivo, no hay estilos duplicados por idioma).
+- `script.js` — todo el JavaScript, también compartido por ambos idiomas (scroll suave, animaciones on-scroll, contador de stats, carrusel de partners, parallax del hero y de AviatDo 360°, drawer mobile, etc. — vanilla JS, sin librerías externas ni build step). Los pocos textos que cambian por idioma (el contador de días para el evento, el aria-label del botón de menú) se resuelven en runtime leyendo `document.documentElement.lang`, así que no hace falta duplicar el script.
 - `images/` — todos los assets (fotos de equipo, logos de partners, fondos, logo de AviatDo), incluyendo variantes `-mobile` de las imágenes de fondo más pesadas para los breakpoints chicos.
 
-Ambos archivos son autocontenidos: abrí cualquiera de los dos directo en el navegador y funciona (scroll suave, animaciones on-scroll, contador de stats, carrusel de partners, parallax del hero y de AviatDo 360°, drawer mobile, etc. — todo vanilla JS, sin librerías externas ni build step).
+Los dos HTML siguen abriendo directo en el navegador sin servidor ni build step — solo que ahora referencian `style.css`/`script.js` en vez de tenerlo todo inline.
 
 ## Fuentes
 
