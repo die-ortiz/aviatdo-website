@@ -474,6 +474,11 @@
       background:var(--paper-white); border-radius:16px; padding:36px;
       box-shadow:0 40px 90px -20px rgba(0,0,0,0.45);
       transform:translateY(14px) scale(.98); transition:transform .3s cubic-bezier(.16,1,.3,1);
+      /* #booking-overlay sits as a SIBLING of #page-root (see the comment
+         above), so it never inherits #page-root's font-family:var(--font-display).
+         Without this, any modal text that doesn't set its own font-family
+         falls back to the browser's serif default. */
+      font-family:var(--font-display); color:var(--obsidian);
     }
     #booking-overlay.is-open .booking-modal{ transform:translateY(0) scale(1); }
 
@@ -501,6 +506,10 @@
       display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px;
       padding:12px 8px; border-radius:14px; border:1.5px solid var(--cloud-gray); background:var(--paper-white);
       transition:border-color .15s ease, background .15s ease;
+      /* Buttons don't inherit font-family from the page by default — set it
+         here so both child spans (name + role) resolve to Inter instead of
+         the browser's UA default button font. */
+      font-family:var(--font-display);
     }
     .booking-expert-card:hover{ border-color:var(--obsidian); }
     .booking-expert-card.is-selected{ background:rgba(204,36,44,0.06); border-color:var(--brand-red); }
