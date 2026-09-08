@@ -539,23 +539,29 @@
       padding:2px 1px; scrollbar-width:none;
     }
     .booking-strip::-webkit-scrollbar{ display:none; }
+    /* The button itself is just a layout column (no background/border of its
+       own) — only the day-number gets the round "pill" treatment, like the
+       circular day buttons the earlier month-grid calendar used. */
     .booking-date-chip{
-      scroll-snap-align:start; flex:0 0 auto; width:50px; padding:9px 0 7px; border-radius:13px;
-      display:flex; flex-direction:column; align-items:center; gap:1px;
-      background:var(--paper-white); color:var(--obsidian); border:1.5px solid transparent;
-      font-family:var(--font-display); transition:background .15s ease, border-color .15s ease, color .15s ease;
+      scroll-snap-align:start; flex:0 0 auto; width:46px; padding:2px 0 0; border:none; background:none;
+      display:flex; flex-direction:column; align-items:center; gap:4px;
+      font-family:var(--font-display); color:var(--obsidian); transition:color .15s ease;
     }
-    .booking-date-chip:not(:disabled):hover{ border-color:var(--obsidian); }
-    .booking-date-chip:disabled{ background:transparent; color:var(--muted); opacity:.5; cursor:not-allowed; }
-    .booking-date-chip.is-today{ color:var(--brand-red); border-color:var(--brand-red); }
-    .booking-date-chip.is-selected{ background:var(--brand-red) !important; border-color:var(--brand-red) !important; color:var(--on-obsidian) !important; }
+    .booking-date-chip:disabled{ color:var(--muted); opacity:.5; cursor:not-allowed; }
     .booking-date-chip-month{
       font-family:var(--font-condensed); font-size:9px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase;
       color:var(--brand-red); height:11px;
     }
-    .booking-date-chip.is-selected .booking-date-chip-month{ color:var(--on-obsidian); }
     .booking-date-chip-dow{ font-size:10px; font-weight:600; text-transform:uppercase; letter-spacing:0.03em; opacity:.65; }
-    .booking-date-chip-num{ font-size:15px; font-weight:800; }
+    .booking-date-chip-num{
+      width:34px; height:34px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+      font-size:15px; font-weight:800; color:inherit; background:var(--paper-white); border:1.5px solid transparent;
+      transition:background .15s ease, border-color .15s ease, color .15s ease;
+    }
+    .booking-date-chip:not(:disabled):hover .booking-date-chip-num{ border-color:var(--obsidian); }
+    .booking-date-chip.is-today{ color:var(--brand-red); }
+    .booking-date-chip.is-today .booking-date-chip-num{ border-color:var(--brand-red); }
+    .booking-date-chip.is-selected .booking-date-chip-num{ background:var(--brand-red) !important; border-color:var(--brand-red) !important; color:var(--on-obsidian) !important; }
     .booking-strip-nav{
       flex-shrink:0; width:28px; height:28px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
       background:var(--paper-white); color:var(--obsidian); font-size:15px; line-height:1; transition:background .2s ease, color .2s ease;
