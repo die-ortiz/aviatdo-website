@@ -787,6 +787,21 @@
         <div id="booking-times" class="booking-times"></div>
       </div>
 
+      <div class="booking-field" style="margin-top:24px;">
+        <label class="booking-field-label" for="booking-name">Nombre completo</label>
+        <input type="text" id="booking-name" class="booking-input" placeholder="Jane Doe" autocomplete="name">
+      </div>
+      <div class="booking-field booking-contact-row" style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+        <div>
+          <label class="booking-field-label" for="booking-email">Email</label>
+          <input type="email" id="booking-email" class="booking-input" placeholder="jane@airline.com" autocomplete="email">
+        </div>
+        <div>
+          <label class="booking-field-label" for="booking-phone">Teléfono</label>
+          <input type="tel" id="booking-phone" class="booking-input" placeholder="+1 (305) 555-0198" autocomplete="tel">
+        </div>
+      </div>
+
       <button type="button" id="booking-confirm" class="btn-focus btn-primary booking-confirm" disabled>Confirmar reserva</button>
     </div>
 
@@ -797,7 +812,7 @@
       <h3 style="margin:0 0 8px; font-family:var(--font-headline); font-size:22px; font-weight:800; letter-spacing:-0.02em;">Solicitud recibida</h3>
       <div id="booking-success-expert" class="booking-success-expert"></div>
       <p id="booking-summary" style="margin:0 0 12px; font-size:15px; line-height:1.5; color:var(--obsidian); font-weight:600;"></p>
-      <p style="margin:0 0 28px; font-size:13px; line-height:1.5; color:var(--muted);">Te confirmamos el horario por email en breve.</p>
+      <p id="booking-success-note" style="margin:0 0 28px; font-size:13px; line-height:1.5; color:var(--muted);">Te confirmamos el horario por email en breve.</p>
       <button type="button" id="booking-done" class="btn-focus btn-primary booking-confirm">Listo</button>
     </div>
   </div>

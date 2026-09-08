@@ -510,7 +510,12 @@
     .booking-day-empty{ visibility:hidden; }
 
     .booking-field{ margin-bottom:24px; }
-    .booking-field-label{ font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:8px; }
+    .booking-field-label{ display:block; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:8px; }
+    .booking-input{
+      width:100%; font-family:var(--font-display); font-size:14px; color:var(--obsidian);
+      padding:10px 12px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);
+    }
+    .booking-input::placeholder{ color:var(--muted); }
 
     /* Specialist picker — a custom dropdown (a native <select> can't carry a
        photo), built as a button that opens an absolutely-positioned panel of
@@ -589,4 +594,5 @@
     @media (max-width: 640px){
       .booking-modal{ padding:28px 20px; max-height:92vh; }
       .booking-day{ font-size:12px; }
+      .booking-contact-row{ grid-template-columns:1fr !important; }
     }

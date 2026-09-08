@@ -398,6 +398,10 @@ class Component extends DCLogic {
       const expertChipRole = document.getElementById('booking-expert-chip-role');
       const expertList = document.getElementById('booking-expert-list');
       const successExpertEl = document.getElementById('booking-success-expert');
+      const nameInput = document.getElementById('booking-name');
+      const emailInput = document.getElementById('booking-email');
+      const phoneInput = document.getElementById('booking-phone');
+      const successNote = document.getElementById('booking-success-note');
 
       const WEEKDAY_LABELS = isES ? ['D', 'L', 'M', 'M', 'J', 'V', 'S'] : ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
       const TIME_SLOTS = ['09:00', '10:30', '13:00', '14:30', '16:00'];
@@ -443,6 +447,7 @@ class Component extends DCLogic {
       // already booked instead.
       const isDateBooked = (d) => d.getDate() % 9 === 0;
       const isTimeBooked = (d, idx) => (d.getDate() + idx) % 5 === 0;
+      const isValidEmail = (v) => /^\S+@\S+\.\S+$/.test(v.trim());
 
       function renderCalendar() {
         monthLabel.textContent = monthFormatter.format(viewDate);
@@ -479,8 +484,12 @@ class Component extends DCLogic {
       }
 
       function updateConfirmState() {
-        confirmBtn.disabled = !(selectedExpert && selectedDate && selectedTime);
+        const nameOk = !!(nameInput && nameInput.value.trim());
+        const emailOk = !!(emailInput && isValidEmail(emailInput.value));
+        confirmBtn.disabled = !(selectedExpert && selectedDate && selectedTime && nameOk && emailOk);
       }
+      if (nameInput) nameInput.addEventListener('input', updateConfirmState);
+      if (emailInput) emailInput.addEventListener('input', updateConfirmState);
 
       function isExpertPanelOpen() {
         return expertSelect && expertSelect.getAttribute('data-open') === 'true';
@@ -532,6 +541,9 @@ class Component extends DCLogic {
           opt.classList.remove('is-selected');
           opt.setAttribute('aria-selected', 'false');
         });
+        if (nameInput) nameInput.value = '';
+        if (emailInput) emailInput.value = '';
+        if (phoneInput) phoneInput.value = '';
         renderCalendar();
         renderTimes();
         updateConfirmState();
@@ -540,7 +552,7 @@ class Component extends DCLogic {
       function onKeydown(e) {
         if (e.key === 'Escape') { if (isExpertPanelOpen()) closeExpertPanel(); else closeModal(); return; }
         if (e.key !== 'Tab') return;
-        const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href]')).filter((el) => el.offsetParent !== null);
+        const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href], input:not([disabled])')).filter((el) => el.offsetParent !== null);
         if (!focusable.length) return;
         const first = focusable[0];
         const last = focusable[focusable.length - 1];
@@ -610,7 +622,9 @@ class Component extends DCLogic {
       });
 
       confirmBtn.addEventListener('click', () => {
-        if (!selectedExpert || !selectedDate || !selectedTime) return;
+        const name = nameInput ? nameInput.value.trim() : '';
+        const email = emailInput ? emailInput.value.trim() : '';
+        if (!selectedExpert || !selectedDate || !selectedTime || !name || !isValidEmail(email)) return;
         const dateStr = dateFormatter.format(selectedDate);
         summaryEl.textContent = isES ? `${dateStr} a las ${selectedTime}` : `${dateStr} at ${selectedTime}`;
         if (successExpertEl) {
@@ -620,6 +634,11 @@ class Component extends DCLogic {
               <span class="booking-expert-chip-name">${selectedExpert.name}</span>
               <span class="booking-expert-chip-role">${selectedExpert.role}</span>
             </span>`;
+        }
+        if (successNote) {
+          successNote.textContent = isES
+            ? `Te confirmamos el horario por email a ${email} en breve.`
+            : `We'll confirm your slot by email at ${email} shortly.`;
         }
         pickView.hidden = true;
         successView.hidden = false;
