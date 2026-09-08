@@ -173,7 +173,11 @@ Suma un selector de especialista (`#booking-expert-select`) arriba del
 calendario — un dropdown custom (un `<select>` nativo no puede llevar
 foto), armado 100% por JS desde un array `EXPERTS` en `script.js` (los
 mismos 4 expertos del preview de `#experts`, único set con foto/bio
-disponible). Confirmar ahora exige especialista + fecha + hora.
+disponible). Confirmar ahora exige especialista + fecha + hora + nombre + email
+válido (teléfono queda opcional) — antes el que agendaba no dejaba
+ningún dato de contacto. Campos `#booking-name`/`#booking-email`/
+`#booking-phone`, se limpian en `resetBooking()`, y el mensaje de
+éxito repite el email ingresado.
 
 ## Decisiones pendientes / en pausa
 
