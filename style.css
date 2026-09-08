@@ -452,3 +452,92 @@
       footer div[style*="grid-template-columns:1.4fr"]{ grid-template-columns:1fr !important; gap:24px !important; }
       footer div[style*="grid-template-columns:1.4fr"] > div:first-child{ grid-column:auto; }
     }
+
+    /* ---- Booking modal — mockup scheduling calendar opened from the hero
+           "Book a consultation" / "Agendar una consulta" CTA. Visual-only:
+           picking a date + time and confirming just shows an inline success
+           state — no live calendar or backend behind it yet, matching the
+           contact form's own demo-stage scope. Sits as a sibling of
+           #page-root in the markup (not nested inside it) specifically so
+           its position:fixed stays pinned to the real viewport even while
+           #page-root carries the smooth-scroll transform on desktop. ---- */
+    #booking-overlay{
+      position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
+      padding:24px; background:rgba(0,0,0,0.6);
+      opacity:0; visibility:hidden; transition:opacity .25s ease, visibility 0s linear .25s;
+    }
+    #booking-overlay.is-open{ opacity:1; visibility:visible; transition:opacity .25s ease; }
+    html.booking-open, html.booking-open body{ overflow:hidden; }
+
+    .booking-modal{
+      position:relative; width:100%; max-width:560px; max-height:88vh; overflow-y:auto;
+      background:var(--paper-white); border-radius:16px; padding:36px;
+      box-shadow:0 40px 90px -20px rgba(0,0,0,0.45);
+      transform:translateY(14px) scale(.98); transition:transform .3s cubic-bezier(.16,1,.3,1);
+    }
+    #booking-overlay.is-open .booking-modal{ transform:translateY(0) scale(1); }
+
+    .booking-close{
+      position:absolute; top:20px; right:20px; width:36px; height:36px; border-radius:50%;
+      display:inline-flex; align-items:center; justify-content:center;
+      background:var(--cloud-gray); color:var(--obsidian); transition:background .2s ease, color .2s ease;
+    }
+    .booking-close:hover{ background:var(--obsidian); color:var(--on-obsidian); }
+
+    .booking-cal-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; }
+    .booking-month-label{ font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:0.03em; text-transform:capitalize; }
+    .booking-nav-btn{
+      width:32px; height:32px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+      background:var(--cloud-gray); color:var(--obsidian); font-size:16px; line-height:1; transition:background .2s ease, color .2s ease;
+    }
+    .booking-nav-btn:hover{ background:var(--obsidian); color:var(--on-obsidian); }
+    .booking-nav-btn:disabled{ opacity:.35; pointer-events:none; }
+
+    .booking-weekdays{
+      display:grid; grid-template-columns:repeat(7,1fr); text-align:center; margin-bottom:6px;
+      font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--muted);
+    }
+    .booking-days{ display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+    .booking-day{
+      aspect-ratio:1; border-radius:8px; font-family:var(--font-display); font-size:13px;
+      background:transparent; color:var(--obsidian); transition:background .15s ease, color .15s ease;
+      display:flex; align-items:center; justify-content:center;
+    }
+    .booking-day:not(:disabled):hover{ background:var(--cloud-gray); }
+    .booking-day:disabled{ color:var(--muted); opacity:.4; cursor:not-allowed; }
+    .booking-day.is-today{ box-shadow:inset 0 0 0 1.5px var(--obsidian); }
+    .booking-day.is-selected{ background:var(--brand-red) !important; color:var(--on-obsidian); font-weight:700; }
+    .booking-day-empty{ visibility:hidden; }
+
+    .booking-times-section{ margin-top:24px; }
+    .booking-times-label{ font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); margin-bottom:12px; }
+    .booking-times{ display:flex; flex-wrap:wrap; gap:8px; }
+    .booking-time{
+      padding:9px 16px; border-radius:999px; border:1px solid var(--cloud-gray); background:var(--paper-white);
+      font-family:var(--font-display); font-size:13px; font-weight:600; color:var(--obsidian);
+      transition:background .15s ease, color .15s ease, border-color .15s ease;
+    }
+    .booking-time:not(:disabled):hover{ border-color:var(--obsidian); }
+    .booking-time:disabled{ color:var(--muted); border-color:var(--cloud-gray); opacity:.45; cursor:not-allowed; text-decoration:line-through; }
+    .booking-time.is-selected{ background:var(--obsidian); border-color:var(--obsidian); color:var(--on-obsidian); }
+
+    .booking-confirm{
+      width:100%; text-align:center; display:block; margin-top:28px; color:var(--on-obsidian);
+      font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase;
+      padding:15px 24px; border-radius:8px; border:none; cursor:pointer;
+    }
+    .booking-confirm:disabled{ opacity:.35; pointer-events:none; }
+
+    .booking-success-icon{
+      width:52px; height:52px; border-radius:50%; background:var(--brand-red);
+      display:flex; align-items:center; justify-content:center; margin-bottom:20px;
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      #booking-overlay, .booking-modal{ transition:opacity .01s linear !important; transform:none !important; }
+    }
+
+    @media (max-width: 640px){
+      .booking-modal{ padding:28px 20px; max-height:92vh; }
+      .booking-day{ font-size:12px; }
+    }

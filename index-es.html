@@ -61,7 +61,7 @@
         <h1 class="hero-h1 fill-h1" aria-label="Consultoría aeronáutica hecha para el cielo latinoamericano" style="margin:0; line-height:1.03; font-weight:900; letter-spacing:-0.036em;"><span class="fill-outline" aria-hidden="true"><span class="fw" style="--i:0">Consultoría</span> <span class="fw" style="--i:1">aeronáutica</span> <span class="fw" style="--i:2">hecha</span> <span class="fw" style="--i:3">para</span> <span class="fw" style="--i:4">el</span> <span class="fw" style="--i:5">cielo</span> <span class="fw" style="--i:6">latinoamericano</span></span><span class="fill-solid" aria-hidden="true"><span class="fw" style="--i:0">Consultoría</span> <span class="fw" style="--i:1">aeronáutica</span> <span class="fw" style="--i:2">hecha</span> <span class="fw" style="--i:3">para</span> <span class="fw" style="--i:4">el</span> <span class="fw" style="--i:5">cielo</span> <span class="fw" style="--i:6">latinoamericano</span></span></h1>
         <p class="hero-in d3" style="margin:24px 0 0; font-size:16px; line-height:1.5; letter-spacing:-0.01em; color:var(--muted); max-width:520px;">Más de 150 años de experiencia combinada ayudando a aerolíneas, aeropuertos y reguladores a elevar la seguridad, el desempeño y el impacto a largo plazo en toda la región.</p>
         <div class="hero-in d4" style="display:flex; gap:16px; margin-top:36px; flex-wrap:wrap;">
-          <a class="btn-focus btn-primary magnetic" href="#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:14px; letter-spacing:0.05em; text-transform:uppercase; padding:16px 40px; border-radius:8px;">Agendar una consulta</a>
+          <a id="book-consultation-btn" class="btn-focus btn-primary magnetic" href="#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:14px; letter-spacing:0.05em; text-transform:uppercase; padding:16px 40px; border-radius:8px;">Agendar una consulta</a>
           <a class="btn-focus ghost-link" href="#services" style="color:var(--on-obsidian); font-size:16px; align-self:center;">Conocer nuestros servicios</a>
         </div>
       </div>
@@ -734,6 +734,53 @@
     </div>
   </footer>
 
+</div>
+
+<!-- Booking modal — calendario mockup de reserva, se abre desde el CTA
+     "Agendar una consulta" del hero. Es hermano de #page-root a propósito
+     (no está anidado dentro), para que su position:fixed quede fijo al
+     viewport real aunque #page-root tenga el transform del smooth-scroll
+     en desktop. Por ahora es solo visual: no hay calendario en vivo ni
+     backend detrás. -->
+<div id="booking-overlay" role="dialog" aria-modal="true" aria-labelledby="booking-title" aria-hidden="true">
+  <div class="booking-modal">
+    <button type="button" id="booking-close" class="btn-focus booking-close" aria-label="Cerrar ventana de reserva">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+    </button>
+
+    <div id="booking-pick-view">
+      <div class="eyebrow-pill" style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px;">Agendar una llamada</div>
+      <h3 id="booking-title" style="margin:0 0 8px; font-size:24px; font-weight:800; letter-spacing:-0.02em;">Agendar una consulta</h3>
+      <p style="margin:0 0 28px; font-size:14px; line-height:1.5; color:var(--graphite); max-width:420px;">Elegí una fecha y un horario que te quede cómodo. Te confirmamos por email dentro de un día hábil.</p>
+
+      <div class="booking-cal">
+        <div class="booking-cal-head">
+          <button type="button" id="booking-prev-month" class="btn-focus booking-nav-btn" aria-label="Mes anterior">‹</button>
+          <div id="booking-month-label" class="booking-month-label"></div>
+          <button type="button" id="booking-next-month" class="btn-focus booking-nav-btn" aria-label="Mes siguiente">›</button>
+        </div>
+        <div class="booking-weekdays"></div>
+        <div id="booking-calendar-body" class="booking-days"></div>
+      </div>
+
+      <div id="booking-times-section" class="booking-times-section" hidden>
+        <div class="booking-times-label">Horarios disponibles</div>
+        <div id="booking-times" class="booking-times"></div>
+      </div>
+
+      <button type="button" id="booking-confirm" class="btn-focus btn-primary booking-confirm" disabled>Confirmar reserva</button>
+    </div>
+
+    <div id="booking-success-view" hidden>
+      <div class="booking-success-icon" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--on-obsidian)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>
+      </div>
+      <h3 style="margin:0 0 8px; font-size:22px; font-weight:800; letter-spacing:-0.02em;">Solicitud recibida</h3>
+      <p id="booking-summary" style="margin:0 0 12px; font-size:15px; line-height:1.5; color:var(--obsidian); font-weight:600;"></p>
+      <p style="margin:0 0 28px; font-size:13px; line-height:1.5; color:var(--muted);">Uno de nuestros especialistas va a confirmar tu horario por email en breve.</p>
+      <button type="button" id="booking-done" class="btn-focus btn-obsidian booking-confirm">Listo</button>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>
