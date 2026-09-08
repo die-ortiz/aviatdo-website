@@ -426,6 +426,9 @@ class Component extends DCLogic {
               <span class="booking-expert-option-name">${ex.name}</span>
               <span class="booking-expert-option-role">${ex.role}</span>
             </span>
+            <span class="booking-expert-check" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>
+            </span>
           </button>`).join('');
       }
 
