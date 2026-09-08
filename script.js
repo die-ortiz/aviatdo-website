@@ -437,6 +437,7 @@ class Component extends DCLogic {
       const isDateBooked = (d) => d.getDate() % 9 === 0;
       const isTimeBooked = (d, idx) => (d.getDate() + idx) % 5 === 0;
       const isValidEmail = (v) => /^\S+@\S+\.\S+$/.test(v.trim());
+      const escapeHtml = (v) => v.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 
       function renderStrip() {
         let html = '';
@@ -580,9 +581,10 @@ class Component extends DCLogic {
             </span>`;
         }
         if (successNote) {
-          successNote.textContent = isES
-            ? `Te confirmamos el horario por email a ${email} en breve.`
-            : `We'll confirm your slot by email at ${email} shortly.`;
+          const emailSafe = escapeHtml(email);
+          successNote.innerHTML = isES
+            ? `Te confirmamos el horario por email a <strong>${emailSafe}</strong> en breve.`
+            : `We'll confirm your slot by email at <strong>${emailSafe}</strong> shortly.`;
         }
         pickView.hidden = true;
         successView.hidden = false;
