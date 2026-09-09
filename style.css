@@ -181,6 +181,7 @@
        shorter strip instead of full viewport height. */
     .page-header-photo{ position:absolute; inset:0; background-size:cover; }
     .services-hero-photo{ background-image:url('images/services-hero.webp'); background-position:68% 30%; }
+    .experts-hero-photo{ background-image:url('images/experts-hero.webp'); background-position:50% 35%; }
 
     /* partners marquee — pure CSS translateX loop, no JS. Track holds the logo set twice;
        looping to -50% is exactly one full set, so the wrap is seamless. */
@@ -388,9 +389,10 @@
       header{ padding:18px 20px !important; }
 
       /* ---- imagery: swap to the tighter mobile crops ---- */
-      .hero-photo{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
-      .services-hero-photo{ background-image:url('images/services-hero-mobile.jpg'); background-position:center 15%; }
-      .hero-parallax{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
+      .hero-photo{ background-image:url('images/hero-team-mobile.webp'); background-position:center 15%; }
+      .services-hero-photo{ background-image:url('images/services-hero-mobile.webp'); background-position:center 15%; }
+      .experts-hero-photo{ background-image:url('images/experts-hero-mobile.webp'); background-position:center 12%; }
+      .hero-parallax{ background-image:url('images/hero-team-mobile.webp'); background-position:center 15%; }
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:70% 20%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }
 
