@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Services — AviatDo</title>
+  <link rel="icon" href="images/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="images/favicon-192x192.png">
+  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Inter+Tight:wght@600;700&amp;family=Barlow:wght@700;900&amp;display=swap">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+
+<div id="scroll-progress-bar" aria-hidden="true"></div>
+<div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
+
+  <!-- NAV — same markup/behavior as index.html, hrefs point back at the
+       single-page home for sections that only exist there. -->
+  <header id="site-header" style="position:absolute; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
+    <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img src="images/aviatodo-logo.avif" width="102" height="72" alt="AviatDo" style="height:38px; width:auto; display:block;"></a>
+    <div id="nav-panel">
+      <nav style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
+        <a class="btn-focus ghost-link" href="index.html" style="color:var(--on-obsidian); font-size:16px;">Home</a>
+        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--on-obsidian); font-size:16px;">About</a>
+        <a class="btn-focus ghost-link" href="index.html#aviatdo-360" style="color:var(--on-obsidian); font-size:16px;">AviatDo 360°</a>
+        <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--on-obsidian); font-size:16px;">AviatDo Talks</a>
+        <a class="btn-focus ghost-link" href="services.html" style="color:var(--on-obsidian); font-size:16px; opacity:0.6;">Services</a>
+        <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--on-obsidian); font-size:16px;">Partners</a>
+        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--on-obsidian); font-size:16px;">Resources</a>
+      </nav>
+      <div id="header-actions" style="display:flex; align-items:center; gap:20px;">
+        <div class="btn-focus" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--on-obsidian); display:flex; gap:4px;">
+          <span style="border-bottom:1px solid var(--on-obsidian);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="services-es.html" style="opacity:0.7; color:var(--on-obsidian);">ES</a>
+        </div>
+        <a class="btn-focus btn-obsidian" href="index.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding:8px 24px; border-radius:8px;">Contact us</a>
+      </div>
+    </div>
+    <button id="nav-toggle" class="btn-focus" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="nav-panel">
+      <span class="burger-bar" aria-hidden="true"></span>
+      <span class="burger-bar" aria-hidden="true"></span>
+      <span class="burger-bar" aria-hidden="true"></span>
+    </button>
+    <div id="nav-backdrop" aria-hidden="true"></div>
+  </header>
+
+  <!-- PAGE HEADER — same dark radial-gradient treatment as #contact on the
+       home page (mirrors an established pattern instead of inventing a new
+       one), tall enough to clear the absolute nav above it. -->
+  <section style="position:relative; overflow:hidden; background:#101116; padding:168px 40px 96px;">
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 1000px 640px at 8% 10%, rgba(0,198,198,0.22), transparent 65%), radial-gradient(ellipse 900px 640px at 100% 100%, rgba(144,109,255,0.24), transparent 65%); pointer-events:none;" aria-hidden="true"></div>
+    <div style="position:relative; max-width:1200px; margin:0 auto;">
+      <a class="btn-focus ghost-link reveal" href="index.html" style="color:var(--muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Back to home</a>
+      <div class="reveal eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">What we do</div>
+      <h1 class="reveal section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:720px; animation-delay:.05s;">Seven service lines, one long-term partner</h1>
+      <p class="reveal" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--muted); max-width:640px; animation-delay:.07s;">From first certification through long-term operational maturity — safety, training, operations, growth, language and events, built around the full lifecycle of a regional airline, airport or regulator.</p>
+    </div>
+  </section>
+
+  <!-- SERVICES — same id/grid pattern as the home preview (#services,
+       grid-template-columns:repeat(3,...)) so the existing responsive
+       rules in style.css (mobile/tablet breakpoints target this exact
+       selector) apply here without any new CSS. Each card now expands the
+       one-line home teaser into the full service breakdown pulled from the
+       live aviatdo.com service subpages. -->
+  <section id="services" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
+    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:24px;">
+
+      <div class="reveal">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M12 3l7 3.2v5.3c0 4.8-3 8.6-7 9.5-4-.9-7-4.7-7-9.5V6.2L12 3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Safety First</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Compliance advisory, IOSA/ISA certification support, safety diagnostics and SMS design aligned with IOSA, FAA and EASA.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Compliance advisory</strong> — meeting all local and international aviation regulations.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Certification support</strong> — IOSA and ISA audit prep, plus compliance strategy across multiple markets.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Safety diagnostics</strong> — evaluating technical, operational and organizational gaps.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">SMS design &amp; implementation</strong> — aligned with IOSA, FAA and EASA standards.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="animation-delay:.04s;">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M12 5L3 9.5 12 14l9-4.5L12 5z"></path><path d="M7 11.5V16c0 1.4 2.5 3 5 3s5-1.6 5-3v-4.5"></path><path d="M21 9.5v5"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Aviation Training</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Customized EBT/CBTA training programs for pilots, cabin crew, dispatchers, maintenance and ATC teams.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Five crew categories</strong> — pilots, cabin crew, dispatchers, maintenance and ATC.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Simulator acceptance</strong> — certification assistance for flight simulators.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">EBT / CBTA</strong> — evidence- and competency-based training implementation.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Digital tools adoption</strong> — procedure development across departments.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="animation-delay:.08s;">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 13l3.2-3.2"></path><path d="M12 6.5V8"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Operational Excellence</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Process, cost and technology advisory to streamline operations and build certification-ready procedures.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Process &amp; performance</strong> — streamlining operations, reducing maintenance costs.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Cost &amp; org. optimization</strong> — financial restructuring, resource allocation.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Technology advisory</strong> — selecting equipment and tools for your goals.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Certification-ready procedures</strong> — aligned with regulatory standards.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><circle cx="12" cy="12" r="8.5"></circle><path d="M14.8 9.2l-1.6 4.4-4.4 1.6 1.6-4.4z"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Regional Outreach</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Market-entry strategy, opportunity mapping and regulatory support to enter Latin American markets.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Opportunity mapping</strong> — targeted market analysis for strategic decisions.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Market-entry strategy</strong> — connecting you with key local partners.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Regulatory support</strong> — navigating local operational requirements.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="animation-delay:.05s;">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.6 2.4 4 5.3 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.3-4-8.5s1.4-6.1 4-8.5z"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Language Solutions</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">ICAO Level 4 English training, technical translation and interpretation in Spanish, English, French and Portuguese.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Multilingual translation</strong> — technical documents, manuals and training materials.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">ICAO Level 4 English</strong> — training for pilots and air traffic controllers.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Interpretation</strong> — live and virtual, for meetings and conferences.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">US operations familiarization</strong> — understanding US regulatory requirements.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="animation-delay:.08s;">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect><path d="M3.5 10h17"></path><path d="M8 3.5v4"></path><path d="M16 3.5v4"></path></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Memorable Events</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">End-to-end design and logistics for industry conferences, workshops and networking events.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Tailored agenda</strong> — customized programs built for meaningful interaction.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Event logistics</strong> — technical equipment through venue arrangement.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Workshops &amp; talks</strong> — engaging sessions aligned to your goals.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Speaker &amp; networking</strong> — coordination for participants and partners.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal">
+        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--obsidian)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style="margin-bottom:16px;"><path d="M4 6h16"></path><circle cx="9" cy="6" r="1.8"></circle><path d="M4 12h16"></path><circle cx="15" cy="12" r="1.8"></circle><path d="M4 18h16"></path><circle cx="10" cy="18" r="1.8"></circle></svg>
+          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Tailored Solutions</h3>
+          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Flexible, custom consultancy engagements scoped to each organization’s specific goals.</div>
+          <ul style="margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;">
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Flexible &amp; scalable</strong> — solutions that evolve with your business.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Custom strategy</strong> — approaches designed for sustained expansion.</li>
+            <li style="font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative;"><span style="position:absolute; left:0; color:var(--brand-red);">—</span><strong style="color:var(--obsidian);">Immediate + long-term</strong> — quick wins that still support long-term growth.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="reveal" style="animation-delay:.05s;">
+        <div class="card-flat tilt-card card-sheen sheen-light" style="background:var(--obsidian); border-radius:12px; padding:28px; display:flex; flex-direction:column; justify-content:space-between; gap:16px; height:100%;">
+          <div style="font-size:20px; font-weight:700; letter-spacing:-0.02em; color:var(--on-obsidian); line-height:1.3;">Not sure which service fits your challenge?</div>
+          <a class="btn-focus ghost-link" href="index.html#contact" style="color:var(--on-obsidian); font-size:14px;">Talk to an expert →</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER — same markup as index.html; links repointed so every
+       cross-page reference resolves correctly from this page. -->
+  <footer style="background:var(--obsidian); color:var(--muted); padding:80px 0 28px;">
+    <div class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px;">
+      <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:32px; padding-bottom:40px; border-bottom:1px solid #27272a;">
+        <div>
+          <img src="images/aviatodo-logo.avif" width="102" height="72" loading="lazy" alt="AviatDo" style="height:32px; width:auto; display:block; margin-bottom:14px;">
+          <p style="margin:0; font-size:14px; line-height:1.5; max-width:220px;">AviatDo Consulting Group — aviation consulting for Latin America.</p>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Company</div>
+          <a class="btn-focus ghost-link" href="index.html#" style="color:var(--muted); font-size:14px;">About us</a>
+          <a class="btn-focus ghost-link" href="experts.html" style="color:var(--muted); font-size:14px;">Our Experts</a>
+          <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--muted); font-size:14px;">Our Partners</a>
+          <a class="btn-focus ghost-link" href="index.html#" style="color:var(--muted); font-size:14px;">Privacy Notice</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Services</div>
+          <a class="btn-focus ghost-link" href="services.html" style="color:var(--muted); font-size:14px;">Safety First</a>
+          <a class="btn-focus ghost-link" href="services.html" style="color:var(--muted); font-size:14px;">Aviation Training</a>
+          <a class="btn-focus ghost-link" href="services.html" style="color:var(--muted); font-size:14px;">Operational Excellence</a>
+          <a class="btn-focus ghost-link" href="services.html" style="color:var(--muted); font-size:14px;">+4 more</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Resources</div>
+          <a class="btn-focus ghost-link" href="index.html#" style="color:var(--muted); font-size:14px;">Resources</a>
+          <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--muted); font-size:14px;">AviatDo Talks</a>
+          <a class="btn-focus ghost-link" href="index.html#aviatdo-360" style="color:var(--muted); font-size:14px;">AviatDO 360°</a>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Connect</div>
+          <a class="btn-focus ghost-link" href="index.html#contact" style="color:var(--muted); font-size:14px;">Contact us</a>
+          <div style="display:flex; gap:10px; margin-top:6px;">
+            <a class="btn-focus social-icon" href="#" aria-label="AviatDo on Instagram">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1" fill="currentColor" stroke="none"></circle></svg>
+            </a>
+            <a class="btn-focus social-icon" href="#" aria-label="AviatDo on YouTube">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="2.4" y="5.5" width="19.2" height="13" rx="4"></rect><path d="M10.4 9.1 15.6 12 10.4 14.9Z" fill="currentColor" stroke="none"></path></svg>
+            </a>
+            <a class="btn-focus social-icon" href="#" aria-label="AviatDo on LinkedIn">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="4"></rect><circle cx="8" cy="8.4" r="1" fill="currentColor" stroke="none"></circle><path d="M8 11.6V17"></path><path d="M12 17v-3.6c0-1.5 1.1-2.3 2.3-2.3 1.3 0 2.1.8 2.1 2.4V17"></path></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:12px;">
+        <span style="font-size:13px;">© 2026 AviatDo Consulting Group. All rights reserved.</span>
+        <div class="btn-focus" style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; display:flex; gap:4px; color:var(--muted);">
+          <span style="border-bottom:1px solid var(--on-obsidian); color:var(--on-obsidian);">EN</span><span>/</span><a class="btn-focus ghost-link" href="services-es.html" style="color:var(--muted);">ES</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

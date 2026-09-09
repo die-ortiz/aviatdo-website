@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aviatdo-static",
+      "runtimeExecutable": "python3",
+      "runtimeArgs": ["/Users/diego/Documents/04-ICORPORATE/auditorias web/aviatdo/website/code/aviatdo-export/.claude/serve.py"],
+      "port": 8899
+    }
+  ]
+}
