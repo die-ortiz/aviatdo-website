@@ -160,11 +160,14 @@ class Component extends DCLogic {
     }
 
     // --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
-    // accent underline and photo curtain-wipe) are driven directly from live
-    // layout position every frame, so the motion is pinned 1:1 to how far
-    // the visitor has scrolled — never a fixed-duration timer that can
-    // finish before they notice it, and automatically in sync with the
-    // smoothed scroll above since getBoundingClientRect reflects it. ---
+    // accent underline) are driven directly from live layout position every
+    // frame, so the motion is pinned 1:1 to how far the visitor has
+    // scrolled — never a fixed-duration timer that can finish before they
+    // notice it, and automatically in sync with the smoothed scroll above
+    // since getBoundingClientRect reflects it. (Portrait/photo frames used
+    // to also clip-path curtain-wipe here, scrubbed the same way — dropped
+    // because arriving via a direct link/anchor could land mid-progress,
+    // cropping a face or photo rather than reading as a reveal.) ---
     const targets = Array.from(document.querySelectorAll('.reveal:not(.reveal-no-fade)'));
     if (targets.length) {
       if (reduceMotion) {
@@ -173,8 +176,6 @@ class Component extends DCLogic {
           el.style.transform = 'none';
           const bar = el.querySelector('.accent-bar');
           if (bar) bar.style.transform = 'scaleX(1)';
-          const photo = el.querySelector('.photo-wipe');
-          if (photo) photo.style.clipPath = 'inset(0 0 0 0)';
         });
       } else {
         // Matches whichever tier of the CSS .reveal/.reveal-slide/etc starting
@@ -192,7 +193,6 @@ class Component extends DCLogic {
             el,
             offset: delaySec * (isPhone ? 220 : 260),
             bar: el.querySelector('.accent-bar'),
-            photo: el.querySelector('.photo-wipe'),
             slide: el.classList.contains('reveal-slide'),
             slideRight: el.classList.contains('reveal-slide-right'),
             rise: el.classList.contains('reveal-rise'),
@@ -226,9 +226,6 @@ class Component extends DCLogic {
             if (item.bar) {
               const barProgress = Math.max(0, Math.min(1, (progress - 0.35) / 0.65));
               item.bar.style.transform = `scaleX(${barProgress})`;
-            }
-            if (item.photo) {
-              item.photo.style.clipPath = `inset(0 0 ${(1 - progress) * 100}% 0)`;
             }
           }
         };

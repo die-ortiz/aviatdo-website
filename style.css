@@ -225,8 +225,13 @@
     /* Services cards — a light 3D tilt toward the cursor, desktop pointer only */
     .tilt-card{ transition:transform .2s cubic-bezier(.16,1,.3,1), border-color .2s ease; transform-style:preserve-3d; }
 
-    /* Expert portraits — curtain-wipe reveal, scroll-scrubbed like .reveal */
-    .photo-wipe{ clip-path:inset(0 0 100% 0); will-change:clip-path; }
+    /* Portrait/photo frames — no longer clip-path curtain-revealed: scrubbing
+       the reveal to raw scroll position meant a photo landed on people's
+       faces (or a service photo) mid-crop whenever a visitor arrived via a
+       direct link/anchor instead of a slow scroll from above, reading as a
+       broken image rather than a reveal. The .reveal wrapper's own
+       opacity/translateY fade still gives it motion. */
+    .photo-wipe{ }
 
     /* Expert portraits — modern hover: the photo eases into a gentle zoom while
        its frame lifts on a soft shadow, the name shifts to the brand accent, and
@@ -260,7 +265,6 @@
       .tilt-card{ transition:none !important; }
       .testi-card{ transition:none !important; }
       .accent-bar{ transform:scaleX(1) !important; }
-      .photo-wipe{ clip-path:inset(0 0 0 0) !important; }
       .hero-parallax{ transform:none !important; }
       .s360-parallax{ transform:none !important; }
       #experts .photo-wipe, #experts .photo-wipe img, #experts .expert-name, #experts .expert-role{ transition:none !important; }
