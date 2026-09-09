@@ -72,6 +72,20 @@
     .service-card svg{transition:stroke .2s ease;}
     .service-card:hover svg{stroke:var(--on-obsidian);}
 
+    /* services grid — full-page detail cards (services.html): icon badge +
+       sub-bullet list need their own hover-to-white rules, same pattern as
+       h3/.service-desc/svg above, since the card itself flips to solid
+       brand-red on hover. */
+    .service-icon-badge{width:44px; height:44px; border-radius:10px; background:rgba(204,36,44,0.08); display:flex; align-items:center; justify-content:center; margin-bottom:18px; transition:background .2s ease;}
+    .service-card:hover .service-icon-badge{background:rgba(255,255,255,0.16);}
+    .service-bullets{margin:0; padding:0; list-style:none; display:flex; flex-direction:column; gap:8px;}
+    .service-bullet{font-size:13.5px; line-height:1.5; color:var(--graphite); padding-left:14px; position:relative; transition:color .2s ease;}
+    .service-bullet-dash{position:absolute; left:0; color:var(--brand-red); transition:color .2s ease;}
+    .service-bullet-label{color:var(--obsidian); transition:color .2s ease;}
+    .service-card:hover .service-bullet{color:rgba(255,255,255,0.82);}
+    .service-card:hover .service-bullet-dash{color:var(--on-obsidian);}
+    .service-card:hover .service-bullet-label{color:var(--on-obsidian);}
+
     .avatar-box{transition:border-color .2s ease;}
     .card-flat:hover .avatar-box{border-color:var(--obsidian);}
 
