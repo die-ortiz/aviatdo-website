@@ -174,7 +174,7 @@
       #smooth-spacer{display:none !important;}
     }
 
-    .hero-photo{ background-color:var(--obsidian); background-image:url('images/turbine-hero.webp'); background-size:cover; background-position:center; }
+    .hero-photo{ background-color:var(--obsidian); background-image:url('images/hero-team.webp'); background-size:cover; background-position:center; }
 
     /* partners marquee — pure CSS translateX loop, no JS. Track holds the logo set twice;
        looping to -50% is exactly one full set, so the wrap is seamless. */
@@ -195,9 +195,9 @@
        not on page load, where it would already be finished before anyone sees it. */
 
     /* Hero parallax layer — the photo drifts slower than scroll for a sense of depth */
-    /* Shifted right of center so the turbine hub's bright, busy hub sits clear
-       of the left-aligned headline instead of directly behind its third line. */
-    .hero-parallax{ position:absolute; inset:-12% 0; background-color:var(--obsidian); background-image:url('images/turbine-hero.webp'); background-size:cover; background-position:78% 40%; will-change:transform; }
+    /* Shifted right of center so the consultants stay clear of the left-aligned
+       headline instead of sitting directly behind it. */
+    .hero-parallax{ position:absolute; inset:-12% 0; background-color:var(--obsidian); background-image:url('images/hero-team.webp'); background-size:cover; background-position:66% 42%; will-change:transform; }
 
     /* Talks section backdrop — a CSS class (not an inline style) so the canvas
        runtime's file-reference substitution actually resolves the image. */
@@ -378,8 +378,8 @@
       header{ padding:18px 20px !important; }
 
       /* ---- imagery: swap to the tighter mobile crops ---- */
-      .hero-photo{ background-image:url('images/turbine-hero-mobile.jpg'); }
-      .hero-parallax{ background-image:url('images/turbine-hero-mobile.jpg'); background-position:center; }
+      .hero-photo{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
+      .hero-parallax{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:70% 20%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }
 
