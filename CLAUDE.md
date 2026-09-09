@@ -24,7 +24,7 @@ pasos" abajo).
 - `script.js` — JS compartido por ambos HTML, mismo trato.
 - `images/` — assets.
 - `README.md` — descripción orientada al cliente/repo (setup, publicación).
-  Este archivo (`PROJECT-NOTES.md`) es el complemento técnico para trabajar
+  Este archivo (`CLAUDE.md`) es el complemento técnico para trabajar
   rápido, no reemplaza al README.
 
 ## Mapa de secciones (por `id`, no por número de línea — las líneas se
@@ -199,5 +199,5 @@ ningún dato de contacto. Campos `#booking-name`/`#booking-email`/
 - Reemplazo de ACF Pro por Custom Post Types nativos + ACF free, y Polylang
   (free) para EN/ES — decidido.
 - El proyecto se traslada de Cowork a Claude Code (CLI) para el trabajo que
-  sigue. Este archivo (PROJECT-NOTES.md) sirve como onboarding rápido al
+  sigue. Este archivo (CLAUDE.md) sirve como onboarding rápido al
   retomarlo ahí — léelo antes de abrir los HTML completos.
