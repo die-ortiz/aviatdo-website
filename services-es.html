@@ -58,126 +58,304 @@
     </div>
   </section>
 
-  <section id="services" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
-    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:24px;">
-
-      <div class="reveal">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><path d="M12 3l7 3.2v5.3c0 4.8-3 8.6-7 9.5-4-.9-7-4.7-7-9.5V6.2L12 3z"></path><path d="M9 12l2 2 4-4"></path></svg>
+  <!-- SERVICES — alternating text/photo rows, one per service line. Photos
+       are the real images used on the live aviatdo.com service subpages
+       (pulled at higher resolution). Layout zigzags text/photo sides per
+       row for rhythm across seven sections; row background alternates
+       paper-white / a warm off-white (matching #testimonials' tone
+       elsewhere on the site) instead of borders to separate rows. -->
+  <section id="services" style="padding:80px 0 60px;">
+      <div style="padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.2v5.3c0 4.8-3 8.6-7 9.5-4-.9-7-4.7-7-9.5V6.2L12 3z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Seguridad Primero</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Asesoría en cumplimiento normativo, apoyo en certificación IOSA/ISA, diagnósticos de seguridad y diseño de SMS alineado con IOSA, FAA y EASA.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Asesoría en cumplimiento</strong> — para cumplir toda regulación local e internacional.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Apoyo en certificación</strong> — preparación para auditorías IOSA e ISA, en múltiples mercados.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Diagnóstico de seguridad</strong> — evaluación técnica, operativa y organizacional.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Diseño e implementación de SMS</strong> — alineado con IOSA, FAA y EASA.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Seguridad Primero</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Asesoría en cumplimiento normativo, apoyo en certificación IOSA/ISA, diagnósticos de seguridad y diseño de SMS alineado con IOSA, FAA y EASA.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Asesoría en cumplimiento</strong> — para cumplir toda regulación local e internacional.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Apoyo en certificación</strong> — preparación para auditorías IOSA e ISA, en múltiples mercados.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Diagnóstico de seguridad</strong> — evaluación técnica, operativa y organizacional.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Diseño e implementación de SMS</strong> — alineado con IOSA, FAA y EASA.</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="reveal" style="animation-delay:.04s;">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><path d="M12 5L3 9.5 12 14l9-4.5L12 5z"></path><path d="M7 11.5V16c0 1.4 2.5 3 5 3s5-1.6 5-3v-4.5"></path><path d="M21 9.5v5"></path></svg>
+          <div class="reveal service-row-photo">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-safety.jpg" width="900" height="1080" loading="lazy" alt="Inspector de seguridad aeronáutica revisando documentación" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.2v5.3c0 4.8-3 8.6-7 9.5-4-.9-7-4.7-7-9.5V6.2L12 3z"></path><path d="M9 12l2 2 4-4"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">Alineado a IOSA · FAA · EASA</div>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Capacitación Aeronáutica</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Programas de entrenamiento EBT/CBTA a medida para pilotos, tripulación de cabina, despachadores, mantenimiento y equipos de ATC.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Cinco categorías de tripulación</strong> — pilotos, cabina, despacho, mantenimiento y ATC.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Aceptación de simuladores</strong> — asistencia en certificación de simuladores de vuelo.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">EBT / CBTA</strong> — implementación de entrenamiento basado en evidencia y competencias.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Adopción de herramientas digitales</strong> — desarrollo de procedimientos entre áreas.</li>
-          </ul>
         </div>
       </div>
 
-      <div class="reveal" style="animation-delay:.08s;">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><circle cx="12" cy="13" r="7.5"></circle><path d="M12 13l3.2-3.2"></path><path d="M12 6.5V8"></path></svg>
+      <div style="background:#f5f2ec;padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal service-row-photo" style="animation-delay:.03s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-training.jpg" width="900" height="1080" loading="lazy" alt="Cabina de piloto durante una sesión de entrenamiento" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L3 9.5 12 14l9-4.5L12 5z"></path><path d="M7 11.5V16c0 1.4 2.5 3 5 3s5-1.6 5-3v-4.5"></path><path d="M21 9.5v5"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">5 categorías de tripulación</div>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Excelencia Operacional</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Asesoría en procesos, costos y tecnología para optimizar operaciones y construir procedimientos listos para certificación.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Procesos y rendimiento</strong> — optimizar operaciones, reducir costos de mantenimiento.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Optimización de costos</strong> — reestructuración financiera y asignación de recursos.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Asesoría tecnológica</strong> — selección de tecnología y equipos según tus objetivos.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Procedimientos listos para certificar</strong> — alineados con estándares regulatorios.</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="reveal">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><circle cx="12" cy="12" r="8.5"></circle><path d="M14.8 9.2l-1.6 4.4-4.4 1.6 1.6-4.4z"></path></svg>
+          <div class="reveal" style="animation-delay:.03s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5L3 9.5 12 14l9-4.5L12 5z"></path><path d="M7 11.5V16c0 1.4 2.5 3 5 3s5-1.6 5-3v-4.5"></path><path d="M21 9.5v5"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Capacitación Aeronáutica</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Programas de entrenamiento EBT/CBTA a medida para pilotos, tripulación de cabina, despachadores, mantenimiento y equipos de ATC.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Cinco categorías de tripulación</strong> — pilotos, cabina, despacho, mantenimiento y ATC.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Aceptación de simuladores</strong> — asistencia en certificación de simuladores de vuelo.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>EBT / CBTA</strong> — implementación de entrenamiento basado en evidencia y competencias.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Adopción de herramientas digitales</strong> — desarrollo de procedimientos entre áreas.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Expansión Regional</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Estrategia de entrada a mercado, mapeo de oportunidades y soporte regulatorio para ingresar a mercados latinoamericanos.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Mapeo de oportunidades</strong> — análisis de mercado orientado a decisiones estratégicas.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Estrategia de entrada</strong> — conexión con socios locales clave.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Soporte regulatorio</strong> — navegación de requisitos operativos locales.</li>
-          </ul>
         </div>
       </div>
 
-      <div class="reveal" style="animation-delay:.05s;">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.6 2.4 4 5.3 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.3-4-8.5s1.4-6.1 4-8.5z"></path></svg>
+      <div style="padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal" style="animation-delay:.04s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 13l3.2-3.2"></path><path d="M12 6.5V8"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Excelencia Operacional</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Asesoría en procesos, costos y tecnología para optimizar operaciones y construir procedimientos listos para certificación.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Procesos y rendimiento</strong> — optimizar operaciones, reducir costos de mantenimiento.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Optimización de costos</strong> — reestructuración financiera y asignación de recursos.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Asesoría tecnológica</strong> — selección de tecnología y equipos según tus objetivos.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Procedimientos listos para certificar</strong> — alineados con estándares regulatorios.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Soluciones de Idiomas</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Entrenamiento de inglés ICAO Nivel 4, traducción técnica e interpretación en español, inglés, francés y portugués.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Traducción multilingüe</strong> — documentos técnicos, manuales y material de entrenamiento.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Inglés ICAO Nivel 4</strong> — entrenamiento para pilotos y controladores aéreos.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Interpretación</strong> — presencial y virtual, para reuniones y conferencias.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Familiarización con operaciones en EE. UU.</strong> — comprensión de requisitos regulatorios.</li>
-          </ul>
-        </div>
-      </div>
 
-      <div class="reveal" style="animation-delay:.08s;">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect><path d="M3.5 10h17"></path><path d="M8 3.5v4"></path><path d="M16 3.5v4"></path></svg>
+          <div class="reveal service-row-photo" style="animation-delay:.04s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-operational.jpg" width="900" height="1080" loading="lazy" alt="Equipo en reunión revisando desempeño operativo" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="13" r="7.5"></circle><path d="M12 13l3.2-3.2"></path><path d="M12 6.5V8"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">Procedimientos listos para certificar</div>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Eventos Memorables</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Diseño y logística integral para conferencias, talleres y eventos de networking de la industria.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Agenda a medida</strong> — programas personalizados con interacción significativa.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Logística integral</strong> — desde equipo técnico hasta organización del venue.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Talleres y charlas</strong> — sesiones interactivas alineadas a tus objetivos.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Oradores y networking</strong> — coordinación para participantes y aliados.</li>
-          </ul>
         </div>
       </div>
 
-      <div class="reveal">
-        <div class="card-flat tilt-card service-card card-sheen sheen-service" style="border-radius:12px; padding:28px; height:100%;">
-          <div class="service-icon-badge">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" style=""><path d="M4 6h16"></path><circle cx="9" cy="6" r="1.8"></circle><path d="M4 12h16"></path><circle cx="15" cy="12" r="1.8"></circle><path d="M4 18h16"></path><circle cx="10" cy="18" r="1.8"></circle></svg>
+      <div style="background:#f5f2ec;padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal service-row-photo" style="animation-delay:.02s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-safety.jpg" width="900" height="1080" loading="lazy" alt="Mapa global representando la expansión regional de mercado" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M14.8 9.2l-1.6 4.4-4.4 1.6 1.6-4.4z"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">Estrategia de entrada a LatAm</div>
+            </div>
           </div>
-          <h3 style="margin:0 0 10px; font-size:20px; font-weight:700; letter-spacing:-0.02em;">Soluciones a Medida</h3>
-          <div class="service-desc" style="font-size:15px; line-height:1.5; margin-bottom:14px;">Consultorías flexibles y a medida, diseñadas según los objetivos específicos de cada organización.</div>
-          <ul class="service-bullets">
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Flexibles y escalables</strong> — soluciones que evolucionan junto a tu negocio.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Estrategia a medida</strong> — enfoques diseñados para una expansión sostenida.</li>
-            <li class="service-bullet"><span class="service-bullet-dash">—</span><strong class="service-bullet-label">Resultados inmediatos + largo plazo</strong> — victorias rápidas que igual sostienen el crecimiento.</li>
-          </ul>
+
+          <div class="reveal" style="animation-delay:.02s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M14.8 9.2l-1.6 4.4-4.4 1.6 1.6-4.4z"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Expansión Regional</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Estrategia de entrada a mercado, mapeo de oportunidades y soporte regulatorio para ingresar a mercados latinoamericanos.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Mapeo de oportunidades</strong> — análisis de mercado orientado a decisiones estratégicas.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Estrategia de entrada</strong> — conexión con socios locales clave.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Soporte regulatorio</strong> — navegación de requisitos operativos locales.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
+          </div>
         </div>
       </div>
 
-      <div class="reveal" style="animation-delay:.05s; grid-column:span 2; align-self:start;">
-        <div class="card-flat tilt-card card-sheen sheen-light" style="background:var(--obsidian); border-radius:12px; padding:32px 36px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px 24px;">
-          <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em; color:var(--on-obsidian); line-height:1.3; max-width:440px; min-width:220px; flex:1 1 220px;">¿No está seguro de qué servicio se ajusta a su desafío?</div>
-          <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px; flex-shrink:0; white-space:nowrap;">Hable con un experto →</a>
+      <div style="padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal" style="animation-delay:.03s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.6 2.4 4 5.3 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.3-4-8.5s1.4-6.1 4-8.5z"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Soluciones de Idiomas</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Entrenamiento de inglés ICAO Nivel 4, traducción técnica e interpretación en español, inglés, francés y portugués.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Traducción multilingüe</strong> — documentos técnicos, manuales y material de entrenamiento.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Inglés ICAO Nivel 4</strong> — entrenamiento para pilotos y controladores aéreos.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Interpretación</strong> — presencial y virtual, para reuniones y conferencias.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Familiarización con operaciones en EE. UU.</strong> — comprensión de requisitos regulatorios.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
+          </div>
+
+          <div class="reveal service-row-photo" style="animation-delay:.03s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-language.jpg" width="900" height="1080" loading="lazy" alt="Intérprete trabajando durante una sesión de conferencia" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"></circle><path d="M3.5 12h17"></path><path d="M12 3.5c2.6 2.4 4 5.3 4 8.5s-1.4 6.1-4 8.5c-2.6-2.4-4-5.3-4-8.5s1.4-6.1 4-8.5z"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">Inglés ICAO Nivel 4</div>
+            </div>
+          </div>
         </div>
       </div>
 
+      <div style="background:#f5f2ec;padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal service-row-photo" style="animation-delay:.04s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-events.jpg" width="900" height="1080" loading="lazy" alt="Conferencia de la industria y evento de networking" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect><path d="M3.5 10h17"></path><path d="M8 3.5v4"></path><path d="M16 3.5v4"></path></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">Logística integral de eventos</div>
+            </div>
+          </div>
+
+          <div class="reveal" style="animation-delay:.04s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5.5" width="17" height="15" rx="2"></rect><path d="M3.5 10h17"></path><path d="M8 3.5v4"></path><path d="M16 3.5v4"></path></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Eventos Memorables</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Diseño y logística integral para conferencias, talleres y eventos de networking de la industria.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Agenda a medida</strong> — programas personalizados con interacción significativa.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Logística integral</strong> — desde equipo técnico hasta organización del venue.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Talleres y charlas</strong> — sesiones interactivas alineadas a tus objetivos.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Oradores y networking</strong> — coordinación para participantes y aliados.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="padding:64px 0;">
+        <div class="service-row" style="max-width:1120px; margin:0 auto; padding:0 40px;">
+          <div class="reveal" style="animation-delay:.02s;">
+            <div class="service-icon-badge" style="margin-bottom:20px;"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"></path><circle cx="9" cy="6" r="1.8"></circle><path d="M4 12h16"></path><circle cx="15" cy="12" r="1.8"></circle><path d="M4 18h16"></path><circle cx="10" cy="18" r="1.8"></circle></svg></div>
+            <h2 style="margin:0 0 14px; font-size:30px; font-weight:900; letter-spacing:-0.025em;">Soluciones a Medida</h2>
+            <p style="margin:0; font-size:16px; line-height:1.6; color:var(--graphite); max-width:460px;">Consultorías flexibles y a medida, diseñadas según los objetivos específicos de cada organización.</p>
+            <ul class="service-check-list">
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Flexibles y escalables</strong> — soluciones que evolucionan junto a tu negocio.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Estrategia a medida</strong> — enfoques diseñados para una expansión sostenida.</span>
+            </li>
+            <li class="service-check-row">
+              <span class="service-check-icon"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg></span>
+              <span class="service-check-text"><strong>Resultados inmediatos + largo plazo</strong> — victorias rápidas que igual sostienen el crecimiento.</span>
+            </li>
+            </ul>
+            <div style="display:flex; align-items:center; gap:16px; margin-top:28px; flex-wrap:wrap;">
+              <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Hable con un experto →</a>
+              <a class="btn-focus ghost-link" href="experts-es.html" style="font-size:14px; font-weight:600; color:var(--obsidian); border-bottom:1px solid var(--divider); padding-bottom:2px;">Conocé a nuestros expertos →</a>
+            </div>
+          </div>
+
+          <div class="reveal service-row-photo" style="animation-delay:.02s;">
+            <div class="photo-wipe" style="border-radius:16px; overflow:hidden; aspect-ratio:4/3; box-shadow:0 24px 48px -20px rgba(0,0,0,0.25);">
+              <img src="images/service-tailored.jpg" width="900" height="1080" loading="lazy" alt="Consultores en una reunión de estrategia de negocio" style="width:100%; height:100%; object-fit:cover; display:block;">
+            </div>
+            <div class="service-row-badge">
+              <div class="service-icon-badge"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16"></path><circle cx="9" cy="6" r="1.8"></circle><path d="M4 12h16"></path><circle cx="15" cy="12" r="1.8"></circle><path d="M4 18h16"></path><circle cx="10" cy="18" r="1.8"></circle></svg></div>
+              <div style="font-family:var(--font-condensed); font-size:13px; font-weight:700; letter-spacing:-0.01em; color:var(--obsidian);">A medida de tus objetivos</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    <div class="reveal" style="max-width:1120px; margin:40px auto 0; padding:0 40px;">
+      <div class="card-flat tilt-card card-sheen sheen-light" style="background:var(--obsidian); border-radius:12px; padding:32px 36px; display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px 24px;">
+        <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em; color:var(--on-obsidian); line-height:1.3; max-width:440px; min-width:220px; flex:1 1 220px;">¿No está seguro de qué servicio se ajusta a su desafío?</div>
+        <a class="btn-focus btn-primary" href="index-es.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px; flex-shrink:0; white-space:nowrap;">Hable con un experto →</a>
+      </div>
     </div>
   </section>
 
