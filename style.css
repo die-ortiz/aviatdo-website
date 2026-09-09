@@ -176,6 +176,12 @@
 
     .hero-photo{ background-color:var(--obsidian); background-image:url('images/hero-team.webp'); background-size:cover; background-position:center; }
 
+    /* Sub-page dark banner (services.html, experts.html) — same photo +
+       gradient + radial-blob recipe as the home hero/#contact, just a
+       shorter strip instead of full viewport height. */
+    .page-header-photo{ position:absolute; inset:0; background-size:cover; }
+    .services-hero-photo{ background-image:url('images/services-hero.webp'); background-position:68% 30%; }
+
     /* partners marquee — pure CSS translateX loop, no JS. Track holds the logo set twice;
        looping to -50% is exactly one full set, so the wrap is seamless. */
     .marquee{ position:relative; overflow:hidden; width:100%; }
@@ -383,6 +389,7 @@
 
       /* ---- imagery: swap to the tighter mobile crops ---- */
       .hero-photo{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
+      .services-hero-photo{ background-image:url('images/services-hero-mobile.jpg'); background-position:center 15%; }
       .hero-parallax{ background-image:url('images/hero-team-mobile.jpg'); background-position:center 15%; }
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:70% 20%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }
