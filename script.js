@@ -181,6 +181,23 @@ class Component extends DCLogic {
       updateHeaderScrolled();
     }
 
+    // --- Home "Our Experts" preview carousel — same horizontal scroll-snap +
+    // round nav-button scrollBy technique as the booking modal's day strip
+    // (#booking-day-strip, see stripPrevBtn/stripNextBtn below). ---
+    const expertsCarousel = document.getElementById('experts-carousel');
+    if (expertsCarousel) {
+      const expertsPrevBtn = document.getElementById('experts-carousel-prev');
+      const expertsNextBtn = document.getElementById('experts-carousel-next');
+      const expertsScrollStep = () => {
+        const card = expertsCarousel.querySelector('.experts-carousel-card');
+        const cardWidth = card ? card.getBoundingClientRect().width : 220;
+        const gap = parseFloat(getComputedStyle(expertsCarousel).columnGap || getComputedStyle(expertsCarousel).gap) || 24;
+        return cardWidth + gap;
+      };
+      if (expertsPrevBtn) expertsPrevBtn.addEventListener('click', () => { expertsCarousel.scrollBy({ left: -expertsScrollStep(), behavior: 'smooth' }); });
+      if (expertsNextBtn) expertsNextBtn.addEventListener('click', () => { expertsCarousel.scrollBy({ left: expertsScrollStep(), behavior: 'smooth' }); });
+    }
+
     // --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
     // accent underline) are driven directly from live layout position every
     // frame, so the motion is pinned 1:1 to how far the visitor has

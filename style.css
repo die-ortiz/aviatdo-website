@@ -260,6 +260,24 @@
     #experts .reveal:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
     #experts .reveal:hover .expert-role{ transform:scale(1.05); }
 
+    /* Home preview — Our Experts carousel. Same horizontal-scroll-snap +
+       round nav-button technique as the booking modal's day strip
+       (.booking-strip/.booking-strip-nav), generalized here for expert
+       cards instead of date chips, so all 8 profiles fit without the old
+       4-up grid needing a "view all" link to do the rest of the job. */
+    .experts-carousel-wrap{ display:flex; align-items:center; gap:14px; }
+    .experts-carousel{
+      display:flex; gap:24px; flex:1; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x proximity;
+      padding:4px 2px 10px; scrollbar-width:none;
+    }
+    .experts-carousel::-webkit-scrollbar{ display:none; }
+    .experts-carousel-card{ flex:0 0 auto; width:220px; scroll-snap-align:start; }
+    .experts-carousel-nav{
+      flex-shrink:0; width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
+      background:var(--cloud-gray); color:var(--obsidian); font-size:19px; line-height:1; transition:background .2s ease, color .2s ease;
+    }
+    .experts-carousel-nav:hover{ background:var(--obsidian); color:var(--on-obsidian); }
+
     /* Scroll progress bar */
     #scroll-progress-bar{ position:fixed; top:0; left:0; height:3px; width:0%; background:var(--gradient); z-index:9999; pointer-events:none; }
 
@@ -477,6 +495,9 @@
       #experts > div[style*="grid-template-columns:repeat(4"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:18px !important; }
       #experts .expert-name{ font-size:14px !important; }
       #experts .expert-role{ font-size:12px !important; }
+      .experts-carousel-card{ width:168px !important; }
+      .experts-carousel{ gap:16px !important; }
+      .experts-carousel-nav{ width:36px !important; height:36px !important; font-size:16px !important; }
 
       /* ---- AviatDo 360° / Talks bands ---- */
       #aviatdo-360{ padding:96px 0 !important; }
