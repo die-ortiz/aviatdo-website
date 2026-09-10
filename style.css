@@ -179,7 +179,7 @@
     /* Sub-page dark banner (services.html, experts.html) — same photo +
        gradient + radial-blob recipe as the home hero/#contact, just a
        shorter strip instead of full viewport height. */
-    .page-header-photo{ position:absolute; inset:0; background-size:cover; }
+    .page-header-photo{ position:absolute; inset:-12% 0; background-size:cover; will-change:transform; }
     .services-hero-photo{ background-image:url('images/services-hero.webp'); background-position:68% 30%; }
     .experts-hero-photo{ background-image:url('images/experts-hero.webp'); background-position:50% 35%; }
 
@@ -273,6 +273,7 @@
       .testi-card{ transition:none !important; }
       .accent-bar{ transform:scaleX(1) !important; }
       .hero-parallax{ transform:none !important; }
+      .page-header-photo{ transform:none !important; }
       .s360-parallax{ transform:none !important; }
       #experts .photo-wipe, #experts .photo-wipe img, #experts .expert-name, #experts .expert-role{ transition:none !important; }
       #experts .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }

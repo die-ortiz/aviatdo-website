@@ -304,9 +304,13 @@ class Component extends DCLogic {
 
     // --- Hero parallax — the photo drifts slower than the page for a sense
     // of depth, reading scrollState.y so it drifts on the same eased motion
-    // as everything else instead of jumping ahead of it ---
+    // as everything else instead of jumping ahead of it. Same treatment for
+    // services.html/experts.html's page-header banner photo — it's the
+    // first section in #page-root just like the home hero, so it's anchored
+    // to scrollY 0 the same way rather than the mid-page #aviatdo-360
+    // approach below. ---
     if (!reduceMotion) {
-      const parallax = document.querySelector('.hero-parallax');
+      const parallax = document.querySelector('.hero-parallax, .page-header-photo');
       if (parallax) {
         const updateParallax = () => {
           const y = isPhone ? Math.min(scrollState.y * 0.15, 70) : Math.min(scrollState.y * 0.18, 90);
