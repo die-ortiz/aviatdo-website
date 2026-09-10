@@ -5,7 +5,8 @@
       "name": "aviatdo-static",
       "runtimeExecutable": "python3",
       "runtimeArgs": ["/Users/diego/Documents/04-ICORPORATE/auditorias web/aviatdo/website/code/aviatdo-export/.claude/serve.py"],
-      "port": 8899
+      "port": 8899,
+      "autoPort": true
     }
   ]
 }
