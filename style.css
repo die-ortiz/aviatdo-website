@@ -293,7 +293,7 @@
     }
 
     /* Scroll progress bar */
-    #scroll-progress-bar{ position:fixed; top:0; left:0; height:3px; width:0%; background:var(--gradient); z-index:9999; pointer-events:none; }
+    #scroll-progress-bar{ position:fixed; top:0; left:0; height:3px; width:0%; background:var(--brand-red); z-index:9999; pointer-events:none; }
 
     /* Smooth (inertia) scroll — #page-root is pinned and nudged toward the
        real scroll position every frame with a lerp (see the component script),
