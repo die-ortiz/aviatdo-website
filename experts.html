@@ -19,24 +19,30 @@
 
 
 <div id="scroll-progress-bar" aria-hidden="true"></div>
-<div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
-
-  <!-- NAV — same markup/behavior as index.html -->
-  <header id="site-header" style="position:absolute; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
+<!-- NAV — fixed to the viewport at all times, a sibling of #page-root
+     rather than nested inside it. #page-root gets its own position:fixed +
+     translate3d transform for the desktop smooth-scroll effect (see
+     script.js), so any position:fixed descendant of it would resolve
+     relative to that transformed box instead of the real viewport — the
+     same reason the booking modal lives outside #page-root. Floats
+     transparent over the hero/photo until the visitor scrolls, then gets a
+     solid background + shadow (.scrolled, toggled in script.js) so nav
+     text stays legible over whatever section is now behind it. -->
+<header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
     <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img src="images/aviatodo-logo.avif" width="102" height="72" alt="AviatDo" style="height:38px; width:auto; display:block;"></a>
     <div id="nav-panel">
       <nav style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
-        <a class="btn-focus ghost-link" href="services.html" style="color:var(--on-obsidian); font-size:16px;">Services</a>
+        <a class="btn-focus ghost-link" href="services.html" style="color:var(--nav-ink); font-size:16px;">Services</a>
         <a class="btn-focus ghost-link" href="experts.html" style="color:var(--brand-red); font-size:16px;">Our Experts</a>
-        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--on-obsidian); font-size:16px;">About</a>
-        <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--on-obsidian); font-size:16px;">AviatDo Talks</a>
-        <a class="btn-focus ghost-link" href="index.html#aviatdo-360" style="color:var(--on-obsidian); font-size:16px;">AviatDo 360°</a>
-        <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--on-obsidian); font-size:16px;">Partners</a>
-        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--on-obsidian); font-size:16px;">Resources</a>
+        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--nav-ink); font-size:16px;">About</a>
+        <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--nav-ink); font-size:16px;">AviatDo Talks</a>
+        <a class="btn-focus ghost-link" href="index.html#aviatdo-360" style="color:var(--nav-ink); font-size:16px;">AviatDo 360°</a>
+        <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--nav-ink); font-size:16px;">Partners</a>
+        <a class="btn-focus ghost-link" href="index.html#" style="color:var(--nav-ink); font-size:16px;">Resources</a>
       </nav>
       <div id="header-actions" style="display:flex; align-items:center; gap:20px;">
-        <div class="btn-focus" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--on-obsidian); display:flex; gap:4px;">
-          <span style="border-bottom:1px solid var(--on-obsidian);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="experts-es.html" style="opacity:0.7; color:var(--on-obsidian);">ES</a>
+        <div class="btn-focus" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--nav-ink); display:flex; gap:4px;">
+          <span style="border-bottom:1px solid var(--nav-ink);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="experts-es.html" style="opacity:0.7; color:var(--nav-ink);">ES</a>
         </div>
         <a class="btn-focus btn-obsidian" href="index.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding:8px 24px; border-radius:8px;">Contact us</a>
       </div>
@@ -48,6 +54,8 @@
     </button>
     <div id="nav-backdrop" aria-hidden="true"></div>
   </header>
+
+<div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
   <!-- PAGE HEADER — same dark radial-gradient pattern as services.html /
        #contact on the home page. -->

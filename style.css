@@ -343,6 +343,17 @@
       footer div[style*="grid-template-columns:1.4fr"] > div:first-child{ grid-column:1/-1; }
     }
 
+    /* Sticky header — fixed to the viewport at every width (see the HTML
+       comment above <header id="site-header"> for why it lives outside
+       #page-root). --nav-ink lets every nav link/label reference one
+       variable instead of a hardcoded color, so toggling to the scrolled
+       state just redefines it once here rather than touching each link. */
+    #site-header{ --nav-ink:var(--on-obsidian); transition:background-color .25s ease, box-shadow .25s ease; }
+    #site-header.scrolled{ --nav-ink:var(--obsidian); background:rgba(255,255,255,0.96); box-shadow:0 4px 24px -10px rgba(0,0,0,0.18); }
+    @supports (backdrop-filter: blur(1px)){
+      #site-header.scrolled{ background:rgba(255,255,255,0.82); backdrop-filter:blur(10px); }
+    }
+
     /* ---- Header nav → hamburger + off-canvas drawer ----
        #nav-panel wraps the <nav> links and the lang/contact actions
        block. It stays `display:contents` (invisible to layout) above
@@ -356,7 +367,7 @@
 
     @media (max-width: 900px){
       #nav-toggle{ display:flex; align-items:center; justify-content:center; width:44px; height:44px; cursor:pointer; flex-shrink:0; position:relative; z-index:31; }
-      #nav-toggle .burger-bar{ position:absolute; left:11px; right:11px; height:2px; background:var(--on-obsidian); border-radius:1px; transition:transform .3s ease, opacity .2s ease; }
+      #nav-toggle .burger-bar{ position:absolute; left:11px; right:11px; height:2px; background:var(--nav-ink); border-radius:1px; transition:transform .3s ease, opacity .2s ease, background-color .25s ease; }
       #nav-toggle .burger-bar:nth-child(1){ top:16px; }
       #nav-toggle .burger-bar:nth-child(2){ top:21px; }
       #nav-toggle .burger-bar:nth-child(3){ top:26px; }

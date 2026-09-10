@@ -159,6 +159,28 @@ class Component extends DCLogic {
       updateProgressBar();
     }
 
+    // --- Sticky header background — #site-header is fixed at every width
+    // (see the HTML comment above it for why it lives outside #page-root),
+    // floating transparent over the hero until scrolled, then flips to a
+    // solid/blurred background via the .scrolled class so nav text stays
+    // legible over whatever's now behind it. Same reduceMotion fallback
+    // pattern as the progress bar above, since this doesn't need the RAF
+    // loop's precision — a plain scroll listener reads the threshold fine. ---
+    const siteHeader = document.getElementById('site-header');
+    if (siteHeader) {
+      const SCROLLED_THRESHOLD = 24;
+      const updateHeaderScrolled = () => {
+        const y = reduceMotion ? window.scrollY : scrollState.y;
+        siteHeader.classList.toggle('scrolled', y > SCROLLED_THRESHOLD);
+      };
+      if (reduceMotion) {
+        window.addEventListener('scroll', updateHeaderScrolled, { passive: true });
+      } else {
+        frameCallbacks.push(updateHeaderScrolled);
+      }
+      updateHeaderScrolled();
+    }
+
     // --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
     // accent underline) are driven directly from live layout position every
     // frame, so the motion is pinned 1:1 to how far the visitor has
