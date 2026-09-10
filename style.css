@@ -109,26 +109,22 @@
     .avatar-box{transition:border-color .2s ease;}
     .card-flat:hover .avatar-box{border-color:var(--obsidian);}
 
-    /* Contact — social icon buttons: flat circle, tone-shift on hover only.
+    /* Contact/social icon buttons — flat black circle, tone-shift on hover
+       only. .social-icon-brand (LinkedIn) shares every rule below with
+       .social-icon (mail, etc.) so the two sit side by side as one
+       consistent family — same background, same hover, same dark-section
+       override — the only difference is the glyph drawn inside, and that
+       glyph uses currentColor so it inherits whatever `color` each of
+       these rules sets, exactly like the mail icon already did.
        44px is the WCAG 2.5.5 / Material / HIG minimum touch target. */
-    .social-icon{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(204,36,44,0.1); color:var(--brand-red); transition:background .2s ease, color .2s ease, transform .2s ease; }
-    .social-icon:hover{ background:var(--obsidian); color:var(--on-obsidian); transform:translateY(-2px); }
+    .social-icon, .social-icon-brand{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--obsidian); color:var(--on-obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .social-icon:hover, .social-icon-brand:hover{ background:#262626; transform:translateY(-2px); }
     /* #contact and the footer sit on the obsidian background themselves now,
        so the default hover (fade TO obsidian) would make the icon vanish
        into its own section — invert to a light hover on those two instead. */
-    #contact .social-icon, footer .social-icon{ background:rgba(255,255,255,0.1); color:var(--on-obsidian); }
-    #contact .social-icon:hover, footer .social-icon:hover{ background:var(--paper-white); color:var(--obsidian); }
-    @media (prefers-reduced-motion: reduce){ .social-icon{ transition:none !important; } }
-
-    /* LinkedIn — the actual brand mark (blue rounded square, white "in")
-       instead of our own monochrome circle treatment, per Diego's
-       reference. Same footprint/touch-target as .social-icon so it lines
-       up with the mail button beside it; own class since it doesn't
-       follow the light/dark-background color-flip the generic icon does
-       (a brand-colored badge reads fine on any background as-is). */
-    .social-icon-brand{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:22%; background:#0A66C2; transition:filter .2s ease, transform .2s ease; }
-    .social-icon-brand:hover{ filter:brightness(1.12); transform:translateY(-2px); }
-    @media (prefers-reduced-motion: reduce){ .social-icon-brand{ transition:none !important; } }
+    #contact .social-icon, #contact .social-icon-brand, footer .social-icon, footer .social-icon-brand{ background:rgba(255,255,255,0.1); color:var(--on-obsidian); }
+    #contact .social-icon:hover, #contact .social-icon-brand:hover, footer .social-icon:hover, footer .social-icon-brand:hover{ background:var(--paper-white); color:var(--obsidian); }
+    @media (prefers-reduced-motion: reduce){ .social-icon, .social-icon-brand{ transition:none !important; } }
 
     /* Expert-card LinkedIn — a secondary, tertiary-weight action (not the page's
        primary CTA), so it trades down from the 44px touch-target minimum above
