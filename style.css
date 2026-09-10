@@ -89,7 +89,7 @@
     /* services.html — alternating text/photo rows (replaces the old card
        grid for the full detail page). Photo reuses .photo-wipe's scroll-in
        curtain reveal, same motion language as #experts portraits. */
-    .service-pill{border-radius:28px; padding:56px 48px; margin-bottom:24px;}
+    .service-pill{border-radius:28px; padding:56px 48px; margin-bottom:24px; box-shadow:0 16px 40px -20px rgba(0,0,0,0.16);}
     .service-row{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:center;}
     .service-row-photo{position:relative;}
     .service-row-badge{position:absolute; bottom:-20px; left:28px; background:var(--paper-white); border-radius:12px; box-shadow:0 16px 36px -14px rgba(0,0,0,0.28); padding:12px 18px; display:flex; align-items:center; gap:12px; max-width:calc(100% - 40px);}
