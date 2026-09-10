@@ -278,6 +278,20 @@
     }
     .experts-carousel-nav:hover{ background:var(--obsidian); color:var(--on-obsidian); }
 
+    /* Contact form <select> fields — Safari renders native select chrome at a
+       different height than a same-padding <input> even with identical box
+       styles, so appearance is reset and a custom chevron substituted to keep
+       height consistent with the text fields around it. */
+    .contact-select{
+      appearance:none; -webkit-appearance:none; -moz-appearance:none;
+      box-sizing:border-box;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%235e5d5c' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+      background-repeat:no-repeat;
+      background-position:right 14px center;
+      background-size:14px;
+      padding-right:38px !important;
+    }
+
     /* Scroll progress bar */
     #scroll-progress-bar{ position:fixed; top:0; left:0; height:3px; width:0%; background:var(--gradient); z-index:9999; pointer-events:none; }
 
