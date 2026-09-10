@@ -169,9 +169,15 @@ class Component extends DCLogic {
     const siteHeader = document.getElementById('site-header');
     if (siteHeader) {
       const SCROLLED_THRESHOLD = 24;
+      const headerLogo = siteHeader.querySelector('.header-logo');
       const updateHeaderScrolled = () => {
         const y = reduceMotion ? window.scrollY : scrollState.y;
-        siteHeader.classList.toggle('scrolled', y > SCROLLED_THRESHOLD);
+        const scrolled = y > SCROLLED_THRESHOLD;
+        siteHeader.classList.toggle('scrolled', scrolled);
+        if (headerLogo) {
+          const nextSrc = scrolled ? headerLogo.dataset.dark : headerLogo.dataset.light;
+          if (headerLogo.getAttribute('src') !== nextSrc) headerLogo.setAttribute('src', nextSrc);
+        }
       };
       if (reduceMotion) {
         window.addEventListener('scroll', updateHeaderScrolled, { passive: true });
