@@ -111,7 +111,7 @@
 
     /* Contact — social icon buttons: flat circle, tone-shift on hover only.
        44px is the WCAG 2.5.5 / Material / HIG minimum touch target. */
-    .social-icon{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:var(--cloud-gray); color:var(--obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .social-icon{ display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:50%; background:rgba(204,36,44,0.1); color:var(--brand-red); transition:background .2s ease, color .2s ease, transform .2s ease; }
     .social-icon:hover{ background:var(--obsidian); color:var(--on-obsidian); transform:translateY(-2px); }
     /* #contact and the footer sit on the obsidian background themselves now,
        so the default hover (fade TO obsidian) would make the icon vanish
