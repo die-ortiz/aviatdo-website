@@ -224,6 +224,18 @@
 
     .track-pill{ font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.03em; color:var(--on-obsidian); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; white-space:nowrap; }
 
+    /* AviatDo 360° sub-nav — persistent tab strip across the 5 forum pages,
+       separate from the global site nav (see the "why sub-nav, not a
+       dropdown" writeup). Sticky at top:0 rather than below the fixed
+       #site-header on purpose: the header is transparent over the hero on
+       first paint and only gains a background on scroll, so pinning the
+       tab strip to the header's own height would leave a gap; top:0 plus
+       the header's own higher z-index (20 vs 15) keeps both correctly
+       stacked once scrolled. */
+    .s360-tab{ display:inline-block; padding:18px 0; font-family:var(--font-condensed); font-size:14px; font-weight:600; letter-spacing:0.02em; color:var(--graphite); border-bottom:2px solid transparent; white-space:nowrap; }
+    .s360-tab:hover{ color:var(--obsidian); }
+    .s360-tab.active{ color:var(--obsidian); border-bottom-color:var(--brand-red); }
+
     /* Live pulsing dot — countdown badge */
     .live-dot{ position:relative; width:6px; height:6px; border-radius:50%; background:var(--brand-red); display:inline-block; }
     .live-dot::after{ content:''; position:absolute; inset:-4px; border-radius:50%; border:1.5px solid var(--brand-red); animation:livePing 2.2s cubic-bezier(0,0,0.2,1) infinite; }
