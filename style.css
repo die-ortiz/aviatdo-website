@@ -224,6 +224,12 @@
 
     .track-pill{ font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.03em; color:var(--on-obsidian); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; white-space:nowrap; }
 
+    /* AviatDo 360° Overview — the 4 real forum tracks, tall photo cards
+       matching the live aviatdo.com layout (photo + label, no description). */
+    .track-photo-card{ position:relative; border-radius:14px; overflow:hidden; aspect-ratio:460/1300; }
+    .track-photo-card img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.22,1,.36,1); }
+    .track-photo-card:hover img{ transform:scale(1.06); }
+
     /* AviatDo 360° sub-nav — persistent tab strip across the 5 forum pages,
        separate from the global site nav (see the "why sub-nav, not a
        dropdown" writeup). Sticky at top:0 rather than below the fixed
@@ -385,6 +391,7 @@
       #services > div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
       #why-aviatdo div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:1fr !important; }
       #experts > div[style*="grid-template-columns:repeat(4"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+      #s360-tracks-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
       .talks-bg div[style*="grid-template-columns:1.1fr 1fr"]{ grid-template-columns:1fr !important; }
       .s360-bg div[style*="grid-template-columns:1.1fr 1fr"]{ grid-template-columns:1fr !important; }
       #testimonials div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:1fr !important; }
@@ -476,6 +483,7 @@
       .eyebrow-pill{ padding:5px 14px; font-size:12px !important; }
       .accent-bar{ width:52px; margin-top:12px; }
       .track-pill{ font-size:11.5px; padding:7px 14px; }
+      .track-photo-card{ aspect-ratio:16/13; }
       .social-icon{ width:34px; height:34px; }
       .social-icon-brand{ width:34px; height:34px; }
       .social-icon-sm{ width:30px; height:30px; }
