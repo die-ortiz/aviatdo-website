@@ -392,6 +392,7 @@
       #why-aviatdo div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:1fr !important; }
       #experts > div[style*="grid-template-columns:repeat(4"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
       #s360-tracks-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
+      #s360-speakers-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
       .talks-bg div[style*="grid-template-columns:1.1fr 1fr"]{ grid-template-columns:1fr !important; }
       .s360-bg div[style*="grid-template-columns:1.1fr 1fr"]{ grid-template-columns:1fr !important; }
       #testimonials div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:1fr !important; }
