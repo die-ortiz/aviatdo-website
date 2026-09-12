@@ -508,7 +508,7 @@
       /* ---- shared type scale ---- */
       .section-h2{ font-size:30px; }
       .num-xl{ font-size:44px; overflow-wrap:break-word; }
-      #stats > div:last-child .num-xl{ font-size:28px; }
+      #stats > div:last-child .num-xl{ font-size:28px; min-height:44px; display:flex; align-items:flex-end; }
       .testi-num{ font-size:32px !important; }
       .eyebrow-pill{ padding:5px 14px; font-size:12px !important; }
       .accent-bar{ width:52px; margin-top:12px; }
