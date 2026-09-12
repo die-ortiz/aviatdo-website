@@ -464,6 +464,7 @@
       html.nav-open #nav-panel{ transform:translateX(0); }
       header nav{ flex-direction:column; align-items:center !important; gap:22px !important; width:100%; }
       header nav a{ font-size:19px !important; color:var(--on-obsidian) !important; }
+      header nav a[aria-current="page"]{ color:var(--brand-red) !important; }
       #header-actions{ flex-direction:column; align-items:center !important; gap:20px !important; width:100%; }
       #header-actions a.btn-obsidian{ background:var(--brand-red) !important; }
 
@@ -481,7 +482,7 @@
       /* ---- imagery: swap to the tighter mobile crops ---- */
       .hero-photo{ background-image:url('images/hero-team-mobile.webp'); background-position:center 15%; }
       .services-hero-photo{ background-image:url('images/services-hero-mobile.webp'); background-position:center 15%; }
-      .experts-hero-photo{ background-image:url('images/experts-hero-mobile.webp'); background-position:center 12%; }
+      .experts-hero-photo{ background-image:url('images/experts-hero-mobile.webp'); background-position:center 25%; }
       .privacy-hero-photo{ background-image:url('images/privacy-hero-mobile.webp'); background-position:center 15%; }
       .hero-parallax{ background-image:url('images/hero-team-mobile.webp'); background-position:center 15%; }
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:24% 30%; }
