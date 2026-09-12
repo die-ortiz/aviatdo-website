@@ -474,6 +474,14 @@
       }
       html.nav-open #nav-backdrop{ opacity:1; pointer-events:auto; }
       html.nav-open, html.nav-open body{ overflow:hidden; }
+
+      /* The logo doubles as "Home" (no separate Home link in the nav by
+         design), but it sits earlier in #site-header's DOM order than
+         #nav-backdrop with no z-index of its own — so once the drawer is
+         open, the backdrop (z-index:25) painted above it and silently ate
+         the tap. Lift it above the backdrop so it stays a working way
+         back to the homepage while the menu is open. */
+      #site-header > a[aria-label="AviatDo home"]{ position:relative; z-index:26; }
     }
 
     @media (max-width: 767px){
