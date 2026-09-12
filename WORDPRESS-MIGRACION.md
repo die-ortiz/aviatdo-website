@@ -170,3 +170,67 @@ quedan como custom properties en el stylesheet igual que hoy.
 Ver también [UI-UX-REGLAS.md](UI-UX-REGLAS.md) para el resto de las
 convenciones (contraste, breakpoints, hover systems) que deberían
 sobrevivir la migración, no perderse en la reconstrucción.
+
+---
+
+## 10. Cómo garantizar que WordPress quede igual al mockup
+
+**Contexto:** lo va a armar un backend developer, en código, también
+con Claude Code — sin constructor visual (Elementor/Divi/etc.). Es el
+escenario de menor riesgo, PERO esa sesión de Claude Code va a arrancar
+sin nada de lo que documentamos en esta sesión (los gotchas del
+`.reveal`, el sistema de sheen, por qué el nav no tiene link de Home,
+etc.). Si no se le pasa ese contexto, el riesgo real no es que
+"no sepa programar" — es que reconstruya el diseño de memoria/a ojo en
+vez de portar el código real, y ahí sí se pierde fidelidad justo en los
+detalles que el cliente valoró en la reunión.
+
+**Antes de escribir una sola línea del theme, esa sesión de Claude Code
+debería:**
+
+1. Tener este repo (`aviatdo-export`) disponible como referencia —
+   idealmente clonado localmente junto al proyecto de WordPress, no
+   solo mirado una vez.
+2. Leer, en este orden: `CLAUDE.md` (mapa de secciones y convenciones
+   base) → `UI-UX-REGLAS.md` (reglas de UI/UX + design tokens) →
+   este archivo (`WORDPRESS-MIGRACION.md`).
+3. Portar `style.css` y `script.js` como assets del theme casi sin
+   reescribir — no "reinterpretar" el CSS, copiarlo y adaptarlo
+   incrementalmente a medida que cada sección se convierte en template
+   PHP. Reescribir desde cero es exactamente donde se pierde fidelidad.
+4. Mantener el mockup actual (`die-ortiz.github.io/aviatdo-website/`)
+   abierto como referencia visual mientras se construye cada página —
+   no solo mirarlo al final.
+
+**Checklist de aceptación, página por página**, antes de dar una
+sección por migrada:
+
+- [ ] Comparación visual lado a lado (mockup vs. WordPress) en desktop
+      y mobile (375px)
+- [ ] Hover de tarjetas de servicios (`.service-card`, fondo pasa a
+      rojo) funciona igual
+- [ ] Sheen sweep en hover (`.card-sheen`) presente en las tarjetas que
+      lo tenían
+- [ ] Tilt 3D en mousemove (`#services`, desktop con mouse) presente
+- [ ] Animación de entrada por scroll (`.reveal`) funciona, y el hero
+      de cada página carga sin quedarse en opacidad parcial
+      (`.hero-in` — ver el bug real que tuvimos con esto el 2026-09-11)
+- [ ] Hover de foto+nombre en Experts/Speakers (`.photo-wipe`,
+      `.expert-name` a rojo) funciona
+- [ ] Carrusel de Our Experts: scrolleable con el dedo/mouse, loop
+      infinito en ambas direcciones, sin flechas, sin fade en los
+      bordes
+- [ ] Sub-nav de AviatDo 360° (tabs con subrayado rojo en la página
+      activa) presente en las 6 páginas
+- [ ] Nav principal: página activa resaltada en rojo, tanto desktop
+      como en el menú mobile abierto
+- [ ] Modal de booking abre/cierra igual (aunque su backend real se
+      decida aparte — ver punto 7)
+- [ ] Contraste de texto sobre foto (hero) legible — no volver a
+      `--muted` gris sobre fondo oscuro (ver el fix del 2026-09-11)
+- [ ] 0px de overflow horizontal en mobile (375px) en cada página
+      migrada
+
+Si en algún punto de la migración algo de esta lista queda descartado
+a propósito (por tiempo, por decisión del cliente, etc.), anotarlo acá
+mismo con la fecha — que sea una decisión explícita, no un olvido.
