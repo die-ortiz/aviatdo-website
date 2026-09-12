@@ -293,16 +293,19 @@
     #experts .reveal:hover .expert-name, #experts .experts-carousel-card:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
     #experts .reveal:hover .expert-role, #experts .experts-carousel-card:hover .expert-role{ transform:scale(1.05); }
 
-    /* Home preview — Our Experts marquee. Reuses the .marquee/.marquee-track
-       infinite-loop mechanism built for the partners strip (pure CSS
-       translateX, track holds the card set twice so looping to -50% is
-       seamless) instead of the old manual-scroll + arrow-button carousel:
-       the arrows had no keyboard/no-JS fallback readable while the drawer
-       or momentum scroll was active, and on mobile a mistimed double-tap
-       on one triggered the browser's native double-tap-to-zoom. */
-    .experts-carousel-wrap .marquee-fade.left{ background:linear-gradient(90deg, var(--paper-white), transparent); }
-    .experts-carousel-wrap .marquee-fade.right{ background:linear-gradient(270deg, var(--paper-white), transparent); }
-    .experts-carousel-wrap .marquee-track{ gap:24px; padding:4px 2px 10px; animation-duration:46s; }
+    /* Home preview — Our Experts carousel. Finger/trackpad-scrollable, not
+       auto-playing — dropped the old arrow buttons (a mistimed double-tap on
+       one triggered the browser's native double-tap-to-zoom on mobile) in
+       favor of native touch scrolling. "Infinite" here means the track holds
+       the card set three times (hidden decorative copy, the real
+       accessible one, another hidden decorative copy) with a scroll
+       listener (see script.js) that silently snaps scrollLeft back by one
+       set width whenever it strays into a buffer copy — so dragging keeps
+       going in either direction with no visible seam and no dead end. No
+       edge fade mask on purpose: the buffer copies mean there's always more
+       carousel to reveal, not a hard edge to soften. */
+    .experts-carousel{ display:flex; gap:24px; overflow-x:auto; -webkit-overflow-scrolling:touch; scrollbar-width:none; padding:4px 2px 10px; }
+    .experts-carousel::-webkit-scrollbar{ display:none; }
     .experts-carousel-card{ flex:0 0 auto; width:220px; }
 
     /* Contact form <select> fields — Safari renders native select chrome at a
@@ -554,7 +557,7 @@
       #experts .expert-name{ font-size:14px !important; }
       #experts .expert-role{ font-size:12px !important; }
       .experts-carousel-card{ width:168px !important; }
-      .experts-carousel-wrap .marquee-track{ gap:16px !important; animation-duration:34s !important; }
+      .experts-carousel{ gap:16px !important; }
 
       /* ---- AviatDo 360° / Talks bands ---- */
       #aviatdo-360{ padding:96px 0 !important; }

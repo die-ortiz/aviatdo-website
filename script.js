@@ -187,7 +187,42 @@ class Component extends DCLogic {
       updateHeaderScrolled();
     }
 
-// --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
+    // --- Home "Our Experts" preview — finger/trackpad-scrollable, looping
+    // infinitely in either direction. The track holds the 8-card set three
+    // times (see index.html): a hidden decorative copy, the real
+    // accessible one, another hidden decorative copy. Scrolling starts in
+    // the middle (real) copy; whenever scroll strays into a buffer copy,
+    // scrollLeft silently jumps back by exactly one set's width — since
+    // the copies are pixel-identical, the jump lands on the same visual
+    // frame and reads as an endless track instead of a seam or dead end. ---
+    (function () {
+      const expertsCarousel = document.getElementById('experts-carousel');
+      if (!expertsCarousel) return;
+      // (scrollWidth + gap) / 3, not scrollWidth / 3: 24 cards in a row only
+      // have 23 gaps between them, so a plain three-way split undercounts by
+      // one gap and the wrap would land a few pixels short of the identical
+      // card underneath it.
+      const setWidth = () => {
+        const gap = parseFloat(getComputedStyle(expertsCarousel).columnGap || getComputedStyle(expertsCarousel).gap) || 0;
+        return (expertsCarousel.scrollWidth + gap) / 3;
+      };
+      const recenter = () => { expertsCarousel.scrollLeft = setWidth(); };
+      requestAnimationFrame(recenter);
+      let pending = false;
+      expertsCarousel.addEventListener('scroll', () => {
+        if (pending) return;
+        pending = true;
+        requestAnimationFrame(() => {
+          const w = setWidth();
+          if (expertsCarousel.scrollLeft < w) expertsCarousel.scrollLeft += w;
+          else if (expertsCarousel.scrollLeft >= w * 2) expertsCarousel.scrollLeft -= w;
+          pending = false;
+        });
+      }, { passive: true });
+      window.addEventListener('resize', recenter);
+    })();
+
+    // --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
     // accent underline) are driven directly from live layout position every
     // frame, so the motion is pinned 1:1 to how far the visitor has
     // scrolled — never a fixed-duration timer that can finish before they
