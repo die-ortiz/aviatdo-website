@@ -187,6 +187,27 @@ class Component extends DCLogic {
       updateHeaderScrolled();
     }
 
+    // --- The Venue hero video — some mobile browsers (in-app webviews,
+    // data-saver mode) ignore the autoplay/muted attributes and leave the
+    // video parked on its poster frame. Force muted+play on load, then
+    // retry once on the first tap/scroll in case the browser was waiting
+    // on a user gesture before it would allow playback. ---
+    (function () {
+      const heroVideo = document.querySelector('.venue-hero-video');
+      if (!heroVideo) return;
+      const tryPlay = () => { heroVideo.muted = true; heroVideo.play().catch(() => {}); };
+      tryPlay();
+      const resumeOnGesture = () => {
+        if (heroVideo.paused) tryPlay();
+        window.removeEventListener('touchstart', resumeOnGesture);
+        window.removeEventListener('scroll', resumeOnGesture);
+        window.removeEventListener('click', resumeOnGesture);
+      };
+      window.addEventListener('touchstart', resumeOnGesture, { passive: true, once: true });
+      window.addEventListener('scroll', resumeOnGesture, { passive: true, once: true });
+      window.addEventListener('click', resumeOnGesture, { once: true });
+    })();
+
     // --- Home "Our Experts" preview — finger/trackpad-scrollable, looping
     // infinitely in either direction. The track holds the 8-card set three
     // times (see index.html): a hidden decorative copy, the real
