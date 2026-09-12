@@ -48,9 +48,11 @@
 
 <div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
-  <section class="s360-bg" style="padding:168px 40px 64px; position:relative; overflow:hidden;">
-    <div class="s360-parallax"></div>
-    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.22) 100%);" aria-hidden="true"></div>
+  <section class="venue-hero" style="padding:168px 40px 96px; position:relative; overflow:hidden; background:var(--obsidian);">
+    <video class="venue-hero-video" autoplay muted loop playsinline poster="images/aviatdo-360-venue-poster.webp" aria-hidden="true">
+      <source src="images/aviatdo-360-venue-video.mp4" type="video/mp4">
+    </video>
+    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.68) 38%, rgba(0,0,0,0.4) 68%, rgba(0,0,0,0.18) 100%);" aria-hidden="true"></div>
     <div style="position:relative; max-width:1200px; margin:0 auto;">
       <a class="btn-focus ghost-link hero-in" href="aviatdo-360-es.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← AviatDo 360°</a>
       <div class="hero-in eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">San Salvador, El Salvador</div>
@@ -77,15 +79,69 @@
       <p style="font-size:15px; line-height:1.7; color:var(--graphite); margin:0 0 16px;">San Salvador, la capital de El Salvador, combina vida urbana moderna, rica herencia cultural y entornos naturales impresionantes. Desde gastronomía de primer nivel y barrios vibrantes hasta la costa del Pacífico a minutos de distancia, la ciudad ofrece un ambiente seguro, caminable y acogedor para una experiencia de foro inolvidable.</p>
       <p style="font-size:15px; line-height:1.7; color:var(--graphite); margin:0;">El distrito de San Benito — donde está el hotel — es uno de los barrios más dinámicos de San Salvador: un centro comercial y de entretenimiento animado con boutiques, cafés, galerías de arte y vida nocturna, además de atracciones culturales cercanas como el Museo Nacional de Antropología (MUNA) y el Museo de Arte de El Salvador (MARTE).</p>
     </div>
-    <div class="reveal card-flat" style="background:var(--sand-beige); border-radius:16px; padding:32px; animation-delay:.05s;">
-      <div class="eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px;">Sobre la sede</div>
-      <h3 style="margin:0 0 12px; font-weight:800; letter-spacing:-0.01em; font-size:22px;">Barceló San Salvador</h3>
-      <p style="font-size:15px; line-height:1.7; color:var(--graphite); margin:0 0 16px;">Un hotel de negocios y placer de primer nivel en el corazón de Zona Rosa, el distrito social, comercial y cultural más exclusivo de la ciudad — ubicación central en San Benito, ideal para viajeros de negocios.</p>
-      <ul style="margin:0; padding-left:18px; font-size:14px; line-height:1.8; color:var(--graphite);">
-        <li>Piscina exterior, gimnasio y spa</li>
-        <li>Dos restaurantes y excelentes instalaciones para eventos</li>
-        <li>Muy bien calificado por su servicio, comodidad y acceso a los puntos destacados de la ciudad</li>
-      </ul>
+    <div class="reveal card-flat" style="border-radius:16px; overflow:hidden; border:1px solid var(--divider); animation-delay:.05s;">
+      <div style="aspect-ratio:16/10; overflow:hidden;">
+        <img src="images/venue-hotel-barcelo.webp" width="1600" height="1067" loading="lazy" alt="Hotel Barceló San Salvador" style="width:100%; height:100%; object-fit:cover; display:block;">
+      </div>
+      <div style="padding:28px 32px 32px;">
+        <div class="eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px;">Sobre la sede</div>
+        <h3 style="margin:0 0 12px; font-weight:800; letter-spacing:-0.01em; font-size:22px;">Barceló San Salvador</h3>
+        <p style="font-size:15px; line-height:1.7; color:var(--graphite); margin:0 0 16px;">Un hotel de negocios y placer de primer nivel en el corazón de Zona Rosa, el distrito social, comercial y cultural más exclusivo de la ciudad — ubicación central en San Benito, ideal para viajeros de negocios.</p>
+        <ul style="margin:0; padding-left:18px; font-size:14px; line-height:1.8; color:var(--graphite);">
+          <li>Piscina exterior, gimnasio y spa</li>
+          <li>Dos restaurantes y excelentes instalaciones para eventos</li>
+          <li>Muy bien calificado por su servicio, comodidad y acceso a los puntos destacados de la ciudad</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORÁ LA CIUDAD — mosaico editorial con fotos reales de San Salvador -->
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px 112px;">
+    <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Explorá la ciudad</div>
+    <h2 class="reveal section-h2" style="margin:0 0 16px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Una capital que se mueve a toda hora</h2>
+    <p class="reveal" style="margin:0 0 40px; font-size:16px; line-height:1.6; color:var(--graphite); max-width:620px; animation-delay:.05s;">Desde la Plaza Gerardo Barrios iluminada al anochecer hasta ruinas precolombinas, lagos volcánicos y olas del Pacífico a menos de una hora del hotel — San Salvador premia a quien llega unos días antes.</p>
+    <div class="reveal venue-mosaic" style="animation-delay:.07s;">
+      <div class="tile big">
+        <img src="images/venue-plaza-sunset.webp" width="1600" height="1200" loading="lazy" alt="Plaza Gerardo Barrios y el Palacio Nacional al anochecer">
+        <div class="tile-caption">Plaza Gerardo Barrios</div>
+      </div>
+      <div class="tile wide">
+        <img src="images/venue-lake-coatepeque.webp" width="1600" height="837" loading="lazy" alt="Lago de Coatepeque">
+        <div class="tile-caption">Lago de Coatepeque</div>
+      </div>
+      <div class="tile tall">
+        <img src="images/venue-palacio-street.webp" width="1600" height="935" loading="lazy" alt="Palacio Nacional iluminado a nivel de calle">
+        <div class="tile-caption">Palacio Nacional</div>
+      </div>
+      <div class="tile">
+        <img src="images/venue-tazumal.webp" width="1600" height="1067" loading="lazy" alt="Ruinas arqueológicas de Tazumal">
+        <div class="tile-caption">Ruinas de Tazumal</div>
+      </div>
+      <div class="tile">
+        <img src="images/venue-sanbenito-dusk.webp" width="1080" height="675" loading="lazy" alt="Distrito de San Benito al anochecer">
+        <div class="tile-caption">Distrito San Benito</div>
+      </div>
+      <div class="tile wide">
+        <img src="images/venue-plaza-bluehour.webp" width="1600" height="1067" loading="lazy" alt="Skyline de San Salvador en la hora azul">
+        <div class="tile-caption">Centro, hora azul</div>
+      </div>
+      <div class="tile">
+        <img src="images/venue-city-nightlife.webp" width="1600" height="898" loading="lazy" alt="Presidente Plaza de noche">
+        <div class="tile-caption">Presidente Plaza</div>
+      </div>
+      <div class="tile tall">
+        <img src="images/venue-surf.webp" width="1600" height="1067" loading="lazy" alt="Surf en la costa del Pacífico de El Salvador">
+        <div class="tile-caption">Surf en el Pacífico</div>
+      </div>
+      <div class="tile">
+        <img src="images/venue-beach.webp" width="1280" height="850" loading="lazy" alt="Playa de arena negra cerca de San Salvador">
+        <div class="tile-caption">Playa El Zonte</div>
+      </div>
+      <div class="tile">
+        <img src="images/venue-sanbenito-sunset.webp" width="1140" height="570" loading="lazy" alt="Distrito de San Benito al atardecer">
+        <div class="tile-caption">San Benito, atardecer</div>
+      </div>
     </div>
   </section>
 

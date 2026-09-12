@@ -223,6 +223,29 @@
     .s360-bg{ position:relative; }
     .s360-parallax{ position:absolute; inset:-12% 0; background-color:var(--obsidian); background-image:url('images/aviatdo-360-bg.jpg'); background-size:cover; background-position:42% 42%; will-change:transform; }
 
+    /* The Venue hero — real drone footage of San Salvador in place of the
+       shared s360-bg photo, since this is the one 360° page where the
+       actual city/venue footage exists. Plain absolute+cover, no parallax
+       drift: video already carries its own motion. */
+    .venue-hero{ min-height:520px; display:flex; align-items:flex-end; }
+    .venue-hero-video{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+    @media (prefers-reduced-motion: reduce){ .venue-hero-video{ display:none; } .venue-hero{ background-image:url('images/aviatdo-360-venue-poster.webp'); background-size:cover; background-position:center; } }
+
+    /* Editorial photo mosaic — asymmetric bento grid, deliberately not the
+       source site's flat scrolling filmstrip. Each tile gets a size role
+       (tall/wide/big) via class; dense packing fills the grid without
+       needing hand-placed row/column numbers. */
+    .venue-mosaic{ display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:130px; grid-auto-flow:dense; gap:12px; }
+    .venue-mosaic .tile{ position:relative; border-radius:14px; overflow:hidden; background:var(--sand-beige); }
+    .venue-mosaic .tile img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .6s cubic-bezier(.22,1,.36,1); }
+    .venue-mosaic .tile:hover img{ transform:scale(1.06); }
+    .venue-mosaic .tile.big{ grid-column:span 2; grid-row:span 2; }
+    .venue-mosaic .tile.wide{ grid-column:span 2; }
+    .venue-mosaic .tile.tall{ grid-row:span 2; }
+    .venue-mosaic .tile-caption{ position:absolute; left:0; right:0; bottom:0; padding:16px 18px; background:linear-gradient(0deg, rgba(0,0,0,0.65), transparent); color:var(--on-obsidian); font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.03em; opacity:0; transform:translateY(6px); transition:opacity .3s ease, transform .3s ease; }
+    .venue-mosaic .tile:hover .tile-caption{ opacity:1; transform:translateY(0); }
+    @media (prefers-reduced-motion: reduce){ .venue-mosaic .tile img{ transition:none; } .venue-mosaic .tile-caption{ transition:none; } }
+
     .track-pill{ font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.03em; color:var(--on-obsidian); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; white-space:nowrap; }
 
     /* AviatDo 360° Overview — the 4 real forum tracks, tall photo cards
@@ -612,6 +635,10 @@
         grid-template-columns:1fr !important;
       }
       #s360-venue-intro{ grid-template-columns:1fr !important; gap:32px !important; }
+      .venue-hero{ min-height:420px !important; }
+      .venue-mosaic{ grid-template-columns:repeat(2,1fr) !important; grid-auto-rows:150px !important; }
+      .venue-mosaic .tile{ grid-column:span 1 !important; grid-row:span 1 !important; }
+      .venue-mosaic .tile-caption{ opacity:1 !important; transform:none !important; background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent); }
       .s360-day-card{ grid-template-columns:1fr !important; gap:10px !important; padding:24px !important; }
     }
 
