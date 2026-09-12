@@ -288,28 +288,22 @@
     #experts .photo-wipe img{ transition:transform .6s cubic-bezier(.22,1,.36,1); }
     #experts .expert-name{ transition:color .25s ease, transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
     #experts .expert-role{ transition:transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
-    #experts .reveal:hover .photo-wipe{ transform:translateY(-6px); box-shadow:0 24px 48px -16px rgba(0,0,0,0.28); }
-    #experts .reveal:hover .photo-wipe img{ transform:scale(1.08); }
-    #experts .reveal:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
-    #experts .reveal:hover .expert-role{ transform:scale(1.05); }
+    #experts .reveal:hover .photo-wipe, #experts .experts-carousel-card:hover .photo-wipe{ transform:translateY(-6px); box-shadow:0 24px 48px -16px rgba(0,0,0,0.28); }
+    #experts .reveal:hover .photo-wipe img, #experts .experts-carousel-card:hover .photo-wipe img{ transform:scale(1.08); }
+    #experts .reveal:hover .expert-name, #experts .experts-carousel-card:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
+    #experts .reveal:hover .expert-role, #experts .experts-carousel-card:hover .expert-role{ transform:scale(1.05); }
 
-    /* Home preview — Our Experts carousel. Same horizontal-scroll-snap +
-       round nav-button technique as the booking modal's day strip
-       (.booking-strip/.booking-strip-nav), generalized here for expert
-       cards instead of date chips, so all 8 profiles fit without the old
-       4-up grid needing a "view all" link to do the rest of the job. */
-    .experts-carousel-wrap{ display:flex; align-items:center; gap:14px; }
-    .experts-carousel{
-      display:flex; gap:24px; flex:1; overflow-x:auto; scroll-behavior:smooth; scroll-snap-type:x proximity;
-      padding:4px 2px 10px; scrollbar-width:none;
-    }
-    .experts-carousel::-webkit-scrollbar{ display:none; }
-    .experts-carousel-card{ flex:0 0 auto; width:220px; scroll-snap-align:start; }
-    .experts-carousel-nav{
-      flex-shrink:0; width:44px; height:44px; border-radius:50%; display:inline-flex; align-items:center; justify-content:center;
-      background:var(--cloud-gray); color:var(--obsidian); font-size:19px; line-height:1; transition:background .2s ease, color .2s ease;
-    }
-    .experts-carousel-nav:hover{ background:var(--obsidian); color:var(--on-obsidian); }
+    /* Home preview — Our Experts marquee. Reuses the .marquee/.marquee-track
+       infinite-loop mechanism built for the partners strip (pure CSS
+       translateX, track holds the card set twice so looping to -50% is
+       seamless) instead of the old manual-scroll + arrow-button carousel:
+       the arrows had no keyboard/no-JS fallback readable while the drawer
+       or momentum scroll was active, and on mobile a mistimed double-tap
+       on one triggered the browser's native double-tap-to-zoom. */
+    .experts-carousel-wrap .marquee-fade.left{ background:linear-gradient(90deg, var(--paper-white), transparent); }
+    .experts-carousel-wrap .marquee-fade.right{ background:linear-gradient(270deg, var(--paper-white), transparent); }
+    .experts-carousel-wrap .marquee-track{ gap:24px; padding:4px 2px 10px; animation-duration:46s; }
+    .experts-carousel-card{ flex:0 0 auto; width:220px; }
 
     /* Contact form <select> fields — Safari renders native select chrome at a
        different height than a same-padding <input> even with identical box
@@ -348,9 +342,9 @@
       .page-header-photo{ transform:none !important; }
       .s360-parallax{ transform:none !important; }
       #experts .photo-wipe, #experts .photo-wipe img, #experts .expert-name, #experts .expert-role{ transition:none !important; }
-      #experts .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
-      #experts .reveal:hover .photo-wipe img{ transform:none !important; }
-      #experts .reveal:hover .expert-name, #experts .reveal:hover .expert-role{ transform:none !important; }
+      #experts .reveal:hover .photo-wipe, #experts .experts-carousel-card:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
+      #experts .reveal:hover .photo-wipe img, #experts .experts-carousel-card:hover .photo-wipe img{ transform:none !important; }
+      #experts .reveal:hover .expert-name, #experts .reveal:hover .expert-role, #experts .experts-carousel-card:hover .expert-name, #experts .experts-carousel-card:hover .expert-role{ transform:none !important; }
       #s360-speakers-grid .photo-wipe, #s360-speakers-grid .photo-wipe img, #s360-speakers-grid .expert-name, #s360-speakers-grid .expert-role{ transition:none !important; }
       #s360-speakers-grid .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
       #s360-speakers-grid .reveal:hover .photo-wipe img{ transform:none !important; }
@@ -560,8 +554,7 @@
       #experts .expert-name{ font-size:14px !important; }
       #experts .expert-role{ font-size:12px !important; }
       .experts-carousel-card{ width:168px !important; }
-      .experts-carousel{ gap:16px !important; }
-      .experts-carousel-nav{ width:36px !important; height:36px !important; font-size:16px !important; }
+      .experts-carousel-wrap .marquee-track{ gap:16px !important; animation-duration:34s !important; }
 
       /* ---- AviatDo 360° / Talks bands ---- */
       #aviatdo-360{ padding:96px 0 !important; }
