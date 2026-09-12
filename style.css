@@ -6,7 +6,7 @@
       --graphite:#5e5d5c;
       --gradient:linear-gradient(90deg,#00c6c6 0%,#00b5f4 20%,#00a1ff 40%,#398cff 50%,#757aff 60%,#906dff 75%,#a162ff 100%);
       --brand-red:#CC242C;
-      --muted:#9ca3af;
+      --muted:#6e6d6b;
       --divider:#d4d4d8;
       --font-display:'Inter', ui-sans-serif, system-ui, sans-serif;
       --font-condensed:'Inter Tight', ui-sans-serif, system-ui, sans-serif;
@@ -497,7 +497,8 @@
 
       /* ---- shared type scale ---- */
       .section-h2{ font-size:30px; }
-      .num-xl{ font-size:44px; }
+      .num-xl{ font-size:44px; overflow-wrap:break-word; }
+      #stats > div:last-child .num-xl{ font-size:28px; }
       .testi-num{ font-size:32px !important; }
       .eyebrow-pill{ padding:5px 14px; font-size:12px !important; }
       .accent-bar{ width:52px; margin-top:12px; }
