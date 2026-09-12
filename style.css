@@ -230,6 +230,20 @@
     .track-photo-card img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .5s cubic-bezier(.22,1,.36,1); }
     .track-photo-card:hover img{ transform:scale(1.06); }
 
+    /* Speakers grid — same hover treatment as #experts (photo lifts +
+       zooms, name turns brand-red, role scales up), reusing the
+       .photo-wipe/.expert-name/.expert-role classes so the two grids
+       feel identical, just scoped to #s360-speakers-grid instead of
+       #experts since the rules there are id-prefixed. */
+    #s360-speakers-grid .photo-wipe{ position:relative; transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease; }
+    #s360-speakers-grid .photo-wipe img{ transition:transform .6s cubic-bezier(.22,1,.36,1); }
+    #s360-speakers-grid .expert-name{ transition:color .25s ease, transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
+    #s360-speakers-grid .expert-role{ transition:transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
+    #s360-speakers-grid .reveal:hover .photo-wipe{ transform:translateY(-6px); box-shadow:0 24px 48px -16px rgba(0,0,0,0.28); }
+    #s360-speakers-grid .reveal:hover .photo-wipe img{ transform:scale(1.08); }
+    #s360-speakers-grid .reveal:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
+    #s360-speakers-grid .reveal:hover .expert-role{ transform:scale(1.05); }
+
     /* AviatDo 360° sub-nav — persistent tab strip across the 5 forum pages,
        separate from the global site nav (see the "why sub-nav, not a
        dropdown" writeup). Sticky at top:0 rather than below the fixed
@@ -336,6 +350,10 @@
       #experts .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
       #experts .reveal:hover .photo-wipe img{ transform:none !important; }
       #experts .reveal:hover .expert-name, #experts .reveal:hover .expert-role{ transform:none !important; }
+      #s360-speakers-grid .photo-wipe, #s360-speakers-grid .photo-wipe img, #s360-speakers-grid .expert-name, #s360-speakers-grid .expert-role{ transition:none !important; }
+      #s360-speakers-grid .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
+      #s360-speakers-grid .reveal:hover .photo-wipe img{ transform:none !important; }
+      #s360-speakers-grid .reveal:hover .expert-name, #s360-speakers-grid .reveal:hover .expert-role{ transform:none !important; }
     }
 
     /* Why-AviatDo cards — a left-to-right slide instead of the generic fade+rise,
