@@ -172,6 +172,15 @@ skill `ui-ux-pro-max` (119 lineamientos).
 > deshabilitado), usarlo puntualmente ahí — no bajarle el contraste al
 > token global, porque se reusa como color de texto de cuerpo en las 20
 > páginas del sitio.
+>
+> **`--hero-muted` se agregó aparte** (mismo día, a partir de una foto
+> real en mobile): `--muted` sobre fondo blanco funciona, pero el mismo
+> gris sobre una foto oscura de hero se sigue perdiendo — el contraste
+> real depende de la luminosidad de cada foto, no de un solo valor fijo.
+> Para texto encima de foto (subtítulo del hero + el link "← Back to...")
+> usar `var(--hero-muted)` (`rgba(255,255,255,0.82)`), nunca
+> `var(--muted)`. Ya aplicado en los 20 heroes con foto del sitio (home,
+> Services, Experts, Privacy, las 12 de AviatDo 360°).
 
 ### Breakpoints usados
 
@@ -326,7 +335,8 @@ patrón.
 5. ¿Todo lo que vive en la primera pantalla usa `.hero-in`, no
    `.reveal`?
 6. ¿Todo texto de cuerpo usa `--graphite` o un color con ≥4.5:1 sobre
-   su fondo — no `--muted` a la ligera?
+   su fondo — no `--muted` a la ligera? Si el texto va encima de una
+   foto (hero), usar `--hero-muted`, nunca `--muted`.
 7. ¿El nuevo efecto de hover/animación está también cubierto en el
    bloque `prefers-reduced-motion`?
 8. Verificar `document.documentElement.scrollWidth - clientWidth === 0`
