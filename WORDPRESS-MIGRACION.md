@@ -234,3 +234,28 @@ sección por migrada:
 Si en algún punto de la migración algo de esta lista queda descartado
 a propósito (por tiempo, por decisión del cliente, etc.), anotarlo acá
 mismo con la fecha — que sea una decisión explícita, no un olvido.
+
+---
+
+## 11. Pendiente — secciones que necesitan funcionalidad real, no solo portar el diseño
+
+A diferencia de todo lo anterior (que es "llevar este HTML/CSS a WP
+manteniendo el resultado"), estas secciones hoy son mockup estático y
+van a necesitar diseño de backend real durante la migración — falta
+definir el detalle (2026-09-12, marcado por Diego como "para trabajar
+más adelante"):
+
+- [ ] **Registro a la conferencia** (`aviatdo-360-register.html`) — hoy
+      es una tabla de tarifas fija sin lógica. Necesita: alta/cobro de
+      inscripciones, algún tipo de cupo o tier con disponibilidad
+      ("Sale ended" ya existe como estado visual para un tier), y
+      probablemente notificación/confirmación por email.
+- [ ] **Webinars de AviatDo Talks** (`#talks` en home) — hoy es una
+      única tarjeta estática ("Next session"). Necesita: listado
+      dinámico de próximas/pasadas sesiones, registro de asistentes, y
+      definir si el video/replay vive en el sitio o en un tercero
+      (YouTube, Vimeo, Zoom Webinars, etc.).
+
+Falta decidir alcance y herramienta para ambas (¿todo nativo en WP con
+un CPT + formulario, o integrar algo externo tipo Eventbrite/Calendly/
+Zoom?) antes de poder sumarlas al checklist de fidelidad del punto 10.
