@@ -593,6 +593,19 @@
       footer{ padding:60px 20px 24px !important; }
       footer div[style*="grid-template-columns:1.4fr"]{ grid-template-columns:1fr !important; gap:24px !important; }
       footer div[style*="grid-template-columns:1.4fr"] > div:first-child{ grid-column:auto; }
+
+      /* ---- AviatDo 360° pages — same single-column-stack treatment as
+             the rest of the site's multi-column content grids. These
+             sections previously had no .section-pad-x class at all, so
+             their 40px side padding never reduced on phone; that's fixed
+             at the HTML level (class added), this part only handles the
+             grids that need to stop being 2/3/4-across. ---- */
+      .s360-bg{ padding-left:20px !important; padding-right:20px !important; }
+      #s360-topics-grid, #s360-audience-grid, #s360-hotel-steps-grid, #s360-goodtoknow-grid, #s360-why-partner-grid{
+        grid-template-columns:1fr !important;
+      }
+      #s360-venue-intro{ grid-template-columns:1fr !important; gap:32px !important; }
+      .s360-day-card{ grid-template-columns:1fr !important; gap:10px !important; padding:24px !important; }
     }
 
     /* ---- Booking modal — mockup scheduling calendar opened from the hero

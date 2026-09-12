@@ -83,7 +83,7 @@
        contextual strip handles wayfinding once someone's already inside the
        360° section). Sticky so it's always reachable while reading a page. -->
   <nav aria-label="AviatDo 360° sections" style="position:sticky; top:0; z-index:15; background:var(--paper-white); border-bottom:1px solid var(--divider);">
-    <div style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; gap:32px; overflow-x:auto;">
+    <div class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; gap:32px; overflow-x:auto;">
       <a class="btn-focus s360-tab active" href="aviatdo-360.html">Overview</a>
       <a class="btn-focus s360-tab" href="aviatdo-360-venue.html">The Venue</a>
       <a class="btn-focus s360-tab" href="aviatdo-360-speakers.html">Speakers</a>
@@ -94,11 +94,11 @@
   </nav>
 
   <!-- ABOUT -->
-  <section style="max-width:1200px; margin:0 auto; padding:96px 40px 0;">
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 0;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">This is a working forum for training leaders</div>
     <h2 class="reveal section-h2" style="margin:0 0 20px; font-weight:900; letter-spacing:-0.03em; max-width:680px; animation-delay:.05s;">Three days, director-level discussions, a global perspective</h2>
     <p class="reveal" style="margin:0 0 40px; font-size:16px; line-height:1.6; color:var(--graphite); max-width:640px; animation-delay:.06s;">Practical DO's you can implement immediately across your aviation operations — this isn't a lecture series, it's a working session for the people who own training outcomes.</p>
-    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:24px;">
+    <div id="s360-topics-grid" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:24px;">
       <div class="reveal" style="display:flex; gap:12px; align-items:flex-start;">
         <span style="flex-shrink:0; width:8px; height:8px; border-radius:50%; background:var(--brand-red); margin-top:7px;"></span>
         <span style="font-size:15px; line-height:1.5;">Competency-based training and assessment (CBTA)</span>
@@ -127,7 +127,7 @@
   </section>
 
   <!-- TRACKS -->
-  <section style="max-width:1200px; margin:0 auto; padding:96px 40px;">
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Forum program overview</div>
     <div class="reveal" style="display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:40px; flex-wrap:wrap; gap:16px; animation-delay:.03s;">
       <h2 class="section-h2" style="margin:0; font-weight:900; letter-spacing:-0.03em;">Our 360° tracks</h2>
@@ -154,10 +154,10 @@
   </section>
 
   <!-- AUDIENCE -->
-  <section style="max-width:1200px; margin:0 auto; padding:0 40px 96px;">
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px 96px;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Who should attend</div>
     <h2 class="reveal section-h2" style="margin:0 0 32px; font-weight:900; letter-spacing:-0.03em; max-width:680px; animation-delay:.03s;">Directed at training directors, heads of training and senior leaders from</h2>
-    <div style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:20px;">
+    <div id="s360-audience-grid" style="display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; row-gap:20px;">
       <div class="reveal" style="padding:20px 0; border-top:1px solid var(--divider); font-size:15px; font-weight:600;">Airlines and flight training organizations</div>
       <div class="reveal" style="padding:20px 0; border-top:1px solid var(--divider); font-size:15px; font-weight:600; animation-delay:.03s;">ANSPs and ATC academies</div>
       <div class="reveal" style="padding:20px 0; border-top:1px solid var(--divider); font-size:15px; font-weight:600; animation-delay:.06s;">MROs and maintenance training organizations</div>
@@ -168,7 +168,7 @@
   </section>
 
   <!-- PARTNER CTA -->
-  <section style="max-width:1200px; margin:0 auto; padding:0 40px 132px;">
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px 132px;">
     <div class="reveal service-pill" style="background:var(--obsidian); display:flex; flex-wrap:wrap; align-items:center; justify-content:space-between; gap:20px 24px;">
       <div style="font-size:22px; font-weight:700; letter-spacing:-0.02em; color:var(--on-obsidian); line-height:1.3; max-width:480px; min-width:220px; flex:1 1 220px;">Be part of the conversation shaping global aviation training</div>
       <a class="btn-focus btn-primary" href="aviatdo-360-partner.html" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px; flex-shrink:0; white-space:nowrap;">Become a forum partner →</a>
