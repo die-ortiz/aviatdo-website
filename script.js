@@ -139,6 +139,46 @@ class Component extends DCLogic {
       requestAnimationFrame(smoothLoop);
     }
 
+    // --- Hash-link scrolling — native anchor jumps (href="#contact" etc.)
+    // silently do nothing here: the target lives inside #page-root, which is
+    // position:fixed on desktop for the smooth-scroll effect above, and
+    // browsers can't compute a native scroll offset for an element behind a
+    // fixed ancestor. The click still updates location.hash, so the bug
+    // reads as "the button does nothing" rather than an obvious error.
+    // Intercept same-page hash clicks and drive window.scrollTo ourselves;
+    // the existing smoothLoop already lerps #page-root toward
+    // window.scrollY every frame, so this gets the same eased motion as a
+    // real wheel scroll for free. Also handles landing on a page with a
+    // hash already in the URL (e.g. services.html linking to
+    // index.html#contact), where the browser's own on-load scroll-to-hash
+    // has the identical problem. ---
+    (function () {
+      const scrollToHash = (id, behavior) => {
+        const target = document.getElementById(id);
+        if (!target) return false;
+        const y = target.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y, left: 0, behavior: behavior || 'auto' });
+        return true;
+      };
+      document.querySelectorAll('a[href^="#"]:not([href="#"])').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          const id = link.getAttribute('href').slice(1);
+          if (scrollToHash(id)) {
+            e.preventDefault();
+            history.pushState(null, '', '#' + id);
+          }
+        });
+      });
+      if (location.hash.length > 1) {
+        const id = location.hash.slice(1);
+        scrollToHash(id);
+        // Layout (fonts/images/the smooth-spacer height) may still be
+        // settling right after the first attempt — redo it once everything
+        // has finished loading.
+        window.addEventListener('load', () => scrollToHash(id));
+      }
+    })();
+
     // --- Scroll progress bar — a status indicator, kept live regardless of reduced-motion ---
     const progressBar = document.getElementById('scroll-progress-bar');
     if (progressBar) {
