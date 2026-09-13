@@ -665,12 +665,12 @@
            #page-root in the markup (not nested inside it) specifically so
            its position:fixed stays pinned to the real viewport even while
            #page-root carries the smooth-scroll transform on desktop. ---- */
-    #booking-overlay{
+    #booking-overlay, #sponsor-overlay{
       position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
       padding:24px; background:rgba(0,0,0,0.6);
       opacity:0; visibility:hidden; transition:opacity .25s ease, visibility 0s linear .25s;
     }
-    #booking-overlay.is-open{ opacity:1; visibility:visible; transition:opacity .25s ease; }
+    #booking-overlay.is-open, #sponsor-overlay.is-open{ opacity:1; visibility:visible; transition:opacity .25s ease; }
     html.booking-open, html.booking-open body{ overflow:hidden; }
 
     .booking-modal{
@@ -684,7 +684,7 @@
          falls back to the browser's serif default. */
       font-family:var(--font-display); color:var(--obsidian);
     }
-    #booking-overlay.is-open .booking-modal{ transform:translateY(0) scale(1); }
+    #booking-overlay.is-open .booking-modal, #sponsor-overlay.is-open .booking-modal{ transform:translateY(0) scale(1); }
 
     .booking-close{
       position:absolute; top:20px; right:20px; width:36px; height:36px; border-radius:50%;
@@ -800,7 +800,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      #booking-overlay, .booking-modal{ transition:opacity .01s linear !important; transform:none !important; }
+      #booking-overlay, #sponsor-overlay, .booking-modal{ transition:opacity .01s linear !important; transform:none !important; }
     }
 
     @media (max-width: 640px){

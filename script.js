@@ -738,6 +738,80 @@ class Component extends DCLogic {
         if (success) success.hidden = false;
       });
     })();
+
+    // --- Sponsorship inquiry modal (AviatDo 360° Sponsorship page) — a
+    // single shared modal opened by every "Ask about..." CTA across the
+    // pricing tiers, Contributing add-ons and exhibit-space cards. The
+    // clicked card's package name (data-package) is written into every
+    // .sponsor-package-name element, so the same span feeds both the
+    // modal heading and the fake-success sentence. Same sibling-of-
+    // #page-root placement and no-backend mockup pattern as the booking
+    // modal and contact form above. ---
+    (function () {
+      const overlay = document.getElementById('sponsor-overlay');
+      if (!overlay) return;
+      const modal = overlay.querySelector('.booking-modal');
+      const closeBtn = document.getElementById('sponsor-close');
+      const form = document.getElementById('sponsor-form');
+      const successView = document.getElementById('sponsor-success-view');
+      const packageNameEls = document.querySelectorAll('.sponsor-package-name');
+      const emailInput = document.getElementById('sponsor-email');
+      const successEmailEl = document.getElementById('sponsor-success-email');
+      let lastFocused = null;
+
+      function resetForm() {
+        form.reset();
+        form.hidden = false;
+        successView.hidden = true;
+      }
+
+      function onKeydown(e) {
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href], input:not([disabled]), textarea:not([disabled])')).filter((el) => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      function openModal(packageName) {
+        lastFocused = document.activeElement;
+        resetForm();
+        packageNameEls.forEach((el) => { el.textContent = packageName; });
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('booking-open');
+        closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('booking-open');
+        document.removeEventListener('keydown', onKeydown);
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+
+      document.querySelectorAll('.sponsor-cta').forEach((btn) => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(btn.dataset.package || '');
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (successEmailEl) successEmailEl.textContent = (emailInput && emailInput.value) || (isES ? 'tu email' : 'your email');
+        form.hidden = true;
+        successView.hidden = false;
+      });
+    })();
   }
 }
 
