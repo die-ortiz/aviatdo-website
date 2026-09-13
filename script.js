@@ -675,6 +675,29 @@ class Component extends DCLogic {
         successView.hidden = false;
       });
     })();
+
+    // --- Contact form (#contact) — same "no real backend" mockup pattern
+    // as the booking modal above: submitting today would otherwise let the
+    // browser GET-submit the form to itself (index.html?FirstName=...),
+    // since there's no action/method/handler. Intercept it and show an
+    // inline success message instead. ---
+    (function () {
+      const form = document.getElementById('contact-form');
+      if (!form) return;
+      const fields = document.getElementById('contact-form-fields');
+      const success = document.getElementById('contact-success');
+      const emailInput = document.getElementById('contact-email');
+      const successEmail = document.getElementById('contact-success-email');
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (successEmail) successEmail.textContent = (emailInput && emailInput.value) || (isES ? 'tu email' : 'your email');
+        // fields carries an inline display:flex, which beats the [hidden]
+        // UA rule's display:none — set display directly instead of relying
+        // on the hidden property here.
+        if (fields) fields.style.display = 'none';
+        if (success) success.hidden = false;
+      });
+    })();
   }
 }
 

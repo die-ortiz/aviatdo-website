@@ -148,6 +148,18 @@ deberían ser páginas **hijas** de una página padre "AviatDo 360°":
 Definir esto ANTES de crear las páginas en WP evita tener que migrar
 permalinks después.
 
+**Contact, ¿página propia?** (evaluado 2026-09-12) — hoy "Contact us" es
+una sección dentro del home (`#contact`), no una página. Para el
+mockup estático se decidió dejarla así — no vale la pena reestructurar
+20 archivos por esto ahora. Pero en WordPress conviene sumarla como
+página propia (`/contact/`) porque:
+- Da una URL indexable para búsquedas de marca ("AviatDo contact").
+- Es el lugar natural para el schema.org `LocalBusiness`/`Organization`
+  (NAP: nombre, dirección, teléfono) que ayuda a Google Business
+  Profile y resultados locales.
+- En WP, multi-página ya es el default — es prácticamente gratis
+  agregarla ahí, a diferencia de en el mockup estático.
+
 ## 9. Design tokens → `theme.json` o stylesheet del theme
 
 - [ ] Portar los valores de `:root` en `style.css`
