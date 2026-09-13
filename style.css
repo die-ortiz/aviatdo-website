@@ -521,6 +521,13 @@
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:24% 30%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }
 
+      /* ---- AviatDo 360 registration fees table — stack name/price instead
+         of letting them wrap mid-row (wrap left the price sitting flush
+         left on some rows and flush right on others, depending on how the
+         name text happened to wrap). ---- */
+      .fee-row{ flex-direction:column !important; align-items:flex-start !important; }
+      .fee-row-price{ text-align:left !important; }
+
       /* ---- hero ---- */
       #hero{ min-height:clamp(560px,78vh,760px); }
       #hero > div:nth-child(3){ padding:108px 20px 56px !important; }
