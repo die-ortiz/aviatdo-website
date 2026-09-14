@@ -650,7 +650,7 @@
              at the HTML level (class added), this part only handles the
              grids that need to stop being 2/3/4-across. ---- */
       .s360-bg{ padding-left:20px !important; padding-right:20px !important; }
-      #s360-topics-grid, #s360-audience-grid, #s360-hotel-steps-grid, #s360-goodtoknow-grid, #s360-why-partner-grid, .sponsor-grid{
+      #s360-topics-grid, #s360-audience-grid, #s360-hotel-steps-grid, #s360-goodtoknow-grid, #s360-why-partner-grid, .sponsor-grid, .resources-grid{
         grid-template-columns:1fr !important;
       }
       #s360-venue-intro{ grid-template-columns:1fr !important; gap:32px !important; }
