@@ -650,9 +650,24 @@
              at the HTML level (class added), this part only handles the
              grids that need to stop being 2/3/4-across. ---- */
       .s360-bg{ padding-left:20px !important; padding-right:20px !important; }
-      #s360-topics-grid, #s360-audience-grid, #s360-hotel-steps-grid, #s360-goodtoknow-grid, #s360-why-partner-grid, .sponsor-grid, .resources-grid{
+      #s360-topics-grid, #s360-audience-grid, #s360-hotel-steps-grid, #s360-goodtoknow-grid, #s360-why-partner-grid, .sponsor-grid, .resources-grid, .about-reasons-grid{
         grid-template-columns:1fr !important;
       }
+
+      /* ---- About Us page — quick-facts strip mirrors #stats' own mobile
+             treatment (2-across with an alternating divider), and the
+             alliance-logo grid drops from 6 to 2 across so the tiles stay
+             a legible size instead of shrinking to slivers. ---- */
+      .about-facts-grid{
+        grid-template-columns:repeat(2,minmax(0,1fr)) !important; row-gap:28px !important;
+        padding-top:72px !important; padding-bottom:72px !important;
+        padding-left:20px !important; padding-right:20px !important;
+      }
+      .about-facts-grid > div{ padding:0 !important; border-right:none !important; }
+      .about-facts-grid > div:nth-child(odd){ padding-right:16px !important; border-right:1px solid #a3a9b0 !important; }
+      .about-facts-grid > div:nth-child(even){ padding-left:16px !important; }
+      .about-alliances-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
+      .about-facts-grid > div:last-child .num-xl{ font-size:28px !important; min-height:44px; display:flex; align-items:flex-end; }
       #s360-venue-intro{ grid-template-columns:1fr !important; gap:32px !important; }
       .venue-hero{ min-height:420px !important; }
       .venue-mosaic{ grid-template-columns:repeat(2,1fr) !important; grid-auto-rows:150px !important; }
