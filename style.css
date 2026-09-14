@@ -195,6 +195,7 @@
     .speakers-hero-photo{ background-image:url('images/speakers-hero.webp'); background-position:50% 32%; }
     .program-hero-photo{ background-image:url('images/program-hero.webp'); background-position:50% 32%; background-size:145%; }
     .about-hero-photo{ background-image:url('images/about-hero.webp'); background-position:50% 32%; }
+    .resources-hero-photo{ background-image:url('images/resources-hero.webp'); background-position:50% 32%; }
 
     /* partners marquee — pure CSS translateX loop, no JS. Track holds the logo set twice;
        looping to -50% is exactly one full set, so the wrap is seamless. */
@@ -522,6 +523,7 @@
       .speakers-hero-photo{ background-image:url('images/speakers-hero-mobile.webp'); background-position:center 20%; }
       .program-hero-photo{ background-image:url('images/program-hero-mobile.webp'); background-position:center 30%; }
       .about-hero-photo{ background-image:url('images/about-hero-mobile.webp'); background-position:center 20%; }
+      .resources-hero-photo{ background-image:url('images/resources-hero-mobile.webp'); background-position:center 20%; }
       .hero-parallax{ background-image:url('images/hero-team-mobile.webp'); background-position:center 15%; }
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:24% 30%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }

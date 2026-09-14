@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Register — AviatDO 360°</title>
+<title>Resources — AviatDo</title>
   <link rel="icon" href="images/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -19,6 +19,7 @@
 
 
 <div id="scroll-progress-bar" aria-hidden="true"></div>
+<!-- NAV — see the equivalent comment in about.html -->
 <header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
     <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img class="header-logo" src="images/aviatdo-logo-light.svg" data-light="images/aviatdo-logo-light.svg" data-dark="images/aviatdo-logo.svg" width="899" height="512" alt="AviatDo" style="height:38px; width:auto; display:block;"></a>
     <div id="nav-panel">
@@ -27,13 +28,13 @@
         <a class="btn-focus ghost-link" href="experts.html" style="color:var(--nav-ink); font-size:16px;">Our Experts</a>
         <a class="btn-focus ghost-link" href="about.html" style="color:var(--nav-ink); font-size:16px;">About</a>
         <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--nav-ink); font-size:16px;">AviatDo Talks</a>
-        <a class="btn-focus ghost-link" aria-current="page" href="aviatdo-360.html" style="color:var(--brand-red); font-size:16px;">AviatDo 360°</a>
+        <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--nav-ink); font-size:16px;">AviatDo 360°</a>
         <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--nav-ink); font-size:16px;">Partners</a>
-        <a class="btn-focus ghost-link" href="resources.html" style="color:var(--nav-ink); font-size:16px;">Resources</a>
+        <a class="btn-focus ghost-link" aria-current="page" href="resources.html" style="color:var(--brand-red); font-size:16px;">Resources</a>
       </nav>
       <div id="header-actions" style="display:flex; align-items:center; gap:20px;">
         <div class="btn-focus" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--nav-ink); display:flex; gap:4px;">
-          <span style="border-bottom:1px solid var(--nav-ink);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="aviatdo-360-register-es.html" style="opacity:0.7; color:var(--nav-ink);">ES</a>
+          <span style="border-bottom:1px solid var(--nav-ink);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="resources-es.html" style="opacity:0.7; color:var(--nav-ink);">ES</a>
         </div>
         <a class="btn-focus btn-obsidian" href="index.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding:8px 24px; border-radius:8px;">Contact us</a>
       </div>
@@ -48,95 +49,53 @@
 
 <div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
-  <section class="s360-bg" style="padding:168px 40px 64px; position:relative; overflow:hidden;">
-    <div class="s360-parallax"></div>
-    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.72) 35%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.22) 100%);" aria-hidden="true"></div>
+  <!-- PAGE HEADER — same graceful-degradation pattern as about.html:
+       images/resources-hero.webp doesn't exist yet, so this renders as the
+       plain dark background until that photo is supplied. -->
+  <section style="position:relative; overflow:hidden; background:#101116; padding:168px 40px 96px;">
+    <div class="page-header-photo resources-hero-photo" aria-hidden="true"></div>
+    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.6) 35%, rgba(0,0,0,0.35) 65%, rgba(0,0,0,0.15) 100%);" aria-hidden="true"></div>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 1000px 640px at 8% 10%, rgba(0,198,198,0.16), transparent 65%), radial-gradient(ellipse 900px 640px at 100% 100%, rgba(144,109,255,0.18), transparent 65%); pointer-events:none;" aria-hidden="true"></div>
     <div style="position:relative; max-width:1200px; margin:0 auto;">
-      <a class="btn-focus ghost-link hero-in" href="aviatdo-360.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← AviatDo 360°</a>
-      <div class="hero-in eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">Tue, Sep 28, 2027 · 9:00 AM</div>
-      <h1 class="hero-in section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:760px; animation-delay:.05s;">Register</h1>
-      <p class="hero-in" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--hero-muted); max-width:620px; animation-delay:.07s;">Barceló San Salvador, Av. Las Magnolias, San Salvador, El Salvador.</p>
+      <a class="btn-focus ghost-link reveal" href="index.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Back to home</a>
+      <div class="reveal eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">Downloads</div>
+      <h1 class="reveal section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:720px; animation-delay:.05s;">Resources</h1>
+      <p class="reveal" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--hero-muted); max-width:640px; animation-delay:.07s;">Fact sheets and partner materials you can share internally or forward to your team.</p>
     </div>
   </section>
 
-  <nav aria-label="AviatDo 360° sections" style="position:sticky; top:0; z-index:15; background:var(--paper-white); border-bottom:1px solid var(--divider);">
-    <div class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px; display:flex; gap:32px; overflow-x:auto;">
-      <a class="btn-focus s360-tab" href="aviatdo-360.html">Overview</a>
-      <a class="btn-focus s360-tab" href="aviatdo-360-venue.html">The Venue</a>
-      <a class="btn-focus s360-tab" href="aviatdo-360-speakers.html">Speakers</a>
-      <a class="btn-focus s360-tab" href="aviatdo-360-program.html">Program</a>
-      <a class="btn-focus s360-tab active" href="aviatdo-360-register.html">Register</a>
-      <a class="btn-focus s360-tab" href="aviatdo-360-partner.html">Sponsorship</a>
-    </div>
-  </nav>
+  <!-- DOWNLOADS -->
+  <section style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
+    <div style="display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:32px;">
 
-  <!-- REGISTRATION FEES — real ticket tiers/prices from the live aviatdo.com
-       event-details page. Visual only, no functional checkout/quantity
-       state (same treatment as the booking modal elsewhere on this site —
-       Diego's explicit choice for this mockup stage). -->
-  <section class="section-pad-x" style="max-width:900px; margin:0 auto; padding:96px 40px 132px;">
-    <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Registration fees</div>
-    <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Pick the ticket that fits your organization</h2>
-
-    <div style="display:flex; flex-direction:column; gap:1px; background:var(--divider); border-radius:16px; overflow:hidden; border:1px solid var(--divider);">
-
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div>
-          <div style="font-size:16px; font-weight:700;">Students</div>
-        </div>
-        <div class="fee-row-price" style="font-family:var(--font-headline); font-weight:900; font-size:20px;">$50</div>
-      </div>
-
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div>
-          <div style="font-size:16px; font-weight:700;">Government Entities and ANSPs</div>
-        </div>
-        <div class="fee-row-price" style="font-family:var(--font-headline); font-weight:900; font-size:20px;">$100</div>
-      </div>
-
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div>
-          <div style="font-size:16px; font-weight:700;">Universities &amp; Flight Schools</div>
-        </div>
-        <div class="fee-row-price" style="font-family:var(--font-headline); font-weight:900; font-size:20px;">$100</div>
-      </div>
-
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div style="max-width:520px;">
-          <div style="font-size:16px; font-weight:700;">Flight Operators, FBOs and MRO</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:4px;">Airlines, business, charter, helicopters — Air Force also welcome.</div>
-        </div>
-        <div class="fee-row-price" style="text-align:right;">
-          <div style="font-family:var(--font-headline); font-weight:900; font-size:20px; color:var(--muted); text-decoration:line-through; text-decoration-color:var(--muted);">$200</div>
-          <div style="font-family:var(--font-condensed); font-size:11px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--brand-red); margin-top:2px;">Sale ended</div>
+      <div class="reveal">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:16px; padding:32px; height:100%; display:flex; flex-direction:column;">
+          <div class="service-icon-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg></div>
+          <h2 style="margin:0 0 10px; font-size:22px; font-weight:900; letter-spacing:-0.02em;">AviatDo Fact-Sheet</h2>
+          <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:var(--graphite); flex-grow:1;">A one-page overview of AviatDo Consulting Group — offices, regional coverage, languages and areas of expertise.</p>
+          <div style="display:flex; flex-wrap:wrap; gap:10px;">
+            <a class="btn-focus btn-primary" href="images/pdf/Fact-sheet-Aviatdo-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
+            <a class="btn-focus ghost-link" href="images/pdf/Fact-sheet-Aviatdo-ES.pdf" target="_blank" rel="noopener" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px; border:1px solid var(--divider); color:var(--obsidian);">Download (Español)</a>
+          </div>
         </div>
       </div>
 
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div style="max-width:520px;">
-          <div style="font-size:16px; font-weight:700;">Industry Associations</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:4px;">ALTA, IATA, local BAR, and members of an international organisation for ATC, Pilot or Maintenance.</div>
+      <div class="reveal" style="animation-delay:.05s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:16px; padding:32px; height:100%; display:flex; flex-direction:column;">
+          <div class="service-icon-badge"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="8" y1="13" x2="16" y2="13"></line><line x1="8" y1="17" x2="16" y2="17"></line></svg></div>
+          <h2 style="margin:0 0 10px; font-size:22px; font-weight:900; letter-spacing:-0.02em;">Lagary ONE — Product Overview</h2>
+          <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:var(--graphite); flex-grow:1;">An overview of Lagary ONE, the aviation management platform from our technology alliance Lagary — single sign-on, a digital flight-ops workflow and an AI-powered assistant.</p>
+          <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
+            <a class="btn-focus btn-primary" href="images/pdf/lagary-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
+            <span style="font-size:12px; color:var(--muted);">Spanish version coming soon</span>
+          </div>
         </div>
-        <div class="fee-row-price" style="font-family:var(--font-headline); font-weight:900; font-size:20px;">$250</div>
       </div>
 
-      <div class="fee-row" style="background:var(--paper-white); padding:22px 28px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-        <div style="max-width:520px;">
-          <div style="font-size:16px; font-weight:700;">General Registration</div>
-          <div style="font-size:13px; color:var(--muted); margin-top:4px;">Aviation industry.</div>
-        </div>
-        <div class="fee-row-price" style="font-family:var(--font-headline); font-weight:900; font-size:20px;">$500</div>
-      </div>
-
-    </div>
-
-    <div class="reveal" style="margin-top:40px; text-align:center;">
-      <a class="btn-focus btn-primary" href="#" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:14px; letter-spacing:0.05em; text-transform:uppercase; padding:16px 40px; border-radius:8px;">Buy tickets</a>
     </div>
   </section>
 
-  <!-- FOOTER — same markup as index.html; links repointed so every
-       cross-page reference resolves correctly from this page. -->
+  <!-- FOOTER — same structure as the other inner pages; links repointed. -->
   <footer style="background:var(--obsidian); color:var(--muted); padding:80px 0 28px;">
     <div class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px;">
       <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:32px; padding-bottom:40px; border-bottom:1px solid #27272a;">
@@ -160,7 +119,7 @@
         </div>
         <div style="display:flex; flex-direction:column; gap:10px;">
           <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Resources</div>
-          <a class="btn-focus ghost-link" href="resources.html" style="color:var(--muted); font-size:14px;">Resources</a>
+          <a class="btn-focus ghost-link" href="resources.html" style="color:var(--muted); font-size:14px; opacity:0.6;">Resources</a>
           <a class="btn-focus ghost-link" href="index.html#talks" style="color:var(--muted); font-size:14px;">AviatDo Talks</a>
           <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--muted); font-size:14px;">AviatDO 360°</a>
         </div>
@@ -183,7 +142,7 @@
       <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:12px;">
         <span style="font-size:13px;">© 2026 AviatDo Consulting Group. All rights reserved.</span>
         <div class="btn-focus" style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; display:flex; gap:4px; color:var(--muted);">
-          <span style="border-bottom:1px solid var(--on-obsidian); color:var(--on-obsidian);">EN</span><span>/</span><a class="btn-focus ghost-link" href="aviatdo-360-register-es.html" style="color:var(--muted);">ES</a>
+          <span style="border-bottom:1px solid var(--on-obsidian); color:var(--on-obsidian);">EN</span><span>/</span><a class="btn-focus ghost-link" href="resources-es.html" style="color:var(--muted);">ES</a>
         </div>
       </div>
     </div>
