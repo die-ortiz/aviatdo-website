@@ -281,6 +281,40 @@ class Component extends DCLogic {
         });
       }, { passive: true });
       window.addEventListener('resize', recenter);
+
+      // Native overflow-x:auto only picks up wheel/trackpad/touch input —
+      // a plain mouse has no built-in way to drag-scroll it, so without
+      // this a desktop mouse user is stuck (trackpad/touch users never
+      // noticed anything was missing). Standard click-and-drag: track the
+      // pointer while the primary button is held, translate horizontal
+      // movement 1:1 into scrollLeft, and suppress the click that would
+      // otherwise fire on mouseup after a real drag (so dragging across a
+      // card doesn't also trigger it as a click).
+      let isDown = false;
+      let dragged = false;
+      let startX = 0;
+      let startScroll = 0;
+      expertsCarousel.addEventListener('mousedown', (e) => {
+        isDown = true;
+        dragged = false;
+        startX = e.pageX;
+        startScroll = expertsCarousel.scrollLeft;
+        expertsCarousel.classList.add('is-dragging');
+      });
+      window.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        const delta = e.pageX - startX;
+        if (Math.abs(delta) > 3) dragged = true;
+        expertsCarousel.scrollLeft = startScroll - delta;
+      });
+      window.addEventListener('mouseup', () => {
+        if (!isDown) return;
+        isDown = false;
+        expertsCarousel.classList.remove('is-dragging');
+      });
+      expertsCarousel.addEventListener('click', (e) => {
+        if (dragged) { e.preventDefault(); e.stopPropagation(); }
+      }, true);
     })();
 
     // --- Scroll-scrubbed reveal: opacity/translateY (and, where present, the
