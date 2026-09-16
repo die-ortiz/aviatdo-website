@@ -204,7 +204,7 @@
     .talks-cbta-hero-photo{ background-image:url('images/talks-cbta-cover.webp'); background-position:50% 55%; }
     .resources-hero-photo{ background-image:url('images/resources-hero.webp'); background-position:50% 32%; }
     .partners-hero-photo{ background-image:url('images/partners-hero.webp'); background-position:68% 38%; }
-    .about-reasons-bg{ background-image:url('images/about-reasons-bg.webp'); background-size:cover; background-position:right center; background-repeat:no-repeat; }
+    .about-reasons-bg{ background-image:url('images/about-reasons-bg.webp'); background-size:auto 100%; background-position:right center; background-repeat:no-repeat; }
 
     /* partners marquee — pure CSS translateX loop, no JS. Track holds the logo set twice;
        looping to -50% is exactly one full set, so the wrap is seamless. */
