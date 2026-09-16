@@ -135,6 +135,12 @@
     .social-icon-sm{ width:32px; height:32px; }
     .social-icon-sm svg{ width:14px; height:14px; }
 
+    /* Footer "built by" credit — dim by default so it doesn't compete
+       with the copyright line, full opacity on hover/focus. */
+    .footer-credit{ opacity:0.55; transition:opacity .2s ease; }
+    .footer-credit:hover, .footer-credit:focus-visible{ opacity:1; }
+    @media (prefers-reduced-motion: reduce){ .footer-credit{ transition:none !important; } }
+
     /* Section eyebrow labels — red pill, white text, uniform above every major heading */
     .eyebrow-pill{ display:inline-flex; align-items:center; background:var(--brand-red); color:var(--on-obsidian); border-radius:999px; padding:6px 16px; }
 
