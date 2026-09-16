@@ -195,6 +195,7 @@
     .speakers-hero-photo{ background-image:url('images/speakers-hero.webp'); background-position:50% 32%; }
     .program-hero-photo{ background-image:url('images/program-hero.webp'); background-position:50% 32%; background-size:145%; }
     .about-hero-photo{ background-image:url('images/about-hero.webp'); background-position:50% 32%; }
+    .talks-cbta-hero-photo{ background-image:url('images/talks-cbta-cover.webp'); background-position:50% 55%; }
     .resources-hero-photo{ background-image:url('images/resources-hero.webp'); background-position:50% 32%; }
     .about-reasons-bg{ background-image:url('images/about-reasons-bg.webp'); background-size:cover; background-position:top center; background-repeat:no-repeat; }
 
