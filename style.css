@@ -463,6 +463,13 @@
       .section-pad-x{ padding-left:24px !important; padding-right:24px !important; }
       #services > div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
       #why-aviatdo div[style*="grid-template-columns:repeat(3"]{ grid-template-columns:1fr !important; }
+      /* The three reasons stack to one column below this width, making
+         the section much taller — the background-size:auto height-locked
+         map would grow wide enough to sit under that stacked text, so
+         drop it here same as the mobile breakpoint does. about.html's
+         own "why aviatdo" section has no #why-aviatdo id and isn't
+         affected. */
+      #why-aviatdo.about-reasons-bg{ background-image:none; }
       #experts > div[style*="grid-template-columns:repeat(4"]{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; }
       #s360-tracks-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
       #s360-speakers-grid{ grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; }
