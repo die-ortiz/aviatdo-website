@@ -277,6 +277,17 @@
     #s360-speakers-grid .reveal:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
     #s360-speakers-grid .reveal:hover .expert-role{ transform:scale(1.05); }
 
+    /* AviatDo Talks — CBTA session speakers, same hover treatment again,
+       scoped to #talks-cbta-speakers-grid this time. */
+    #talks-cbta-speakers-grid .photo-wipe{ position:relative; transition:transform .45s cubic-bezier(.22,1,.36,1), box-shadow .45s ease; }
+    #talks-cbta-speakers-grid .photo-wipe img{ transition:transform .6s cubic-bezier(.22,1,.36,1); }
+    #talks-cbta-speakers-grid .expert-name{ transition:color .25s ease, transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
+    #talks-cbta-speakers-grid .expert-role{ transition:transform .25s cubic-bezier(.22,1,.36,1); transform-origin:left center; }
+    #talks-cbta-speakers-grid .reveal:hover .photo-wipe{ transform:translateY(-6px); box-shadow:0 24px 48px -16px rgba(0,0,0,0.28); }
+    #talks-cbta-speakers-grid .reveal:hover .photo-wipe img{ transform:scale(1.08); }
+    #talks-cbta-speakers-grid .reveal:hover .expert-name{ color:var(--brand-red); transform:scale(1.08); }
+    #talks-cbta-speakers-grid .reveal:hover .expert-role{ transform:scale(1.05); }
+
     /* AviatDo 360° sub-nav — persistent tab strip across the 5 forum pages,
        separate from the global site nav (see the "why sub-nav, not a
        dropdown" writeup). Sticky at top:0 rather than below the fixed
@@ -387,6 +398,10 @@
       #s360-speakers-grid .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
       #s360-speakers-grid .reveal:hover .photo-wipe img{ transform:none !important; }
       #s360-speakers-grid .reveal:hover .expert-name, #s360-speakers-grid .reveal:hover .expert-role{ transform:none !important; }
+      #talks-cbta-speakers-grid .photo-wipe, #talks-cbta-speakers-grid .photo-wipe img, #talks-cbta-speakers-grid .expert-name, #talks-cbta-speakers-grid .expert-role{ transition:none !important; }
+      #talks-cbta-speakers-grid .reveal:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
+      #talks-cbta-speakers-grid .reveal:hover .photo-wipe img{ transform:none !important; }
+      #talks-cbta-speakers-grid .reveal:hover .expert-name, #talks-cbta-speakers-grid .reveal:hover .expert-role{ transform:none !important; }
     }
 
     /* Why-AviatDo cards — a left-to-right slide instead of the generic fade+rise,

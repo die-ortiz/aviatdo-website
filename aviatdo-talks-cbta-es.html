@@ -62,17 +62,20 @@
     </div>
   </section>
 
-  <!-- SOBRE ESTA SESIÓN -->
-  <section class="section-pad-x" style="max-width:760px; margin:0 auto; padding:96px 40px 0;">
+  <!-- SOBRE ESTA SESIÓN — mismo contenedor de 1200px alineado a la
+       izquierda que el resto de las secciones (antes era una columna
+       de 760px centrada, que quedaba desalineada respecto al hero). -->
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 0;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Sobre esta sesión</div>
-    <p class="reveal" style="margin:0; font-size:16px; line-height:1.7; color:var(--graphite); animation-delay:.03s;">Este curso ofrece una introducción completa al Entrenamiento y Evaluación Basados en Competencias (CBTA), explorando sus diferencias clave respecto a los enfoques de entrenamiento tradicionales y su marco regulatorio bajo la documentación de la OACI. A través de casos reales de Norteamérica, Latinoamérica y el Caribe, los participantes analizarán cómo los primeros adoptantes implementaron CBTA y las lecciones aprendidas en el camino. El curso también aborda las ideas erróneas más comunes, compara CBTA con programas como AQP, y analiza los distintos niveles de madurez entre aerolíneas, ATOs y ANSPs.</p>
+    <p class="reveal" style="margin:0; font-size:16px; line-height:1.7; color:var(--graphite); max-width:700px; animation-delay:.03s;">Este curso ofrece una introducción completa al Entrenamiento y Evaluación Basados en Competencias (CBTA), explorando sus diferencias clave respecto a los enfoques de entrenamiento tradicionales y su marco regulatorio bajo la documentación de la OACI. A través de casos reales de Norteamérica, Latinoamérica y el Caribe, los participantes analizarán cómo los primeros adoptantes implementaron CBTA y las lecciones aprendidas en el camino. El curso también aborda las ideas erróneas más comunes, compara CBTA con programas como AQP, y analiza los distintos niveles de madurez entre aerolíneas, ATOs y ANSPs.</p>
   </section>
 
-  <!-- LOS SPEAKERS — grilla auto-fit, no necesita override de columnas
-       para mobile porque se reacomoda sola al achicarse el viewport. -->
-  <section class="section-pad-x" style="max-width:1100px; margin:0 auto; padding:96px 40px 132px;">
+  <!-- LOS SPEAKERS — id="talks-cbta-speakers-grid" reusa el mismo hover
+       de Our Experts vía sus propias reglas en style.css. Grilla
+       auto-fit, no necesita override de columnas para mobile. -->
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:32px;">Los speakers</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:28px;">
+    <div id="talks-cbta-speakers-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:28px;">
       <div class="reveal">
         <div class="photo-wipe" style="width:100%; aspect-ratio:4/5; border-radius:12px; overflow:hidden; margin-bottom:14px;">
           <img src="images/talks-cbta-oscar-luna.webp" width="500" height="594" loading="lazy" alt="Cap. Oscar Luna" style="width:100%; height:100%; object-fit:cover; display:block;">

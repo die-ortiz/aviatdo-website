@@ -64,19 +64,27 @@
     </div>
   </section>
 
-  <!-- ABOUT THIS SESSION -->
-  <section class="section-pad-x" style="max-width:760px; margin:0 auto; padding:96px 40px 0;">
+  <!-- ABOUT THIS SESSION — same 1200px-wide, left-aligned container as
+       every other section (was a narrower centered 760px column before,
+       which sat indented relative to the hero title above it). Only the
+       paragraph itself is width-capped, for readable line length. -->
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 0;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">About this session</div>
-    <p class="reveal" style="margin:0; font-size:16px; line-height:1.7; color:var(--graphite); animation-delay:.03s;">This course provides a comprehensive introduction to Competency-Based Training and Assessment (CBTA), exploring its key differences from traditional training approaches and its regulatory framework under ICAO documentation. Through real-world case studies from North America, Latin America, and the Caribbean, participants will examine how early adopters have implemented CBTA and the lessons learned along the way. The course also addresses common misconceptions, compares CBTA with programs like AQP, and analyzes the varying levels of maturity across airlines, ATOs, and ANSPs.</p>
+    <p class="reveal" style="margin:0; font-size:16px; line-height:1.7; color:var(--graphite); max-width:700px; animation-delay:.03s;">This course provides a comprehensive introduction to Competency-Based Training and Assessment (CBTA), exploring its key differences from traditional training approaches and its regulatory framework under ICAO documentation. Through real-world case studies from North America, Latin America, and the Caribbean, participants will examine how early adopters have implemented CBTA and the lessons learned along the way. The course also addresses common misconceptions, compares CBTA with programs like AQP, and analyzes the varying levels of maturity across airlines, ATOs, and ANSPs.</p>
   </section>
 
-  <!-- THE SPEAKERS — auto-fit grid, no separate mobile column-count
-       override needed since it reflows to fewer columns on its own as
-       the viewport narrows. Photos/names/titles sourced from the live
+  <!-- THE SPEAKERS — id="talks-cbta-speakers-grid" reuses the same
+       hover treatment as Our Experts (photo lift + shadow, name/role
+       scale to red) via its own scoped rules in style.css, same pattern
+       as #s360-speakers-grid — not id="experts" directly, since that id
+       also carries grid-column/padding overrides meant for that page.
+       Auto-fit grid, no separate mobile column-count override needed
+       since it reflows to fewer columns on its own as the viewport
+       narrows. Photos/names/titles sourced from the live
        aviatdo.com/news/cbta session page. -->
-  <section class="section-pad-x" style="max-width:1100px; margin:0 auto; padding:96px 40px 132px;">
+  <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
     <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:32px;">The speakers</div>
-    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:28px;">
+    <div id="talks-cbta-speakers-grid" style="display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:28px;">
       <div class="reveal">
         <div class="photo-wipe" style="width:100%; aspect-ratio:4/5; border-radius:12px; overflow:hidden; margin-bottom:14px;">
           <img src="images/talks-cbta-oscar-luna.webp" width="500" height="594" loading="lazy" alt="Cap. Oscar Luna" style="width:100%; height:100%; object-fit:cover; display:block;">
