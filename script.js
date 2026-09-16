@@ -559,14 +559,19 @@ class Component extends DCLogic {
       // How many upcoming days the horizontal strip renders — enough to
       // scroll through, no month-jump navigation needed.
       const STRIP_DAYS = 60;
-      // Same four specialists shown as the curated preview in #experts — the
-      // only ones the site has photos/bios for yet, so the picker doesn't
-      // reference people it can't actually show.
+      // All 8 team members from Our Experts — full roster, matching the
+      // dedicated experts.html page now that every one of them has a
+      // real photo/bio (originally just the 4-person #experts preview
+      // set, before Marina Pistarini and Allyson Kukel were added).
       const EXPERTS = [
         { name: 'Ana Persiani', role: isES ? 'Cofundadora y CEO' : 'Co-Founder & CEO', img: 'images/ana-persiani.jpg' },
         { name: 'Alfredo Sol', role: isES ? 'Estrategias Financieras' : 'Financial Strategies', img: 'images/alfredo-sol.jpg' },
         { name: 'Armando Portillo', role: isES ? 'Consultor de Operaciones de Vuelo' : 'Flight Ops Consultant', img: 'images/armando-portillo.jpg' },
         { name: 'Gessica Gomez', role: isES ? 'Consultora de Entrenamiento' : 'Training Consultant', img: 'images/gessica-gomez.jpg' },
+        { name: 'José Miguel Rivera', role: isES ? 'Consultor de Operaciones de Vuelo' : 'Flight Ops Consultant', img: 'images/jose-miguel-rivera.jpg' },
+        { name: 'Regina Blanco', role: isES ? 'Oficial de Comunicaciones' : 'Communications Officer', img: 'images/regina-blanco.jpg' },
+        { name: 'Marina Pistarini', role: isES ? 'Desarrollo de Negocios' : 'Business Development', img: 'images/marina-pistarini.jpg' },
+        { name: 'Allyson Kukel', role: isES ? 'Consultora' : 'Consultant', img: 'images/allyson-kukel.jpg' },
       ];
       const dateFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' });
       const dowFormatter = new Intl.DateTimeFormat(isES ? 'es-ES' : 'en-US', { weekday: 'short' });
