@@ -74,11 +74,75 @@
       <a class="btn-focus btn-primary" href="#" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Registrate aquí</a>
     </div>
 
-    <!-- Placeholder honesto en vez de inventar títulos/fechas que no
-         tenemos — solo la sesión del 6 de oct está confirmada; las otras
-         ~8 sesiones del ciclo 2026-27 todavía no fueron provistas. -->
-    <div class="reveal" style="margin-top:20px; border:1px dashed var(--divider); border-radius:16px; padding:28px 32px; animation-delay:.08s;">
-      <p style="margin:0; font-size:14px; line-height:1.6; color:var(--muted);">Las próximas sesiones del ciclo 2026–2027 se irán anunciando acá a medida que se agenden.</p>
+    <!-- SERIE COMPLETA — calendario confirmado 2026-27 (fuente:
+         aviatdo.com/news), sin la sesión del 6 de oct ya destacada
+         arriba. Filas apiladas con flex-wrap en vez de grid, así no
+         necesita un fix de columnas aparte para mobile. -->
+    <div class="reveal eyebrow-pill" style="margin-top:56px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">La serie completa 2026–2027</div>
+    <div style="display:flex; flex-direction:column; gap:14px;">
+      <div class="reveal">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">8 sep, 2026</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Panorama de la fuerza laboral aeronáutica en las Américas</div>
+            <div style="font-size:14px; color:var(--graphite);">Cerrando la brecha de talento en el ecosistema de aviación</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.02s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">10 nov, 2026</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Entrenamiento basado en datos y estandarización de instructores</div>
+            <div style="font-size:14px; color:var(--graphite);">Llevando CBTA a la práctica</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.04s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">8 dic, 2026</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Escalando CBTA en la aviación: implementación y expansión</div>
+            <div style="font-size:14px; color:var(--graphite);">De los pilotos a todo el ecosistema de aviación</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.06s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">21 ene, 2027</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Desempeño humano y entrenamiento neurocognitivo en aviación</div>
+            <div style="font-size:14px; color:var(--graphite);">Entrenando el cerebro para la seguridad y el desempeño</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.08s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">18 mar, 2027</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Sostenibilidad y entrenamiento centrado en las personas</div>
+            <div style="font-size:14px; color:var(--graphite);">Construyendo habilidades para un futuro de aviación más verde</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.1s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">25 may, 2027</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">Atraer y retener talento aeronáutico</div>
+            <div style="font-size:14px; color:var(--graphite);">Construyendo carreras en el ecosistema de aviación</div>
+          </div>
+        </div>
+      </div>
+      <div class="reveal" style="animation-delay:.12s;">
+        <div class="card-flat grow-card" style="background:var(--paper-white); border-radius:12px; padding:22px 28px; display:flex; align-items:baseline; gap:24px; flex-wrap:wrap;">
+          <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite); flex-shrink:0; width:96px;">22 jul, 2027</div>
+          <div style="flex:1; min-width:220px;">
+            <div style="font-size:17px; font-weight:800; letter-spacing:-0.01em; margin-bottom:4px;">La revolución del entrenamiento digital e inmersivo</div>
+            <div style="font-size:14px; color:var(--graphite);">IA, simulación y aprendizaje de nueva generación</div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -86,7 +150,7 @@
   <section style="background:var(--sand-beige); padding:96px 0;">
     <div class="section-pad-x" style="max-width:840px; margin:0 auto; padding:0 40px; text-align:center;">
       <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">La serie</div>
-      <p class="reveal" style="margin:0; font-size:20px; line-height:1.6; font-weight:600; letter-spacing:-0.01em; color:var(--obsidian); animation-delay:.05s;">AviatDo Talks reúne nueve sesiones en vivo por año — de septiembre de 2026 a julio de 2027 — con quienes marcan el rumbo de la seguridad, el entrenamiento y las operaciones en la aviación latinoamericana, en una conversación continua.</p>
+      <p class="reveal" style="margin:0; font-size:20px; line-height:1.6; font-weight:600; letter-spacing:-0.01em; color:var(--obsidian); animation-delay:.05s;">AviatDo Talks reúne ocho sesiones en vivo por año — de septiembre de 2026 a julio de 2027 — con quienes marcan el rumbo de la seguridad, el entrenamiento y las operaciones en la aviación latinoamericana, en una conversación continua.</p>
     </div>
   </section>
 
