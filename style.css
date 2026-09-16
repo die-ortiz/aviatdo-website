@@ -137,8 +137,8 @@
 
     /* Footer "built by" credit — dim by default so it doesn't compete
        with the copyright line, full opacity on hover/focus. */
-    .footer-credit{ opacity:0.55; transition:opacity .2s ease; }
-    .footer-credit:hover, .footer-credit:focus-visible{ opacity:1; }
+    .footer-credit{ display:inline-flex; transition:transform .2s ease; }
+    .footer-credit:hover, .footer-credit:focus-visible{ transform:translateY(-1px); }
     @media (prefers-reduced-motion: reduce){ .footer-credit{ transition:none !important; } }
 
     /* Section eyebrow labels — red pill, white text, uniform above every major heading */
