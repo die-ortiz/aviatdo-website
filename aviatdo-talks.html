@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Privacy Notice — AviatDo</title>
+<title>AviatDo Talks — AviatDo</title>
   <link rel="icon" href="images/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -19,30 +19,22 @@
 
 
 <div id="scroll-progress-bar" aria-hidden="true"></div>
-<!-- NAV — fixed to the viewport at all times, a sibling of #page-root
-     rather than nested inside it. #page-root gets its own position:fixed +
-     translate3d transform for the desktop smooth-scroll effect (see
-     script.js), so any position:fixed descendant of it would resolve
-     relative to that transformed box instead of the real viewport — the
-     same reason the booking modal lives outside #page-root. Floats
-     transparent over the hero/photo until the visitor scrolls, then gets a
-     solid background + shadow (.scrolled, toggled in script.js) so nav
-     text stays legible over whatever section is now behind it. -->
-<header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
-    <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img class="header-logo" src="images/aviatdo-logo-light.svg" data-light="images/aviatdo-logo-light.svg" data-dark="images/aviatdo-logo.svg" width="899" height="512" alt="AviatDo" style="height:38px; width:auto; display:block;"></a>
+<!-- NAV — see the equivalent comment in about.html -->
+<header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto; --nav-ink:var(--obsidian);">
+    <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img class="header-logo" src="images/aviatdo-logo.svg" data-light="images/aviatdo-logo.svg" data-dark="images/aviatdo-logo.svg" width="899" height="512" alt="AviatDo" style="height:38px; width:auto; display:block;"></a>
     <div id="nav-panel">
       <nav style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
         <a class="btn-focus ghost-link" href="services.html" style="color:var(--nav-ink); font-size:16px;">Services</a>
         <a class="btn-focus ghost-link" href="experts.html" style="color:var(--nav-ink); font-size:16px;">Our Experts</a>
         <a class="btn-focus ghost-link" href="about.html" style="color:var(--nav-ink); font-size:16px;">About</a>
-        <a class="btn-focus ghost-link" href="aviatdo-talks.html" style="color:var(--nav-ink); font-size:16px;">AviatDo Talks</a>
+        <a class="btn-focus ghost-link" aria-current="page" href="aviatdo-talks.html" style="color:var(--brand-red); font-size:16px;">AviatDo Talks</a>
         <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--nav-ink); font-size:16px;">AviatDo 360°</a>
         <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--nav-ink); font-size:16px;">Partners</a>
         <a class="btn-focus ghost-link" href="resources.html" style="color:var(--nav-ink); font-size:16px;">Resources</a>
       </nav>
       <div id="header-actions" style="display:flex; align-items:center; gap:20px;">
         <div class="btn-focus" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; color:var(--nav-ink); display:flex; gap:4px;">
-          <span style="border-bottom:1px solid var(--nav-ink);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="privacy-es.html" style="opacity:0.7; color:var(--nav-ink);">ES</a>
+          <span style="border-bottom:1px solid var(--nav-ink);">EN</span><span style="opacity:0.5;">/</span><a class="btn-focus ghost-link" href="aviatdo-talks-es.html" style="opacity:0.7; color:var(--nav-ink);">ES</a>
         </div>
         <a class="btn-focus btn-obsidian" href="index.html#contact" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.06em; text-transform:uppercase; padding:8px 24px; border-radius:8px;">Contact us</a>
       </div>
@@ -57,62 +49,55 @@
 
 <div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
-  <!-- PAGE HEADER — same photo + gradient + radial-blob recipe as
-       services.html/experts.html. A solo portrait (not the group/team
-       photos used elsewhere) — privacy is about individual discretion,
-       not teamwork, so the register shifts intentionally. -->
-  <section style="position:relative; overflow:hidden; background:#101116; padding:168px 40px 96px;">
-    <div class="page-header-photo privacy-hero-photo" aria-hidden="true"></div>
-    <div style="position:absolute; inset:0; background:linear-gradient(100deg, rgba(0,0,0,0.92) 0%, rgba(0,0,0,0.75) 35%, rgba(0,0,0,0.45) 65%, rgba(0,0,0,0.2) 100%);" aria-hidden="true"></div>
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 1000px 640px at 8% 10%, rgba(0,198,198,0.16), transparent 65%), radial-gradient(ellipse 900px 640px at 100% 100%, rgba(144,109,255,0.18), transparent 65%); pointer-events:none;" aria-hidden="true"></div>
+  <!-- PAGE HEADER — reuses the home page's own .talks-bg light-frosted
+       treatment (photo + white gradient + faint teal/violet radial
+       accents) instead of the dark page-header pattern the other inner
+       pages use, so this page reads as a continuation of the home
+       teaser's visual identity rather than folding into the generic dark
+       subpage look. Text sits in --obsidian, not --on-obsidian, since
+       the overlay is light here. -->
+  <section class="talks-bg" style="padding:168px 40px 96px; position:relative; overflow:hidden;">
+    <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(255,255,255,0.94) 0%, rgba(255,255,255,0.78) 38%, rgba(255,255,255,0.35) 68%, rgba(255,255,255,0.12) 100%), linear-gradient(120deg, rgba(0,198,198,0.06), rgba(144,109,255,0.06) 55%, transparent 100%); pointer-events:none;"></div>
     <div style="position:relative; max-width:1200px; margin:0 auto;">
-      <a class="btn-focus ghost-link reveal" href="index.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Back to home</a>
-      <div class="reveal eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">Legal</div>
-      <h1 class="reveal section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:720px; animation-delay:.05s;">Privacy Notice</h1>
+      <a class="btn-focus ghost-link reveal" href="index.html" style="color:var(--graphite); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Back to home</a>
+      <div class="reveal eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">AviatDo Talks</div>
+      <h1 class="reveal section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--obsidian); max-width:720px; animation-delay:.05s;">Where knowledge takes flight</h1>
+      <p class="reveal" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--graphite); max-width:620px; animation-delay:.07s;">An ongoing webinar series for the Latin American aviation community — live conversations with the people shaping safety, training and operations across the region.</p>
     </div>
   </section>
 
-  <!-- PRIVACY CONTENT — text migrated from the live aviatdo.com privacy
-       page (/about-6), same wording, reorganized into two labeled,
-       icon-anchored sections inside a card instead of bare paragraphs. -->
-  <section style="background:#f5f2ec; padding:96px 40px 132px;">
-    <div style="max-width:820px; margin:0 auto;">
-
-      <div class="reveal" style="display:flex; align-items:center; gap:10px; margin-bottom:14px;">
-        <span style="width:8px; height:8px; border-radius:50%; background:var(--brand-red); display:inline-block;"></span>
-        <span style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.05em; text-transform:uppercase; color:var(--graphite);">Effective until superseded by a future update</span>
+  <!-- NEXT SESSION — the same spotlight card as the home preview, given
+       more room to breathe as this page's main content instead of being
+       squeezed into a two-column grid. -->
+  <section class="section-pad-x" style="max-width:840px; margin:0 auto; padding:96px 40px;">
+    <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Next session</div>
+    <div class="reveal card-flat card-sheen sheen-dark" style="background:var(--paper-white); border-radius:16px; padding:40px; animation-delay:.05s;">
+      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+        <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--brand-red);">Live webinar</div>
+        <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Oct 6, 2026</div>
       </div>
+      <h2 style="margin:0 0 10px; font-size:26px; font-weight:800; letter-spacing:-0.015em; line-height:1.25;">CBTA Foundations, Regulatory Framework and Current Adoption in the Americas</h2>
+      <p style="margin:0 0 28px; font-size:16px; color:var(--graphite); line-height:1.5;">From Concept to Early Implementation</p>
+      <a class="btn-focus btn-primary" href="#" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 28px; border-radius:8px;">Register here</a>
+    </div>
 
-      <div class="reveal card-flat" style="background:var(--paper-white); border-radius:24px; padding:56px; box-shadow:0 20px 48px -24px rgba(0,0,0,0.18); animation-delay:.03s;">
-        <p style="margin:0 0 40px; font-size:22px; font-weight:800; letter-spacing:-0.01em; color:var(--obsidian);">Hey there! Here's the short version and the full version.</p>
-
-        <div style="display:grid; grid-template-columns:44px 1fr; gap:20px; align-items:start; padding-bottom:32px; margin-bottom:32px; border-bottom:1px solid var(--divider);">
-          <div class="service-icon-badge" style="margin-bottom:0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3.2v5.3c0 4.8-3 8.6-7 9.5-4-.9-7-4.7-7-9.5V6.2L12 3z"></path><path d="M9 12l2 2 4-4"></path></svg>
-          </div>
-          <div>
-            <h2 style="margin:0 0 10px; font-size:19px; font-weight:800; letter-spacing:-0.01em; color:var(--obsidian);">Our commitment to your privacy</h2>
-            <p style="margin:0; font-size:15.5px; line-height:1.7; color:var(--graphite);">AviatDo values its users' privacy. This Privacy Policy ("Policy") will help you understand how we collect and use personal information from those who visit our website or use our online facilities and services, and what we will and will not do with the information we collect. Our Policy has been designed and created to ensure those affiliated with our commitment, and realize our obligation not only to meet but exceed most existing privacy standards.</p>
-          </div>
-        </div>
-
-        <div style="display:grid; grid-template-columns:44px 1fr; gap:20px; align-items:start;">
-          <div class="service-icon-badge" style="margin-bottom:0;">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--brand-red)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 12a8.5 8.5 0 0 1 14.5-6"></path><path d="M20.5 12A8.5 8.5 0 0 1 6 18"></path><path d="M18 3v3.5h-3.5"></path><path d="M6 21v-3.5h3.5"></path></svg>
-          </div>
-          <div>
-            <h2 style="margin:0 0 10px; font-size:19px; font-weight:800; letter-spacing:-0.01em; color:var(--obsidian);">Changes to this policy</h2>
-            <p style="margin:0; font-size:15.5px; line-height:1.7; color:var(--graphite);">We reserve the right to change this Policy at any time. If you want to ensure that you are up to date with the latest changes, we advise you to visit this page frequently. If at any point in time, AviatDo decides to make use of any personally identifiable information on file, in a manner vastly different from that which was stated when this information was initially collected, the user or users shall be promptly notified by email. Users at that time shall have the option as to whether to permit the use of their information in this separate manner.</p>
-          </div>
-        </div>
-      </div>
-
-      <p class="reveal" style="margin:28px 0 0; font-size:13.5px; line-height:1.6; color:var(--graphite); animation-delay:.06s;">Have questions about this policy? <a class="btn-focus ghost-link" href="mailto:hello@aviatdo.com" style="color:var(--brand-red); font-weight:600;">Talk to us</a> — <a class="btn-focus ghost-link" href="mailto:hello@aviatdo.com" style="color:var(--brand-red); font-weight:600;">hello@aviatdo.com</a>.</p>
+    <!-- Honest placeholder rather than inventing session titles/dates we
+         don't have — only the Oct 6 session is confirmed content; the
+         other ~8 sessions in the 2026-27 run haven't been provided yet. -->
+    <div class="reveal" style="margin-top:20px; border:1px dashed var(--divider); border-radius:16px; padding:28px 32px; animation-delay:.08s;">
+      <p style="margin:0; font-size:14px; line-height:1.6; color:var(--muted);">More sessions in the 2026–2027 series will be announced here as they're scheduled.</p>
     </div>
   </section>
 
-  <!-- FOOTER — same markup as the other sub-pages; links repointed so
-       every cross-page reference resolves correctly from this page. -->
+  <!-- ABOUT THE SERIES -->
+  <section style="background:var(--sand-beige); padding:96px 0;">
+    <div class="section-pad-x" style="max-width:840px; margin:0 auto; padding:0 40px; text-align:center;">
+      <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">The series</div>
+      <p class="reveal" style="margin:0; font-size:20px; line-height:1.6; font-weight:600; letter-spacing:-0.01em; color:var(--obsidian); animation-delay:.05s;">AviatDo Talks runs nine live sessions a year — September 2026 through July 2027 — bringing the people shaping safety, training and operations across Latin American aviation into one ongoing conversation.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER — same markup as the other inner pages; links repointed. -->
   <footer style="background:var(--obsidian); color:var(--muted); padding:80px 0 28px;">
     <div class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:0 40px;">
       <div style="display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr 1fr; gap:32px; padding-bottom:40px; border-bottom:1px solid #27272a;">
@@ -125,7 +110,7 @@
           <a class="btn-focus ghost-link" href="about.html" style="color:var(--muted); font-size:14px;">About us</a>
           <a class="btn-focus ghost-link" href="experts.html" style="color:var(--muted); font-size:14px;">Our Experts</a>
           <a class="btn-focus ghost-link" href="index.html#partners" style="color:var(--muted); font-size:14px;">Our Partners</a>
-          <a class="btn-focus ghost-link" href="privacy.html" style="color:var(--brand-red); font-size:14px;">Privacy Notice</a>
+          <a class="btn-focus ghost-link" href="privacy.html" style="color:var(--muted); font-size:14px;">Privacy Notice</a>
         </div>
         <div style="display:flex; flex-direction:column; gap:10px;">
           <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Services</div>
@@ -137,7 +122,7 @@
         <div style="display:flex; flex-direction:column; gap:10px;">
           <div style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--on-obsidian); margin-bottom:4px;">Resources</div>
           <a class="btn-focus ghost-link" href="resources.html" style="color:var(--muted); font-size:14px;">Resources</a>
-          <a class="btn-focus ghost-link" href="aviatdo-talks.html" style="color:var(--muted); font-size:14px;">AviatDo Talks</a>
+          <a class="btn-focus ghost-link" href="aviatdo-talks.html" style="color:var(--muted); font-size:14px; opacity:0.6;">AviatDo Talks</a>
           <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--muted); font-size:14px;">AviatDO 360°</a>
         </div>
         <div style="display:flex; flex-direction:column; gap:10px;">
@@ -159,7 +144,7 @@
       <div style="display:flex; justify-content:space-between; align-items:center; padding-top:24px; flex-wrap:wrap; gap:12px;">
         <span style="font-size:13px;">© 2026 AviatDo Consulting Group. All rights reserved.</span>
         <div class="btn-focus" style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.04em; display:flex; gap:4px; color:var(--muted);">
-          <span style="border-bottom:1px solid var(--on-obsidian); color:var(--on-obsidian);">EN</span><span>/</span><a class="btn-focus ghost-link" href="privacy-es.html" style="color:var(--muted);">ES</a>
+          <span style="border-bottom:1px solid var(--on-obsidian); color:var(--on-obsidian);">EN</span><span>/</span><a class="btn-focus ghost-link" href="aviatdo-talks-es.html" style="color:var(--muted);">ES</a>
         </div>
       </div>
     </div>
