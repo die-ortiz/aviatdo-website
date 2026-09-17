@@ -149,9 +149,11 @@
     .plane-float{animation:planeFloat 4.5s ease-in-out infinite; transform-box:fill-box; transform-origin:center;}
     @keyframes planeFloat{ 0%,100%{transform:translateY(0);} 50%{transform:translateY(-7px);} }
 
-    .hero-in{opacity:0; transform:translateY(18px); animation:heroIn .8s cubic-bezier(.16,1,.3,1) forwards;}
-    .hero-in.d1{animation-delay:.05s;} .hero-in.d2{animation-delay:.16s;} .hero-in.d3{animation-delay:.28s;} .hero-in.d4{animation-delay:.4s;}
-    @keyframes heroIn{ to{opacity:1; transform:translateY(0);} }
+    /* Hero banners never fade/rise/wipe in — they should read immediately
+       on load, unlike the scroll-scrubbed .reveal used further down the
+       page. animation left at none rather than deleting the rule, so the
+       .d1–.d4 delay classes already in the markup stay harmless no-ops. */
+    .hero-in{opacity:1; transform:none; animation:none;}
 
     /* Hero H1 — progressive fill-in reveal instead of the generic fade+rise: an
        outlined "ghost" pass of the headline sits underneath, and a solid pass
@@ -163,12 +165,13 @@
     .fill-h1{ display:grid; grid-template-columns:1fr; color:transparent; }
     .fill-h1 .fill-outline, .fill-h1 .fill-solid{ grid-area:1/1; }
     .fill-h1 .fw{ display:inline-block; }
-    .fill-h1 .fill-outline{ color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.34); }
-    .fill-h1 .fill-outline .fw{ opacity:0; animation:fillOutlineIn .45s ease-out forwards; animation-delay:calc(.05s + var(--i) * .11s); }
-    @keyframes fillOutlineIn{ to{ opacity:1; } }
+    /* Hero banners never fade/wipe in (see .hero-in above) — the outline
+       pass is hidden outright rather than animated in, and the solid pass
+       shows fully clipped-open from the start instead of wiping word by
+       word. */
+    .fill-h1 .fill-outline{ display:none; }
     .fill-h1 .fill-solid{ color:var(--on-obsidian); }
-    .fill-h1 .fill-solid .fw{ clip-path:inset(-25% 100% -25% -3%); animation:fillWipe .6s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.15s + var(--i) * .13s); }
-    @keyframes fillWipe{ to{ clip-path:inset(-25% -6% -25% -3%); } }
+    .fill-h1 .fill-solid .fw{ clip-path:none; animation:none; }
 
     /* Scroll-scrubbed reveal: opacity/translateY are set directly from scroll
        position in JS (see the component script below), so the motion is
@@ -178,6 +181,12 @@
     /* Stats row — the count-up should read immediately, not fade in like the
        rest of the page's scroll reveals; only the digits animate. */
     .reveal.reveal-no-fade{opacity:1; transform:none;}
+    /* Hero banners never fade in — same rule as .hero-in above, just for
+       the sub-pages that use the scroll-scrubbed .reveal system instead
+       (their dark photo header, and AviatDo Talks' light one). The JS
+       reveal loop sets these via inline style every frame; !important is
+       what lets a stylesheet rule still win over that. */
+    .page-header-hero .reveal, .talks-bg .reveal{opacity:1 !important; transform:none !important;}
 
     @media (prefers-reduced-motion: reduce){
       .hero-in, .reveal{animation:none !important; opacity:1 !important; transform:none !important;}
