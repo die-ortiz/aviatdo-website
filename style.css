@@ -247,6 +247,7 @@
     .s360-bg{ position:relative; }
     .s360-parallax{ position:absolute; inset:-12% 0; background-color:var(--obsidian); background-image:url('images/aviatdo-360-bg.jpg'); background-size:cover; background-position:42% 42%; will-change:transform; }
     .s360-parallax.sponsorship-hero-photo{ background-image:url('images/sponsorship-hero.webp'); background-position:62% 38%; }
+    .s360-parallax.register-hero-photo{ background-image:url('images/register-hero.webp'); background-position:58% 40%; }
 
     /* The Venue hero — real drone footage of San Salvador in place of the
        shared s360-bg photo, since this is the one 360° page where the
@@ -573,6 +574,7 @@
       .talks-bg{ background-image:url('images/aviatdo-talks-bg-mobile.webp'); background-position:24% 30%; }
       .s360-parallax{ background-image:url('images/aviatdo-360-bg-mobile.jpg'); background-position:50% 30%; }
       .s360-parallax.sponsorship-hero-photo{ background-image:url('images/sponsorship-hero-mobile.webp'); background-position:38% 30%; }
+      .s360-parallax.register-hero-photo{ background-image:url('images/register-hero-mobile.webp'); background-position:32% 30%; }
 
       /* ---- AviatDo 360 registration fees table — stack name/price instead
          of letting them wrap mid-row (wrap left the price sitting flush
