@@ -77,8 +77,8 @@
             <h2 style="margin:0 0 10px; font-size:22px; font-weight:900; letter-spacing:-0.02em;">AviatDo Fact-Sheet</h2>
             <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:var(--graphite); flex-grow:1;">A one-page overview of AviatDo Consulting Group — offices, regional coverage, languages and areas of expertise.</p>
             <div style="display:flex; flex-wrap:wrap; gap:10px;">
-              <a class="btn-focus btn-primary" href="images/pdf/Fact-sheet-Aviatdo-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
-              <a class="btn-focus" href="images/pdf/Fact-sheet-Aviatdo-ES.pdf" target="_blank" rel="noopener" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px; border:1px solid var(--divider); color:var(--obsidian);">Download (Español)</a>
+              <a class="btn-focus btn-primary" data-resource-gate href="images/pdf/Fact-sheet-Aviatdo-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
+              <a class="btn-focus" data-resource-gate href="images/pdf/Fact-sheet-Aviatdo-ES.pdf" target="_blank" rel="noopener" style="font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px; border:1px solid var(--divider); color:var(--obsidian);">Download (Español)</a>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@
             <h2 style="margin:0 0 10px; font-size:22px; font-weight:900; letter-spacing:-0.02em;">Lagary-One Pager Brochure</h2>
             <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:var(--graphite); flex-grow:1;">An overview of Lagary ONE, the aviation management platform from our technology alliance Lagary — single sign-on, a digital flight-ops workflow and an AI-powered assistant.</p>
             <div style="display:flex; flex-wrap:wrap; align-items:center; gap:10px;">
-              <a class="btn-focus btn-primary" href="images/pdf/lagary-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
+              <a class="btn-focus btn-primary" data-resource-gate href="images/pdf/lagary-EN.pdf" target="_blank" rel="noopener" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:12px; letter-spacing:0.05em; text-transform:uppercase; padding:10px 22px; border-radius:999px;">Download (English)</a>
               <span style="font-size:12px; color:var(--muted);">Spanish version coming soon</span>
             </div>
           </div>
@@ -161,6 +161,40 @@
     </div>
   </footer>
 
+</div>
+
+<!-- RESOURCE DOWNLOAD GATE — a single shared modal opened by every
+     "Download" link on this page. Same no-backend mockup pattern as the
+     booking modal and the sponsorship inquiry modal: asks for an email,
+     then opens the real PDF that was clicked. Sibling of #page-root, same
+     reason as those other overlays (see the comment on #booking-overlay
+     in style.css). -->
+<div id="resource-gate-overlay" role="dialog" aria-modal="true" aria-labelledby="resource-gate-title" aria-hidden="true">
+  <div class="booking-modal" style="max-width:440px;">
+    <button type="button" id="resource-gate-close" class="btn-focus booking-close" aria-label="Close download dialog">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 5l14 14M19 5L5 19"></path></svg>
+    </button>
+
+    <form id="resource-gate-form">
+      <div class="eyebrow-pill" style="font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:16px;">Download</div>
+      <h3 id="resource-gate-title" style="margin:0 0 8px; font-family:var(--font-headline); font-size:22px; font-weight:800; letter-spacing:-0.02em;">Enter your email to continue</h3>
+      <p style="margin:0 0 24px; font-size:14px; line-height:1.5; color:var(--graphite);">We'll use this to keep you posted on new resources — no spam.</p>
+
+      <div class="booking-field" style="margin-bottom:28px;">
+        <label class="booking-field-label" for="resource-gate-email">Email</label>
+        <input class="booking-input" type="email" id="resource-gate-email" placeholder="you@company.com" required>
+      </div>
+      <button class="btn-focus btn-obsidian" type="submit" style="width:100%; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:14px; letter-spacing:0.05em; text-transform:uppercase; padding:14px; border-radius:8px;">Continue to download</button>
+    </form>
+
+    <div id="resource-gate-success-view" hidden style="text-align:center; padding:12px 0 8px;">
+      <div class="booking-success-icon" style="margin:0 auto 20px;" aria-hidden="true">
+        <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="var(--on-obsidian)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l5 5L20 6"></path></svg>
+      </div>
+      <h3 style="margin:0 0 8px; font-family:var(--font-headline); font-size:22px; font-weight:800; letter-spacing:-0.02em;">Download started</h3>
+      <p style="margin:0; font-size:14px; line-height:1.5; color:var(--graphite);">If it didn't open automatically, <a id="resource-gate-fallback-link" href="#" target="_blank" rel="noopener" style="color:var(--obsidian); font-weight:600;">click here</a>.</p>
+    </div>
+  </div>
 </div>
 
 <script src="script.js"></script>

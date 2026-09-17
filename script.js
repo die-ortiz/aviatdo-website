@@ -851,6 +851,79 @@ class Component extends DCLogic {
         successView.hidden = false;
       });
     })();
+
+    // --- Resource download gate (Resources page) — a single shared modal
+    // opened by every "Download" link, across both cards. Asks for an
+    // email, then opens the real PDF the visitor originally clicked.
+    // No backend behind the email capture (same mockup scope as the
+    // booking and sponsorship modals above); the download itself is real.
+    (function () {
+      const overlay = document.getElementById('resource-gate-overlay');
+      if (!overlay) return;
+      const modal = overlay.querySelector('.booking-modal');
+      const closeBtn = document.getElementById('resource-gate-close');
+      const form = document.getElementById('resource-gate-form');
+      const successView = document.getElementById('resource-gate-success-view');
+      const fallbackLink = document.getElementById('resource-gate-fallback-link');
+      let lastFocused = null;
+      let pendingUrl = null;
+
+      function resetForm() {
+        form.reset();
+        form.hidden = false;
+        successView.hidden = true;
+      }
+
+      function onKeydown(e) {
+        if (e.key === 'Escape') { closeModal(); return; }
+        if (e.key !== 'Tab') return;
+        const focusable = Array.from(modal.querySelectorAll('button:not([disabled]), [href], input:not([disabled])')).filter((el) => el.offsetParent !== null);
+        if (!focusable.length) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+
+      function openModal(url) {
+        lastFocused = document.activeElement;
+        pendingUrl = url;
+        resetForm();
+        overlay.classList.add('is-open');
+        overlay.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('booking-open');
+        closeBtn.focus();
+        document.addEventListener('keydown', onKeydown);
+      }
+
+      function closeModal() {
+        overlay.classList.remove('is-open');
+        overlay.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('booking-open');
+        document.removeEventListener('keydown', onKeydown);
+        if (lastFocused && lastFocused.focus) lastFocused.focus();
+      }
+
+      document.querySelectorAll('[data-resource-gate]').forEach((link) => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          openModal(link.href);
+        });
+      });
+
+      closeBtn.addEventListener('click', closeModal);
+      overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (pendingUrl) {
+          window.open(pendingUrl, '_blank', 'noopener');
+          if (fallbackLink) fallbackLink.href = pendingUrl;
+        }
+        form.hidden = true;
+        successView.hidden = false;
+      });
+    })();
   }
 }
 

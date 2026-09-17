@@ -262,7 +262,7 @@
     .venue-mosaic .tile:hover .tile-caption{ opacity:1; transform:translateY(0); }
     @media (prefers-reduced-motion: reduce){ .venue-mosaic .tile img{ transition:none; } .venue-mosaic .tile-caption{ transition:none; } }
 
-    .track-pill{ font-family:var(--font-condensed); font-size:12px; font-weight:600; letter-spacing:0.03em; color:var(--on-obsidian); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:8px 16px; white-space:nowrap; }
+    .track-pill{ font-family:var(--font-condensed); font-size:14px; font-weight:600; letter-spacing:0.03em; color:var(--on-obsidian); background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:10px 18px; white-space:nowrap; }
 
     /* AviatDo 360° Overview — the 4 real forum tracks, tall photo cards
        matching the live aviatdo.com layout (photo + label, no description). */
@@ -586,7 +586,7 @@
       .testi-num{ font-size:32px !important; }
       .eyebrow-pill{ padding:5px 14px; font-size:12px !important; }
       .accent-bar{ width:52px; margin-top:12px; }
-      .track-pill{ font-size:11.5px; padding:7px 14px; }
+      .track-pill{ font-size:13px; padding:9px 16px; }
       .track-photo-card{ aspect-ratio:16/13; }
       .social-icon{ width:34px; height:34px; }
       .social-icon-brand{ width:34px; height:34px; }
@@ -719,12 +719,12 @@
            #page-root in the markup (not nested inside it) specifically so
            its position:fixed stays pinned to the real viewport even while
            #page-root carries the smooth-scroll transform on desktop. ---- */
-    #booking-overlay, #sponsor-overlay{
+    #booking-overlay, #sponsor-overlay, #resource-gate-overlay{
       position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center;
       padding:24px; background:rgba(0,0,0,0.6);
       opacity:0; visibility:hidden; transition:opacity .25s ease, visibility 0s linear .25s;
     }
-    #booking-overlay.is-open, #sponsor-overlay.is-open{ opacity:1; visibility:visible; transition:opacity .25s ease; }
+    #booking-overlay.is-open, #sponsor-overlay.is-open, #resource-gate-overlay.is-open{ opacity:1; visibility:visible; transition:opacity .25s ease; }
     html.booking-open, html.booking-open body{ overflow:hidden; }
 
     .booking-modal{
@@ -854,7 +854,7 @@
     }
 
     @media (prefers-reduced-motion: reduce){
-      #booking-overlay, #sponsor-overlay, .booking-modal{ transition:opacity .01s linear !important; transform:none !important; }
+      #booking-overlay, #sponsor-overlay, #resource-gate-overlay, .booking-modal{ transition:opacity .01s linear !important; transform:none !important; }
     }
 
     @media (max-width: 640px){
