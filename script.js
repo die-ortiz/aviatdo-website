@@ -31,6 +31,12 @@ class Component extends DCLogic {
     // through on a narrow viewport or vice versa.
     const isPhone = window.matchMedia && window.matchMedia('(max-width: 767px)').matches;
 
+    // --- Footer copyright year — keeps "© 2026 AviatDo..." current
+    // without editing it by hand every January. ---
+    document.querySelectorAll('#copyright-year').forEach((el) => {
+      el.textContent = new Date().getFullYear();
+    });
+
     // --- Mobile nav — hamburger toggles the off-canvas #nav-panel drawer
     // (see the CSS above: #nav-panel is `display:contents` — and so
     // invisible to layout — above 900px, then becomes a fixed slide-in
