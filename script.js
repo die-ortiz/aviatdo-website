@@ -953,6 +953,105 @@ class Component extends DCLogic {
         });
       });
     })();
+
+    // --- AviatDo 360° Register page — ticket qty picker, order summary and
+    // on-page checkout (name/email, no real payment — same mockup scope as
+    // the booking modal). Only exists on aviatdo-360-register.html / -es.html;
+    // a no-op elsewhere since #ticket-step-tickets isn't in the DOM. ---
+    (function () {
+      const stepTickets = document.getElementById('ticket-step-tickets');
+      if (!stepTickets) return;
+      const stepContact = document.getElementById('ticket-step-contact');
+      const stepSuccess = document.getElementById('ticket-step-success');
+      const rows = document.querySelectorAll('.ticket-row[data-ticket]');
+      const checkoutBtn = document.getElementById('ticket-checkout-btn');
+      const contactForm = document.getElementById('ticket-contact-form');
+      const backBtn = document.getElementById('ticket-back-btn');
+      const nameInput = document.getElementById('ticket-name');
+      const emailInput = document.getElementById('ticket-email');
+
+      function renderSummaryInto(linesEl, emptyText) {
+        linesEl.innerHTML = '';
+        let total = 0;
+        let any = false;
+        rows.forEach((row) => {
+          const qty = parseInt(row.querySelector('.qty-value').textContent, 10) || 0;
+          if (!qty) return;
+          any = true;
+          const price = parseFloat(row.getAttribute('data-price'));
+          const name = row.getAttribute('data-name');
+          total += price * qty;
+          const line = document.createElement('div');
+          line.className = 'order-summary-line';
+          line.innerHTML = '<span class="order-summary-line-name">' + name + ' &times; ' + qty + '</span><span class="order-summary-line-price">$' + (price * qty) + '</span>';
+          linesEl.appendChild(line);
+        });
+        if (!any) {
+          const empty = document.createElement('p');
+          empty.style.margin = '0';
+          empty.style.fontSize = '14px';
+          empty.style.color = 'var(--muted)';
+          empty.textContent = emptyText;
+          linesEl.appendChild(empty);
+        }
+        return total;
+      }
+
+      const emptyEl = document.getElementById('ticket-summary-empty');
+      const emptyText = emptyEl ? emptyEl.textContent : '';
+
+      function updateSummary() {
+        const total = renderSummaryInto(document.getElementById('ticket-summary-lines'), emptyText);
+        renderSummaryInto(document.getElementById('ticket-summary-lines-2'), '');
+        renderSummaryInto(document.getElementById('ticket-summary-lines-3'), '');
+        ['ticket-summary-total', 'ticket-summary-total-2', 'ticket-summary-total-3'].forEach((id) => {
+          const el = document.getElementById(id);
+          if (el) el.textContent = '$' + total;
+        });
+        if (checkoutBtn) checkoutBtn.disabled = total === 0;
+      }
+
+      rows.forEach((row) => {
+        const qtyEl = row.querySelector('.qty-value');
+        row.querySelectorAll('.qty-btn').forEach((btn) => {
+          btn.addEventListener('click', () => {
+            let qty = parseInt(qtyEl.textContent, 10) || 0;
+            qty = btn.getAttribute('data-action') === 'inc' ? Math.min(qty + 1, 20) : Math.max(qty - 1, 0);
+            qtyEl.textContent = qty;
+            updateSummary();
+          });
+        });
+      });
+
+      if (checkoutBtn) {
+        checkoutBtn.addEventListener('click', () => {
+          stepTickets.hidden = true;
+          stepContact.hidden = false;
+          stepContact.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      if (backBtn) {
+        backBtn.addEventListener('click', () => {
+          stepContact.hidden = true;
+          stepTickets.hidden = false;
+          stepTickets.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          document.getElementById('ticket-success-name').textContent = nameInput.value;
+          document.getElementById('ticket-success-email').textContent = emailInput.value;
+          stepContact.hidden = true;
+          stepSuccess.hidden = false;
+          stepSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      }
+
+      updateSummary();
+    })();
   }
 }
 

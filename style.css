@@ -348,6 +348,32 @@
     .day-panel{ display:none; }
     .day-panel.active{ display:block; }
 
+    /* aviatdo-360-register.html — ticket picker + checkout. The live site's
+       version is a bare Wix ticket widget (plain rows, native number
+       inputs, generic "Checkout" button); this rebuilds the same
+       ticket/qty/total mechanics with the site's own card + stepper
+       language instead, plus an on-page confirm step so a "purchase" here
+       feels complete without ever building a real payment form (mockup
+       scope — same as the booking modal: no backend, but the interaction
+       itself works). */
+    .ticket-row{ display:grid; grid-template-columns:1fr auto 132px; align-items:center; gap:20px; padding:22px 28px; border-bottom:1px solid var(--divider); }
+    .ticket-row:last-child{ border-bottom:none; }
+    .ticket-row-name{ font-size:16px; font-weight:700; }
+    .ticket-row-desc{ margin-top:4px; font-size:13px; color:var(--muted); max-width:420px; }
+    .ticket-row-price{ font-family:var(--font-headline); font-weight:900; font-size:20px; white-space:nowrap; }
+
+    .qty-stepper{ display:flex; align-items:center; justify-content:flex-end; gap:14px; }
+    .qty-btn{ width:32px; height:32px; border-radius:50%; border:1px solid var(--divider); background:var(--paper-white); color:var(--obsidian); font-size:18px; line-height:1; display:flex; align-items:center; justify-content:center; cursor:pointer; transition:border-color .2s ease, background .2s ease; }
+    .qty-btn:hover{ border-color:var(--obsidian); }
+    .qty-btn:disabled{ opacity:.35; pointer-events:none; }
+    .qty-value{ min-width:16px; text-align:center; font-family:var(--font-condensed); font-weight:700; font-size:15px; }
+
+    .order-summary-line{ display:flex; justify-content:space-between; gap:12px; font-size:14px; padding:8px 0; }
+    .order-summary-line-name{ color:var(--graphite); }
+    .order-summary-line-price{ font-weight:700; white-space:nowrap; }
+
+    @media (prefers-reduced-motion: reduce){ .qty-btn{ transition:none !important; } }
+
     /* Live pulsing dot — countdown badge */
     .live-dot{ position:relative; width:6px; height:6px; border-radius:50%; background:var(--brand-red); display:inline-block; }
     .live-dot::after{ content:''; position:absolute; inset:-4px; border-radius:50%; border:1.5px solid var(--brand-red); animation:livePing 2.2s cubic-bezier(0,0,0.2,1) infinite; }
@@ -611,6 +637,10 @@
          name text happened to wrap). ---- */
       .fee-row{ flex-direction:column !important; align-items:flex-start !important; }
       .fee-row-price{ text-align:left !important; }
+      .ticket-row{ grid-template-columns:1fr !important; row-gap:12px !important; padding:20px !important; }
+      .qty-stepper{ justify-content:flex-start !important; }
+      #ticket-order-summary{ position:static !important; }
+      div[style*="grid-template-columns:1fr 320px"]{ grid-template-columns:1fr !important; }
 
       /* ---- hero ---- */
       #hero{ min-height:clamp(560px,78vh,760px); }
