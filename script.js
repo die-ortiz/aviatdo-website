@@ -982,7 +982,19 @@ class Component extends DCLogic {
         [stepTickets, stepDetails, stepAttendee, stepPayment, stepSuccess].forEach((el) => {
           if (el) el.hidden = el !== step;
         });
-        step.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        // Two desktop-only quirks from the #page-root smooth-scroll transform
+        // (see componentDidMount above): 1) the #smooth-spacer sibling that
+        // drives native scroll range has its height measured once at mount/
+        // resize, so swapping to a step of very different height without
+        // re-measuring leaves stale scroll range — blank space (or a cut-off
+        // page) below the footer once you're past the shortest step; 2)
+        // step.scrollIntoView() can't compute an offset for an element behind
+        // a position:fixed ancestor, so it silently does nothing. Same fix
+        // for both: resize event to force the spacer to re-measure, then
+        // scroll manually the same way the existing hash-link handler does.
+        window.dispatchEvent(new Event('resize'));
+        const y = step.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({ top: y, left: 0, behavior: 'smooth' });
       }
 
       function renderSummaryInto(linesEl, emptyText) {
