@@ -38,6 +38,11 @@
     .btn-primary:hover{transform:translateY(-1px); filter:brightness(1.06);}
     .btn-obsidian{background:var(--brand-navy); transition:background .2s ease, transform .2s ease;}
     .btn-obsidian:hover{background:#4c5075; transform:translateY(-1px);}
+    /* Header "Contact us" — the one .btn-obsidian instance that's brand-red
+       instead of navy, at every width (used to only flip red inside the
+       mobile off-canvas menu; now consistent on desktop too). */
+    #header-actions a.btn-obsidian{ background:var(--brand-red); }
+    #header-actions a.btn-obsidian:hover{ background:var(--brand-red); filter:brightness(1.08); transform:translateY(-1px); }
 
     /* feature cards — value-contrast only, border darkens on hover, never a shadow */
     .card-flat{border:1px solid var(--cloud-gray); transition:border-color .2s ease, background .2s ease;}
@@ -563,7 +568,6 @@
       header nav a{ font-size:19px !important; color:var(--on-obsidian) !important; }
       header nav a[aria-current="page"]{ color:var(--brand-red) !important; }
       #header-actions{ flex-direction:column; align-items:center !important; gap:20px !important; width:100%; }
-      #header-actions a.btn-obsidian{ background:var(--brand-red) !important; }
 
       #nav-backdrop{
         display:block; position:fixed; inset:0; background:rgba(0,0,0,0.55);

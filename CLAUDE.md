@@ -132,7 +132,7 @@ silenciosamente roto por este mismo motivo desde antes.
   en `main` / `/`).
 - Live URL: `die-ortiz.github.io/aviatdo-website/`
 - **Cache-busting de `style.css`/`script.js`**: las 30 páginas cargan
-  `style.css?v=N` y `script.js?v=N` (mismo `N` en las dos, actualmente `2`).
+  `style.css?v=N` y `script.js?v=N` (mismo `N` en las dos, actualmente `3`).
   GitHub Pages sirve estos archivos con `Cache-Control: max-age=600`, y el
   navegador puede cachearlos bastante más tiempo que eso — sin el `?v=`,
   un cambio de estilos puede tardar en verse para alguien que ya visitó el
