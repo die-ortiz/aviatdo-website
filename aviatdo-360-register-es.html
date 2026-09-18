@@ -12,7 +12,7 @@
 
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Inter+Tight:wght@600;700&amp;family=Barlow:wght@700;900&amp;display=swap">
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 
 </head>
 <body>
@@ -149,45 +149,137 @@
 
         <aside id="ticket-order-summary" class="reveal card-flat" style="position:sticky; top:96px; border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
           <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
-          <div id="ticket-summary-lines" style="margin-top:12px;">
+          <div class="ticket-summary-lines" style="margin-top:12px;">
             <p id="ticket-summary-empty" style="margin:0; font-size:14px; color:var(--muted);">Todavía no elegiste categorías.</p>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
-            <span id="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
+            <span class="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
           </div>
           <button type="button" id="ticket-checkout-btn" class="btn-focus btn-primary" disabled style="width:100%; margin-top:20px; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 24px; border:none; border-radius:8px; cursor:pointer;">Continuar</button>
         </aside>
       </div>
     </div>
 
-    <div id="ticket-step-contact" hidden>
-      <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Último paso</div>
-      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Completá tu registro</h2>
+    <div id="ticket-step-details" hidden>
+      <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Paso 1 de 3</div>
+      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Agregá tus datos</h2>
 
       <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;">
-        <form id="ticket-contact-form" class="card-flat" style="border-radius:16px; padding:32px; border:1px solid var(--divider); background:var(--paper-white); display:flex; flex-direction:column; gap:16px;">
-          <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Nombre completo
-            <input type="text" id="ticket-name" required placeholder="Jane Doe" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
-          </label>
+        <form id="ticket-step1-form" class="card-flat" style="border-radius:16px; padding:32px; border:1px solid var(--divider); background:var(--paper-white); display:flex; flex-direction:column; gap:16px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Nombre
+              <input type="text" id="ticket-first-name" required placeholder="Jane" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Apellido
+              <input type="text" id="ticket-last-name" required placeholder="Doe" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+          </div>
           <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Email
             <input type="email" id="ticket-email" required placeholder="jane@aerolinea.com" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
           </label>
-          <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Teléfono <span style="text-transform:none; font-weight:400; opacity:.7;">(opcional)</span>
-            <input type="tel" id="ticket-phone" placeholder="+1 (305) 555-0198" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
-          </label>
           <div style="display:flex; gap:16px; align-items:center; margin-top:6px;">
-            <button type="submit" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Confirmar registro</button>
-            <button type="button" id="ticket-back-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver a las categorías</button>
+            <button type="submit" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Continuar</button>
+            <button type="button" id="ticket-back-to-categories-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver a las categorías</button>
           </div>
         </form>
 
         <aside class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
           <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
-          <div id="ticket-summary-lines-2" style="margin-top:12px;"></div>
+          <div class="ticket-summary-lines" style="margin-top:12px;"></div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
-            <span id="ticket-summary-total-2" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
+            <span class="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="ticket-step-attendee" hidden>
+      <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Paso 2 de 3</div>
+      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Datos de registro</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;">
+        <form id="ticket-step2-form" class="card-flat" style="border-radius:16px; padding:32px; border:1px solid var(--divider); background:var(--paper-white); display:flex; flex-direction:column; gap:16px;">
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Empresa
+              <input type="text" id="ticket-company" required placeholder="Aerolínea / Aeropuerto / Regulador" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Cargo
+              <input type="text" id="ticket-position" required placeholder="Director de Entrenamiento" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Área de especialización <span style="text-transform:none; font-weight:400; opacity:.7;">(opcional)</span>
+              <input type="text" id="ticket-expertise" placeholder="Operaciones de vuelo" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Teléfono <span style="text-transform:none; font-weight:400; opacity:.7;">(opcional)</span>
+              <input type="tel" id="ticket-phone" placeholder="+1 (305) 555-0198" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+          </div>
+          <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Dirección
+            <input type="text" id="ticket-address" required placeholder="Calle y número" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+          </label>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Ciudad
+              <input type="text" id="ticket-city" required style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Provincia / Estado <span style="text-transform:none; font-weight:400; opacity:.7;">(opcional)</span>
+              <input type="text" id="ticket-state" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+          </div>
+          <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">País
+              <input type="text" id="ticket-country" required style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+            <label style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Código postal <span style="text-transform:none; font-weight:400; opacity:.7;">(opcional)</span>
+              <input type="text" id="ticket-zip" style="font-family:var(--font-display); font-size:14px; padding:12px 14px; border:1px solid var(--cloud-gray); border-radius:8px; background:var(--cloud-gray);">
+            </label>
+          </div>
+          <div style="display:flex; flex-direction:column; gap:6px; font-family:var(--font-condensed); font-size:11px; font-weight:600; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Track de interés
+            <div style="display:flex; flex-direction:column; gap:10px; margin-top:6px;">
+              <label style="display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-size:14px; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--obsidian); cursor:pointer;"><input type="radio" name="ticket-track" value="Excelencia en Entrenamiento de Pilotos" required style="width:16px; height:16px; accent-color:var(--brand-red);"> Excelencia en Entrenamiento de Pilotos</label>
+              <label style="display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-size:14px; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--obsidian); cursor:pointer;"><input type="radio" name="ticket-track" value="Preparación de la Fuerza de Mantenimiento" style="width:16px; height:16px; accent-color:var(--brand-red);"> Preparación de la Fuerza de Mantenimiento</label>
+              <label style="display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-size:14px; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--obsidian); cursor:pointer;"><input type="radio" name="ticket-track" value="ATC y Aeropuertos" style="width:16px; height:16px; accent-color:var(--brand-red);"> ATC y Aeropuertos</label>
+              <label style="display:flex; align-items:center; gap:10px; font-family:var(--font-display); font-size:14px; font-weight:400; text-transform:none; letter-spacing:normal; color:var(--obsidian); cursor:pointer;"><input type="radio" name="ticket-track" value="Liderazgo y Desarrollo" style="width:16px; height:16px; accent-color:var(--brand-red);"> Liderazgo y Desarrollo</label>
+            </div>
+          </div>
+          <div style="display:flex; gap:16px; align-items:center; margin-top:6px;">
+            <button type="submit" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Continuar</button>
+            <button type="button" id="ticket-back-to-details-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver</button>
+          </div>
+        </form>
+
+        <aside class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
+          <div class="ticket-summary-lines" style="margin-top:12px;"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
+            <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
+            <span class="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <div id="ticket-step-payment" hidden>
+      <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Paso 3 de 3</div>
+      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Pago</h2>
+
+      <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;">
+        <div class="card-flat" style="border-radius:16px; padding:32px; border:1px solid var(--divider); background:var(--paper-white);">
+          <p style="margin:0 0 24px; font-size:15px; line-height:1.6; color:var(--graphite);">No se cobra nada online. Al enviar el formulario, uno de nuestros especialistas se va a contactar por email para coordinar el pago y enviarte la factura — mientras tanto, tu lugar queda reservado.</p>
+          <div style="display:flex; gap:16px; align-items:center;">
+            <button type="button" id="ticket-submit-btn" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Enviar registro</button>
+            <button type="button" id="ticket-back-to-attendee-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver</button>
+          </div>
+        </div>
+
+        <aside class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
+          <div class="ticket-summary-lines" style="margin-top:12px;"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
+            <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
+            <span class="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
           </div>
         </aside>
       </div>
@@ -201,10 +293,10 @@
       <p style="margin:0 0 32px; font-size:16px; line-height:1.6; color:var(--graphite);">Gracias, <strong id="ticket-success-name" style="color:var(--obsidian);"></strong> — te enviamos los detalles a <strong id="ticket-success-email" style="color:var(--obsidian);"></strong>. Uno de nuestros especialistas se va a contactar en breve para confirmar el pago y enviarte la factura.</p>
       <div class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px; text-align:left;">
         <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
-        <div id="ticket-summary-lines-3" style="margin-top:12px;"></div>
+        <div class="ticket-summary-lines" style="margin-top:12px;"></div>
         <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
           <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
-          <span id="ticket-summary-total-3" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
+          <span class="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
         </div>
       </div>
     </div>
@@ -274,6 +366,6 @@
 
 </div>
 
-<script src="script.js?v=5"></script>
+<script src="script.js?v=6"></script>
 </body>
 </html>

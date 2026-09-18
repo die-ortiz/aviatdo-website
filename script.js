@@ -954,21 +954,36 @@ class Component extends DCLogic {
       });
     })();
 
-    // --- AviatDo 360° Register page — ticket qty picker, order summary and
-    // on-page checkout (name/email, no real payment — same mockup scope as
-    // the booking modal). Only exists on aviatdo-360-register.html / -es.html;
-    // a no-op elsewhere since #ticket-step-tickets isn't in the DOM. ---
+    // --- AviatDo 360° Register page — category qty picker, order summary
+    // and a 3-step on-page registration flow (Add your details ->
+    // Registration details -> Payment) mirroring the live site's real Wix
+    // checkout steps, minus an actual card form: step 3 is a "we'll follow
+    // up to arrange payment" notice instead, same mockup scope as the
+    // booking modal (no backend, but the interaction itself works). Only
+    // exists on aviatdo-360-register.html / -es.html; a no-op elsewhere
+    // since #ticket-step-tickets isn't in the DOM. ---
     (function () {
       const stepTickets = document.getElementById('ticket-step-tickets');
       if (!stepTickets) return;
-      const stepContact = document.getElementById('ticket-step-contact');
+      const stepDetails = document.getElementById('ticket-step-details');
+      const stepAttendee = document.getElementById('ticket-step-attendee');
+      const stepPayment = document.getElementById('ticket-step-payment');
       const stepSuccess = document.getElementById('ticket-step-success');
       const rows = document.querySelectorAll('.ticket-row[data-ticket]');
       const checkoutBtn = document.getElementById('ticket-checkout-btn');
-      const contactForm = document.getElementById('ticket-contact-form');
-      const backBtn = document.getElementById('ticket-back-btn');
-      const nameInput = document.getElementById('ticket-name');
-      const emailInput = document.getElementById('ticket-email');
+      const step1Form = document.getElementById('ticket-step1-form');
+      const step2Form = document.getElementById('ticket-step2-form');
+      const submitBtn = document.getElementById('ticket-submit-btn');
+      const backToCategoriesBtn = document.getElementById('ticket-back-to-categories-btn');
+      const backToDetailsBtn = document.getElementById('ticket-back-to-details-btn');
+      const backToAttendeeBtn = document.getElementById('ticket-back-to-attendee-btn');
+
+      function goTo(step) {
+        [stepTickets, stepDetails, stepAttendee, stepPayment, stepSuccess].forEach((el) => {
+          if (el) el.hidden = el !== step;
+        });
+        step.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
 
       function renderSummaryInto(linesEl, emptyText) {
         linesEl.innerHTML = '';
@@ -1001,12 +1016,12 @@ class Component extends DCLogic {
       const emptyText = emptyEl ? emptyEl.textContent : '';
 
       function updateSummary() {
-        const total = renderSummaryInto(document.getElementById('ticket-summary-lines'), emptyText);
-        renderSummaryInto(document.getElementById('ticket-summary-lines-2'), '');
-        renderSummaryInto(document.getElementById('ticket-summary-lines-3'), '');
-        ['ticket-summary-total', 'ticket-summary-total-2', 'ticket-summary-total-3'].forEach((id) => {
-          const el = document.getElementById(id);
-          if (el) el.textContent = '$' + total;
+        let total = 0;
+        document.querySelectorAll('.ticket-summary-lines').forEach((linesEl) => {
+          total = renderSummaryInto(linesEl, emptyText);
+        });
+        document.querySelectorAll('.ticket-summary-total').forEach((el) => {
+          el.textContent = '$' + total;
         });
         if (checkoutBtn) checkoutBtn.disabled = total === 0;
       }
@@ -1023,30 +1038,33 @@ class Component extends DCLogic {
         });
       });
 
-      if (checkoutBtn) {
-        checkoutBtn.addEventListener('click', () => {
-          stepTickets.hidden = true;
-          stepContact.hidden = false;
-          stepContact.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
+      if (checkoutBtn) checkoutBtn.addEventListener('click', () => goTo(stepDetails));
+      if (backToCategoriesBtn) backToCategoriesBtn.addEventListener('click', () => goTo(stepTickets));
+      if (backToDetailsBtn) backToDetailsBtn.addEventListener('click', () => goTo(stepDetails));
+      if (backToAttendeeBtn) backToAttendeeBtn.addEventListener('click', () => goTo(stepAttendee));
 
-      if (backBtn) {
-        backBtn.addEventListener('click', () => {
-          stepContact.hidden = true;
-          stepTickets.hidden = false;
-          stepTickets.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        });
-      }
-
-      if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
+      if (step1Form) {
+        step1Form.addEventListener('submit', (e) => {
           e.preventDefault();
-          document.getElementById('ticket-success-name').textContent = nameInput.value;
-          document.getElementById('ticket-success-email').textContent = emailInput.value;
-          stepContact.hidden = true;
-          stepSuccess.hidden = false;
-          stepSuccess.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          goTo(stepAttendee);
+        });
+      }
+
+      if (step2Form) {
+        step2Form.addEventListener('submit', (e) => {
+          e.preventDefault();
+          goTo(stepPayment);
+        });
+      }
+
+      if (submitBtn) {
+        submitBtn.addEventListener('click', () => {
+          const firstName = document.getElementById('ticket-first-name');
+          const lastName = document.getElementById('ticket-last-name');
+          const email = document.getElementById('ticket-email');
+          document.getElementById('ticket-success-name').textContent = (firstName ? firstName.value : '') + ' ' + (lastName ? lastName.value : '');
+          document.getElementById('ticket-success-email').textContent = email ? email.value : '';
+          goTo(stepSuccess);
         });
       }
 

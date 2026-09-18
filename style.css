@@ -641,6 +641,7 @@
       .qty-stepper{ justify-content:flex-start !important; }
       #ticket-order-summary{ position:static !important; }
       div[style*="grid-template-columns:1fr 320px"]{ grid-template-columns:1fr !important; }
+      #ticket-step1-form div[style*="grid-template-columns:1fr 1fr"], #ticket-step2-form div[style*="grid-template-columns:1fr 1fr"]{ grid-template-columns:1fr !important; }
 
       /* ---- hero ---- */
       #hero{ min-height:clamp(560px,78vh,760px); }
