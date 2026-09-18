@@ -161,17 +161,18 @@
        per word), so it reads like the headline is being written rather than one
        sweep crossing the whole line. Text lives once, in the aria-label, so
        screen readers get it read exactly once rather than twice; both passes
-       (and every .fw word inside them) are aria-hidden. */
+       (and every .fw word inside them) are aria-hidden. This is the title's
+       own signature effect, kept deliberately distinct from the plain
+       fade-up that .hero-in strips from the rest of the hero above. */
     .fill-h1{ display:grid; grid-template-columns:1fr; color:transparent; }
     .fill-h1 .fill-outline, .fill-h1 .fill-solid{ grid-area:1/1; }
     .fill-h1 .fw{ display:inline-block; }
-    /* Hero banners never fade/wipe in (see .hero-in above) — the outline
-       pass is hidden outright rather than animated in, and the solid pass
-       shows fully clipped-open from the start instead of wiping word by
-       word. */
-    .fill-h1 .fill-outline{ display:none; }
+    .fill-h1 .fill-outline{ color:transparent; -webkit-text-stroke:1px rgba(255,255,255,0.34); }
+    .fill-h1 .fill-outline .fw{ opacity:0; animation:fillOutlineIn .45s ease-out forwards; animation-delay:calc(.05s + var(--i) * .11s); }
+    @keyframes fillOutlineIn{ to{ opacity:1; } }
     .fill-h1 .fill-solid{ color:var(--on-obsidian); }
-    .fill-h1 .fill-solid .fw{ clip-path:none; animation:none; }
+    .fill-h1 .fill-solid .fw{ clip-path:inset(-25% 100% -25% -3%); animation:fillWipe .6s cubic-bezier(.22,1,.36,1) forwards; animation-delay:calc(.15s + var(--i) * .13s); }
+    @keyframes fillWipe{ to{ clip-path:inset(-25% -6% -25% -3%); } }
 
     /* Scroll-scrubbed reveal: opacity/translateY are set directly from scroll
        position in JS (see the component script below), so the motion is
