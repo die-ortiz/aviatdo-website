@@ -1,7 +1,7 @@
     :root{
       --cloud-gray:#e5e7eb;
       --obsidian:#000000; --on-obsidian:#ffffff;
-      --brand-navy:#17234d; /* verified brand color — used for the footer and any solid-black button, in place of true black */
+      --brand-navy:#262A4F; /* verified brand color — used for the footer and any solid-black button, in place of true black */
       --paper-white:#ffffff;
       --sand-beige:#e2dfd8;
       --graphite:#5e5d5c;
@@ -37,7 +37,7 @@
     .btn-primary{background:var(--brand-red); transition:transform .2s ease, filter .2s ease;}
     .btn-primary:hover{transform:translateY(-1px); filter:brightness(1.06);}
     .btn-obsidian{background:var(--brand-navy); transition:background .2s ease, transform .2s ease;}
-    .btn-obsidian:hover{background:#3d4973; transform:translateY(-1px);}
+    .btn-obsidian:hover{background:#4c5075; transform:translateY(-1px);}
 
     /* feature cards — value-contrast only, border darkens on hover, never a shadow */
     .card-flat{border:1px solid var(--cloud-gray); transition:border-color .2s ease, background .2s ease;}
