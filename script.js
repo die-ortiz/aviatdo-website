@@ -930,6 +930,29 @@ class Component extends DCLogic {
         successView.hidden = false;
       });
     })();
+
+    // --- AviatDo 360° Program page — day-by-day schedule tabs. Only exists
+    // on aviatdo-360-program.html / -es.html; a no-op elsewhere since
+    // .day-tab isn't in the DOM. ---
+    (function () {
+      const tabs = document.querySelectorAll('.day-tab');
+      if (!tabs.length) return;
+      tabs.forEach((tab) => {
+        tab.addEventListener('click', () => {
+          const day = tab.getAttribute('data-day');
+          tabs.forEach((t) => {
+            const active = t === tab;
+            t.classList.toggle('active', active);
+            t.setAttribute('aria-selected', active ? 'true' : 'false');
+          });
+          document.querySelectorAll('.day-panel').forEach((panel) => {
+            const active = panel.id === 'day-panel-' + day;
+            panel.classList.toggle('active', active);
+            panel.hidden = !active;
+          });
+        });
+      });
+    })();
   }
 }
 

@@ -74,50 +74,108 @@
     </div>
   </nav>
 
+  <!-- AGENDA DÍA A DÍA — el sitio en vivo del cliente pega la agenda como
+       tres imágenes exportadas (una por día, sin markup detrás). Mismo
+       contenido real de sesiones, reconstruido como HTML nativo detrás de
+       un selector de día: texto seleccionable/traducible, tabs operables
+       por teclado, y tipografía consistente con el resto del sitio en vez
+       de un flyer pegado encima. Los breaks/comidas se atenúan
+       visualmente (.is-break) para que el contenido del programa se lea
+       primero — la versión en imagen trata cada línea igual. -->
   <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
-    <p class="reveal" style="margin:0 0 48px; font-size:13px; color:var(--muted); font-family:var(--font-condensed); text-transform:uppercase; letter-spacing:0.04em;">Programa sujeto a cambios</p>
+    <p class="reveal" style="margin:0 0 32px; font-size:13px; color:var(--muted); font-family:var(--font-condensed); text-transform:uppercase; letter-spacing:0.04em;">Programa sujeto a cambios</p>
 
-    <div style="display:flex; flex-direction:column; gap:2px;">
+    <div class="reveal" role="tablist" aria-label="Días del programa" style="display:flex; gap:12px; margin-bottom:40px; flex-wrap:wrap;">
+      <button type="button" class="btn-focus day-tab active" role="tab" aria-selected="true" aria-controls="day-panel-1" id="day-tab-1" data-day="1">
+        <span class="day-tab-label">Día 1 · Mar</span>
+        <span class="day-tab-date">28 Sep</span>
+      </button>
+      <button type="button" class="btn-focus day-tab" role="tab" aria-selected="false" aria-controls="day-panel-2" id="day-tab-2" data-day="2">
+        <span class="day-tab-label">Día 2 · Mié</span>
+        <span class="day-tab-date">29 Sep</span>
+      </button>
+      <button type="button" class="btn-focus day-tab" role="tab" aria-selected="false" aria-controls="day-panel-3" id="day-tab-3" data-day="3">
+        <span class="day-tab-label">Día 3 · Jue</span>
+        <span class="day-tab-date">30 Sep</span>
+      </button>
+    </div>
 
-      <div class="reveal" style="margin-bottom:20px;">
-        <div class="card-flat s360-day-card grow-card" style="border-radius:16px; padding:32px; border:1px solid var(--divider); display:grid; grid-template-columns:140px 1fr; gap:28px; background:var(--paper-white);">
+    <div class="day-panel active" id="day-panel-1" role="tabpanel" aria-labelledby="day-tab-1">
+      <div class="reveal" style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:24px;">
+        <div style="max-width:640px;">
+          <h3 style="margin:0 0 6px; font-size:20px; font-weight:800; letter-spacing:-0.01em;">Sentando las bases, avanzando juntos</h3>
+          <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Apertura del foro y keynotes a nivel directivo sobre el estado del workforce global de entrenamiento aeronáutico, enmarcado en la iniciativa NGAP de la OACI, con introducción a los cuatro tracks 360°.</p>
+        </div>
+        <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Salas Bristol I y II</span>
+      </div>
+      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
+        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registro y café en el Exhibit Hall</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><p class="schedule-title">Ceremonia de apertura</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">10:00–10:30</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">Entrenamiento Aeronáutico en 2036 — Preparándonos para el Crecimiento, la Sostenibilidad y la Disrupción</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">10:30–11:00</div><div><p class="schedule-title">Networking Break</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">11:00–11:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Líderes de Aerolíneas, ANSP y MRO sobre Prioridades Globales de Entrenamiento</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">11:45–12:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Entrenamiento y Evaluación Basados en Competencias (CBTA) en Pilotos, Controladores e Ingenieros</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">12:30–14:00</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Seguridad y Factores Humanos — Lecciones Aplicables a Todas las Profesiones Aeronáuticas</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Sostenibilidad en el Entrenamiento — Operaciones Verdes, Conciencia SAF y Mentalidad Eco</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Desafíos del Workforce — Reclutar y Retener a la Próxima Generación</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">El Profesional Aeronáutico del Futuro — Más Allá de las Habilidades Técnicas</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">17:15–18:30</div><div><p class="schedule-title">Cierre del día — Recepción de cóctel</p></div></div>
+      </div>
+    </div>
+
+    <div class="day-panel" id="day-panel-2" role="tabpanel" aria-labelledby="day-tab-2" hidden>
+      <div class="reveal" style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:24px;">
+        <div style="max-width:640px;">
+          <h3 style="margin:0 0 6px; font-size:20px; font-weight:800; letter-spacing:-0.01em;">Construyendo expertise entre disciplinas</h3>
+          <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Sesiones de trabajo en paralelo profundizan en casos técnicos, actualizaciones regulatorias y demostraciones pensadas para afinar seguridad, competencia y colaboración, además de espacios de sponsors.</p>
+        </div>
+        <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Sala Liverpool</span>
+      </div>
+      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
+        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registro y café en el Exhibit Hall</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">CBTA y EBT en la Práctica</p><p class="schedule-desc">Revisión de los últimos desarrollos en la implementación de CBTA y EBT en las Américas, desafíos y mejores prácticas.</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">10:00–10:45</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">LOFT en el Entorno EBT y CBTA: Del Realismo de Línea al Desarrollo de Competencias</p><p class="schedule-desc">¿Cómo puede el LOFT servir mejor como herramienta para desarrollar y medir competencias de pilotos usando escenarios basados en evidencia?</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">10:45–11:15</div><div><p class="schedule-title">Networking Break en el Exhibit Hall</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">11:15–12:15</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">UPRT y Manejo Avanzado — Desafíos y Caminos hacia un Entrenamiento de Pilotos Efectivo</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">12:15–13:00</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">Entrenamiento Basado en Datos — Uso de FOQA y Analítica para Mejorar el Desempeño de los Pilotos</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">13:00–14:00</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><p class="schedule-title">Resolviendo la Escasez de Pilotos y Preparando a las Aerolíneas</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">National Flight Training Alliance — Modernización de las Escuelas Part 141 y su Impacto Esperado en el Entrenamiento de Vuelo en EE. UU.</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break en el Exhibit Hall</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><p class="schedule-title">Formando Mejores Pilotos: Aplicando Factores Humanos y CRM Más Allá de los Checklists</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><p class="schedule-title">Entrenamiento de Pilotos Potenciado por IA: Transformando el Aprendizaje, la Seguridad y la Competencia en la Aviación</p></div></div>
+      </div>
+    </div>
+
+    <div class="day-panel" id="day-panel-3" role="tabpanel" aria-labelledby="day-tab-3" hidden>
+      <div class="reveal" style="display:flex; align-items:flex-start; justify-content:space-between; gap:20px; flex-wrap:wrap; margin-bottom:24px;">
+        <div style="max-width:640px;">
+          <h3 style="margin:0 0 6px; font-size:20px; font-weight:800; letter-spacing:-0.01em;">Workshops: de la reflexión a la acción</h3>
+          <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Los workshops prácticos traducen las conversaciones del foro en acción concreta — ejercicios aplicados y escenarios de toma de decisiones, cerrando con una sesión conjunta entre todos los tracks.</p>
+        </div>
+        <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Manchester / Liverpool / Bristol I y II</span>
+      </div>
+      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
+        <div class="schedule-row is-break"><div class="schedule-time">09:00–09:30</div><div><p class="schedule-title">Café networking en el Exhibit Hall</p></div></div>
+        <div class="schedule-row" style="align-items:flex-start;">
+          <div class="schedule-time">09:30–12:30</div>
           <div>
-            <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--brand-red); margin-bottom:6px;">Día 1</div>
-            <div style="font-family:var(--font-headline); font-weight:900; font-size:22px; letter-spacing:-0.02em;">28 Sep</div>
-          </div>
-          <div>
-            <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">Sentando las bases, avanzando juntos</h3>
-            <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Apertura del foro y keynotes a nivel directivo sobre el estado del workforce global de entrenamiento aeronáutico — enmarcado en la iniciativa NGAP de la OACI — con introducción a los cuatro tracks 360° y los desafíos compartidos que están definiendo la estrategia de entrenamiento en toda la industria.</p>
+            <span class="schedule-tag">Workshops</span>
+            <div class="schedule-workshops">
+              <div class="schedule-workshop-card"><h4>Track de Pilotos y Reguladores</h4><p>Certificación FSTD según el Doc 9625 de la OACI — el cambio de paradigma.</p></div>
+              <div class="schedule-workshop-card"><h4>Track de ATC</h4><p>Programas de mentoría en un entorno de ATC.</p></div>
+              <div class="schedule-workshop-card"><h4>Track de Mantenimiento</h4><p>Aplicación de CBTA en el entrenamiento de mantenimiento.</p></div>
+            </div>
           </div>
         </div>
+        <div class="schedule-row is-break"><div class="schedule-time">12:30–13:30</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
+        <div class="schedule-divider">Sesión de cierre conjunta — fin del Día 3</div>
+        <div class="schedule-row"><div class="schedule-time">13:30–14:00</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">Una Sola Aviación, un Solo Futuro — Construyendo un Ecosistema de Entrenamiento Integrado</p></div></div>
+        <div class="schedule-row"><div class="schedule-time">14:00–14:30</div><div><p class="schedule-title">Cierre y despedida</p></div></div>
+        <div class="schedule-row is-break"><div class="schedule-time">14:30–16:00</div><div><p class="schedule-title">Cierre de Networking Connect (por IAWA)</p></div></div>
       </div>
-
-      <div class="reveal" style="margin-bottom:20px; animation-delay:.05s;">
-        <div class="card-flat s360-day-card grow-card" style="border-radius:16px; padding:32px; border:1px solid var(--divider); display:grid; grid-template-columns:140px 1fr; gap:28px; background:var(--paper-white);">
-          <div>
-            <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--brand-red); margin-bottom:6px;">Día 2</div>
-            <div style="font-family:var(--font-headline); font-weight:900; font-size:22px; letter-spacing:-0.02em;">29 Sep</div>
-          </div>
-          <div>
-            <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">Construyendo expertise entre disciplinas</h3>
-            <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Sesiones de trabajo en paralelo profundizan en los cuatro tracks 360° — Excelencia en Entrenamiento de Pilotos, Preparación de la Fuerza de Mantenimiento, ATC y Aeropuertos, y Liderazgo y Desarrollo — casos técnicos, actualizaciones regulatorias y demostraciones pensadas para afinar seguridad, competencia y colaboración, además de espacios de sponsors.</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="reveal" style="animation-delay:.1s;">
-        <div class="card-flat s360-day-card grow-card" style="border-radius:16px; padding:32px; border:1px solid var(--divider); display:grid; grid-template-columns:140px 1fr; gap:28px; background:var(--paper-white);">
-          <div>
-            <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--brand-red); margin-bottom:6px;">Día 3</div>
-            <div style="font-family:var(--font-headline); font-weight:900; font-size:22px; letter-spacing:-0.02em;">30 Sep</div>
-          </div>
-          <div>
-            <h3 style="margin:0 0 8px; font-size:17px; font-weight:800;">Workshops: de la reflexión a la acción</h3>
-            <p style="margin:0; font-size:14px; line-height:1.6; color:var(--graphite);">Workshops prácticos que traducen las conversaciones del foro en acción concreta en los cuatro tracks — ejercicios aplicados, escenarios de toma de decisiones y una síntesis de cierre con DO's que los asistentes pueden implementar de inmediato.</p>
-          </div>
-        </div>
-      </div>
-
     </div>
 
     <div class="reveal" style="margin-top:40px; text-align:center;">
