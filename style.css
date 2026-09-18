@@ -113,16 +113,16 @@
     .avatar-box{transition:border-color .2s ease;}
     .card-flat:hover .avatar-box{border-color:var(--obsidian);}
 
-    /* Contact/social icon buttons — flat black circle, tone-shift on hover
-       only. .social-icon-brand (LinkedIn) shares every rule below with
+    /* Contact/social icon buttons — flat brand-navy circle, tone-shift on
+       hover only. .social-icon-brand (LinkedIn) shares every rule below with
        .social-icon (mail, etc.) so the two sit side by side as one
        consistent family — same background, same hover, same dark-section
        override — the only difference is the glyph drawn inside, and that
        glyph uses currentColor so it inherits whatever `color` each of
        these rules sets, exactly like the mail icon already did.
        44px is the WCAG 2.5.5 / Material / HIG minimum touch target. */
-    .social-icon, .social-icon-brand{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--obsidian); color:var(--on-obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
-    .social-icon:hover, .social-icon-brand:hover{ background:#262626; transform:translateY(-2px); }
+    .social-icon, .social-icon-brand{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--brand-navy); color:var(--on-obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
+    .social-icon:hover, .social-icon-brand:hover{ background:#4c5075; transform:translateY(-2px); }
     /* #contact and the footer sit on the obsidian background themselves now,
        so the default hover (fade TO obsidian) would make the icon vanish
        into its own section — invert to a light hover on those two instead. */
