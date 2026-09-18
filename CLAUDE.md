@@ -131,6 +131,17 @@ silenciosamente roto por este mismo motivo desde antes.
 - Repo: `github.com/die-ortiz/aviatdo-website` (público, GitHub Pages activo
   en `main` / `/`).
 - Live URL: `die-ortiz.github.io/aviatdo-website/`
+- **Cache-busting de `style.css`/`script.js`**: las 30 páginas cargan
+  `style.css?v=N` y `script.js?v=N` (mismo `N` en las dos, actualmente `1`).
+  GitHub Pages sirve estos archivos con `Cache-Control: max-age=600`, y el
+  navegador puede cachearlos bastante más tiempo que eso — sin el `?v=`,
+  un cambio de estilos puede tardar en verse para alguien que ya visitó el
+  sitio antes (pasó con el cambio de color a navy: Diego lo vio mal en
+  Brave y Safari hasta probar en incógnito). Cada vez que se edite
+  `style.css` o `script.js`, subir el número de versión en los 60 links
+  (30 archivos × 2 refs) antes de hacer commit — un solo `sed` sobre
+  `*.html` alcanza, ej.: `sed -i '' 's/\.css?v=1/\.css?v=2/;
+  s/\.js?v=1/\.js?v=2/' *.html`.
 - Diego pidió que **cada cambio se suba (commit + push) automáticamente**,
   sin esperar confirmación previa.
 - Flujo típico tras un cambio: copiar `index.html`/`index-es.html`/
