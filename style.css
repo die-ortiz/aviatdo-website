@@ -120,13 +120,18 @@
        override — the only difference is the glyph drawn inside, and that
        glyph uses currentColor so it inherits whatever `color` each of
        these rules sets, exactly like the mail icon already did.
-       44px is the WCAG 2.5.5 / Material / HIG minimum touch target. */
-    .social-icon, .social-icon-brand{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--brand-navy); color:var(--on-obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
+       44px is the WCAG 2.5.5 / Material / HIG minimum touch target.
+       :visited included everywhere `color` is set below — these still use
+       href="#" placeholders, and Safari (unlike Chromium) treats a "#" link
+       as already visited against the current page, so `a:visited{color:
+       inherit}` up in the reset (higher specificity than a lone class) was
+       winning and pulling in the inherited black instead of this white. */
+    .social-icon, .social-icon-brand, .social-icon:visited, .social-icon-brand:visited{ display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; background:var(--brand-navy); color:var(--on-obsidian); transition:background .2s ease, color .2s ease, transform .2s ease; }
     .social-icon:hover, .social-icon-brand:hover{ background:#4c5075; transform:translateY(-2px); }
     /* #contact and the footer sit on the obsidian background themselves now,
        so the default hover (fade TO obsidian) would make the icon vanish
        into its own section — invert to a light hover on those two instead. */
-    #contact .social-icon, #contact .social-icon-brand, footer .social-icon, footer .social-icon-brand{ background:rgba(255,255,255,0.1); color:var(--on-obsidian); }
+    #contact .social-icon, #contact .social-icon-brand, #contact .social-icon:visited, #contact .social-icon-brand:visited, footer .social-icon, footer .social-icon-brand, footer .social-icon:visited, footer .social-icon-brand:visited{ background:rgba(255,255,255,0.1); color:var(--on-obsidian); }
     #contact .social-icon:hover, #contact .social-icon-brand:hover, footer .social-icon:hover, footer .social-icon-brand:hover{ background:var(--paper-white); color:var(--obsidian); }
     @media (prefers-reduced-motion: reduce){ .social-icon, .social-icon-brand{ transition:none !important; } }
 
