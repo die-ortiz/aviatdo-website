@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Buy Tickets — AviatDO 360°</title>
+<title>Register — AviatDO 360°</title>
   <link rel="icon" href="images/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -54,7 +54,7 @@
     <div style="position:relative; max-width:1200px; margin:0 auto;">
       <a class="btn-focus ghost-link hero-in" href="aviatdo-360-register-categories.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Register Categories</a>
       <div class="hero-in eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">Tue, Sep 28, 2027 · 9:00 AM</div>
-      <h1 class="hero-in section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:760px; animation-delay:.05s;">Buy Tickets</h1>
+      <h1 class="hero-in section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:760px; animation-delay:.05s;">Register</h1>
       <p class="hero-in" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--hero-muted); max-width:620px; animation-delay:.07s;">Pick a quantity for each category below — you can adjust it before you confirm.</p>
     </div>
   </section>
@@ -70,19 +70,22 @@
     </div>
   </nav>
 
-  <!-- TICKET PICKER + CHECKOUT — the live site is a bare Wix ticket widget:
-       plain rows, native number inputs, a generic "Checkout" button with no
-       branding. Rebuilds the same qty/total mechanics with the site's own
-       card + stepper language, plus an on-page confirm step (name/email,
-       optional phone — same required fields as the booking modal) so the
-       flow feels complete without ever building a fake payment form. All
-       client-side/mockup, no real backend — logic lives in script.js
-       guarded to #ticket-step-tickets, a no-op on every other page. -->
+  <!-- REGISTRATION CATEGORY PICKER + ON-PAGE CHECKOUT — the live site is a
+       bare Wix ticket widget (plain rows, native number inputs, a generic
+       "Buy Tickets"/"Checkout" flow). Rebuilds the same qty/total mechanics
+       with the site's own card + stepper language, in "register for the
+       forum" wording throughout rather than "buy tickets" (this is a
+       conference registration with a per-category fee, not a ticket
+       purchase) — plus an on-page confirm step (name/email, optional phone
+       — same required fields as the booking modal) so the flow feels
+       complete without ever building a fake payment form. All client-side/
+       mockup, no real backend — logic lives in script.js guarded to
+       #ticket-step-tickets, a no-op on every other page. -->
   <section class="section-pad-x" style="max-width:1100px; margin:0 auto; padding:96px 40px 132px;">
 
     <div id="ticket-step-tickets">
       <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Registration fees</div>
-      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Select your tickets</h2>
+      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Select your registration categories</h2>
 
       <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;">
         <div class="reveal card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); overflow:hidden;">
@@ -154,15 +157,15 @@
         </div>
 
         <aside id="ticket-order-summary" class="reveal card-flat" style="position:sticky; top:96px; border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
-          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Order summary</h3>
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Registration summary</h3>
           <div id="ticket-summary-lines" style="margin-top:12px;">
-            <p id="ticket-summary-empty" style="margin:0; font-size:14px; color:var(--muted);">No tickets selected yet.</p>
+            <p id="ticket-summary-empty" style="margin:0; font-size:14px; color:var(--muted);">No categories selected yet.</p>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
             <span id="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
           </div>
-          <button type="button" id="ticket-checkout-btn" class="btn-focus btn-primary" disabled style="width:100%; margin-top:20px; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 24px; border:none; border-radius:8px; cursor:pointer;">Checkout</button>
+          <button type="button" id="ticket-checkout-btn" class="btn-focus btn-primary" disabled style="width:100%; margin-top:20px; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 24px; border:none; border-radius:8px; cursor:pointer;">Continue</button>
         </aside>
       </div>
     </div>
@@ -184,12 +187,12 @@
           </label>
           <div style="display:flex; gap:16px; align-items:center; margin-top:6px;">
             <button type="submit" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Confirm registration</button>
-            <button type="button" id="ticket-back-btn" class="btn-focus ghost-link" style="font-size:14px;">← Back to tickets</button>
+            <button type="button" id="ticket-back-btn" class="btn-focus ghost-link" style="font-size:14px;">← Back to categories</button>
           </div>
         </form>
 
         <aside class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
-          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Order summary</h3>
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Registration summary</h3>
           <div id="ticket-summary-lines-2" style="margin-top:12px;"></div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
@@ -206,7 +209,7 @@
       <h2 style="margin:0 0 12px; font-family:var(--font-headline); font-size:28px; font-weight:900; letter-spacing:-0.02em;">Registration received</h2>
       <p style="margin:0 0 32px; font-size:16px; line-height:1.6; color:var(--graphite);">Thanks, <strong id="ticket-success-name" style="color:var(--obsidian);"></strong> — we've sent the details to <strong id="ticket-success-email" style="color:var(--obsidian);"></strong>. One of our specialists will follow up shortly to confirm payment and send your invoice.</p>
       <div class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px; text-align:left;">
-        <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Order summary</h3>
+        <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Registration summary</h3>
         <div id="ticket-summary-lines-3" style="margin-top:12px;"></div>
         <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
           <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>

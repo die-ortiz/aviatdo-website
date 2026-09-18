@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Comprar entradas — AviatDO 360°</title>
+<title>Registro — AviatDO 360°</title>
   <link rel="icon" href="images/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
@@ -54,7 +54,7 @@
     <div style="position:relative; max-width:1200px; margin:0 auto;">
       <a class="btn-focus ghost-link hero-in" href="aviatdo-360-register-categories-es.html" style="color:var(--hero-muted); font-size:13px; font-family:var(--font-condensed); font-weight:600; letter-spacing:0.04em; text-transform:uppercase;">← Categorías de registro</a>
       <div class="hero-in eyebrow-pill" style="margin-top:24px; font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; animation-delay:.03s;">Mar 28 sep 2027 · 9:00 AM</div>
-      <h1 class="hero-in section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:760px; animation-delay:.05s;">Comprar entradas</h1>
+      <h1 class="hero-in section-h2" style="margin:16px 0 0; font-weight:900; letter-spacing:-0.03em; color:var(--on-obsidian); max-width:760px; animation-delay:.05s;">Registro</h1>
       <p class="hero-in" style="margin:20px 0 0; font-size:17px; line-height:1.6; color:var(--hero-muted); max-width:620px; animation-delay:.07s;">Elegí la cantidad para cada categoría — podés ajustarla antes de confirmar.</p>
     </div>
   </section>
@@ -70,13 +70,13 @@
     </div>
   </nav>
 
-  <!-- SELECTOR DE ENTRADAS + CHECKOUT — ver comentario equivalente en
-       aviatdo-360-register.html. -->
+  <!-- SELECTOR DE CATEGORÍAS DE REGISTRO + CHECKOUT EN LA MISMA PÁGINA — ver
+       comentario equivalente en aviatdo-360-register.html. -->
   <section class="section-pad-x" style="max-width:1100px; margin:0 auto; padding:96px 40px 132px;">
 
     <div id="ticket-step-tickets">
       <div class="reveal eyebrow-pill" style="font-family:var(--font-condensed); font-size:13px; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; margin-bottom:20px;">Costos de registro</div>
-      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Elegí tus entradas</h2>
+      <h2 class="reveal section-h2" style="margin:0 0 40px; font-weight:900; letter-spacing:-0.03em; animation-delay:.03s;">Elegí tus categorías de registro</h2>
 
       <div style="display:grid; grid-template-columns:1fr 320px; gap:40px; align-items:start;">
         <div class="reveal card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); overflow:hidden;">
@@ -148,15 +148,15 @@
         </div>
 
         <aside id="ticket-order-summary" class="reveal card-flat" style="position:sticky; top:96px; border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
-          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen del pedido</h3>
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
           <div id="ticket-summary-lines" style="margin-top:12px;">
-            <p id="ticket-summary-empty" style="margin:0; font-size:14px; color:var(--muted);">Todavía no elegiste entradas.</p>
+            <p id="ticket-summary-empty" style="margin:0; font-size:14px; color:var(--muted);">Todavía no elegiste categorías.</p>
           </div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
             <span id="ticket-summary-total" style="font-family:var(--font-headline); font-weight:900; font-size:24px;">$0</span>
           </div>
-          <button type="button" id="ticket-checkout-btn" class="btn-focus btn-primary" disabled style="width:100%; margin-top:20px; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 24px; border:none; border-radius:8px; cursor:pointer;">Confirmar pedido</button>
+          <button type="button" id="ticket-checkout-btn" class="btn-focus btn-primary" disabled style="width:100%; margin-top:20px; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 24px; border:none; border-radius:8px; cursor:pointer;">Continuar</button>
         </aside>
       </div>
     </div>
@@ -178,12 +178,12 @@
           </label>
           <div style="display:flex; gap:16px; align-items:center; margin-top:6px;">
             <button type="submit" class="btn-focus btn-primary" style="color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:15px 32px; border:none; border-radius:8px; cursor:pointer;">Confirmar registro</button>
-            <button type="button" id="ticket-back-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver a las entradas</button>
+            <button type="button" id="ticket-back-btn" class="btn-focus ghost-link" style="font-size:14px;">← Volver a las categorías</button>
           </div>
         </form>
 
         <aside class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px;">
-          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen del pedido</h3>
+          <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
           <div id="ticket-summary-lines-2" style="margin-top:12px;"></div>
           <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
             <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
@@ -200,7 +200,7 @@
       <h2 style="margin:0 0 12px; font-family:var(--font-headline); font-size:28px; font-weight:900; letter-spacing:-0.02em;">Registro recibido</h2>
       <p style="margin:0 0 32px; font-size:16px; line-height:1.6; color:var(--graphite);">Gracias, <strong id="ticket-success-name" style="color:var(--obsidian);"></strong> — te enviamos los detalles a <strong id="ticket-success-email" style="color:var(--obsidian);"></strong>. Uno de nuestros especialistas se va a contactar en breve para confirmar el pago y enviarte la factura.</p>
       <div class="card-flat" style="border-radius:16px; border:1px solid var(--divider); background:var(--paper-white); padding:28px; text-align:left;">
-        <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen del pedido</h3>
+        <h3 style="margin:0 0 4px; font-size:16px; font-weight:800;">Resumen de registro</h3>
         <div id="ticket-summary-lines-3" style="margin-top:12px;"></div>
         <div style="display:flex; justify-content:space-between; align-items:baseline; margin-top:16px; padding-top:16px; border-top:1px solid var(--divider);">
           <span style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--graphite);">Total</span>
