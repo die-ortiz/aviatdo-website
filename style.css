@@ -319,15 +319,14 @@
     .s360-tab:hover{ color:var(--obsidian); }
     .s360-tab.active{ color:var(--obsidian); border-bottom-color:var(--brand-red); }
 
-    /* Program page — day-by-day schedule. The client's live site pastes the
-       agenda in as three flat exported images (one per day, no markup); the
-       content below is the same real schedule but rebuilt as native HTML
-       so it inherits the site's own type system, stays selectable/
-       translatable, and reads as part of AviatDo rather than a pasted-in
-       flyer. Day switcher intentionally uses a filled pill/card look
-       (not the underline style of .s360-tab above) so the two tab systems
-       — page-level nav vs. in-page day switch — don't read as the same
-       control. */
+    /* Program page — day switcher above that day's agenda image (client
+       decision: show the agenda as an exported image per day, same as the
+       live site, so a new year's program is a file swap in images/ rather
+       than dev hours re-editing markup — see aviatdo-360-program.html).
+       Filled pill/card look intentionally differs from the underline style
+       of .s360-tab above so the two tab systems — page-level nav vs.
+       in-page day switch — don't read as the same control. .grow-card
+       (defined earlier) gives the agenda image its hover lift. */
     .day-tab{ flex:1 1 150px; font-family:var(--font-condensed); background:var(--paper-white); border:1px solid var(--divider); border-radius:12px; padding:14px 22px; cursor:pointer; text-align:left; transition:border-color .2s ease, background .2s ease; }
     .day-tab:hover{ border-color:var(--obsidian); }
     .day-tab.active{ background:var(--obsidian); border-color:var(--obsidian); }
@@ -337,24 +336,6 @@
 
     .day-panel{ display:none; }
     .day-panel.active{ display:block; }
-
-    .schedule-row{ display:grid; grid-template-columns:130px 1fr; gap:24px; padding:18px 0; border-bottom:1px solid var(--divider); }
-    .schedule-row:first-child{ padding-top:0; }
-    .schedule-row:last-child{ border-bottom:none; }
-    .schedule-time{ font-family:var(--font-condensed); font-weight:700; font-size:13px; color:var(--obsidian); white-space:nowrap; padding-top:2px; }
-    .schedule-tag{ display:inline-block; font-family:var(--font-condensed); font-size:10px; font-weight:700; letter-spacing:0.05em; text-transform:uppercase; padding:3px 10px; border-radius:6px; background:rgba(204,36,44,0.08); color:var(--brand-red); margin-bottom:7px; }
-    .schedule-title{ margin:0; font-size:15px; line-height:1.5; font-weight:700; color:var(--obsidian); }
-    .schedule-desc{ margin:6px 0 0; font-size:14px; line-height:1.65; color:var(--graphite); font-weight:400; }
-    .schedule-row.is-break{ opacity:0.65; }
-    .schedule-row.is-break .schedule-time{ font-weight:600; color:var(--graphite); }
-    .schedule-row.is-break .schedule-title{ font-weight:600; }
-
-    .schedule-workshops{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:2px; }
-    .schedule-workshop-card{ background:var(--sand-beige); border-radius:12px; padding:18px; }
-    .schedule-workshop-card h4{ margin:0 0 6px; font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:0.03em; color:var(--brand-red); }
-    .schedule-workshop-card p{ margin:0; font-size:13.5px; line-height:1.5; color:var(--graphite); }
-
-    .schedule-divider{ margin:32px 0 -4px; padding-top:24px; border-top:1px dashed var(--divider); font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.04em; text-transform:uppercase; color:var(--muted); }
 
     /* Live pulsing dot — countdown badge */
     .live-dot{ position:relative; width:6px; height:6px; border-radius:50%; background:var(--brand-red); display:inline-block; }
@@ -760,9 +741,6 @@
       .venue-mosaic .tile{ grid-column:span 1 !important; grid-row:span 1 !important; }
       .venue-mosaic .tile-caption{ opacity:1 !important; transform:none !important; background:linear-gradient(0deg, rgba(0,0,0,0.55), transparent); }
       .s360-day-card{ grid-template-columns:1fr !important; gap:10px !important; padding:24px !important; }
-      .schedule-row{ grid-template-columns:1fr !important; gap:4px !important; }
-      .schedule-time{ padding-top:0 !important; }
-      .schedule-workshops{ grid-template-columns:1fr !important; }
       .day-tab{ flex:1 1 100% !important; }
     }
 

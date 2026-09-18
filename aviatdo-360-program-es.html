@@ -74,14 +74,12 @@
     </div>
   </nav>
 
-  <!-- AGENDA DÍA A DÍA — el sitio en vivo del cliente pega la agenda como
-       tres imágenes exportadas (una por día, sin markup detrás). Mismo
-       contenido real de sesiones, reconstruido como HTML nativo detrás de
-       un selector de día: texto seleccionable/traducible, tabs operables
-       por teclado, y tipografía consistente con el resto del sitio en vez
-       de un flyer pegado encima. Los breaks/comidas se atenúan
-       visualmente (.is-break) para que el contenido del programa se lea
-       primero — la versión en imagen trata cada línea igual. -->
+  <!-- AGENDA DÍA A DÍA — decisión del cliente (ver commit): se muestra como
+       imagen por día, igual que el sitio en vivo, en vez de una agenda
+       armada a mano — actualizar el programa el año que viene es cambiar
+       un archivo en images/, no horas de desarrollo editando markup. Se
+       mantiene el selector de día para navegación/marca; cada panel
+       renderiza directamente la imagen exportada de ese día. -->
   <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
     <p class="reveal" style="margin:0 0 32px; font-size:13px; color:var(--muted); font-family:var(--font-condensed); text-transform:uppercase; letter-spacing:0.04em;">Programa sujeto a cambios</p>
 
@@ -108,20 +106,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Salas Bristol I y II</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registro y café en el Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><p class="schedule-title">Ceremonia de apertura</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">10:00–10:30</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">Entrenamiento Aeronáutico en 2036 — Preparándonos para el Crecimiento, la Sostenibilidad y la Disrupción</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">10:30–11:00</div><div><p class="schedule-title">Networking Break</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:00–11:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Líderes de Aerolíneas, ANSP y MRO sobre Prioridades Globales de Entrenamiento</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:45–12:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Entrenamiento y Evaluación Basados en Competencias (CBTA) en Pilotos, Controladores e Ingenieros</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">12:30–14:00</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Seguridad y Factores Humanos — Lecciones Aplicables a Todas las Profesiones Aeronáuticas</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Sostenibilidad en el Entrenamiento — Operaciones Verdes, Conciencia SAF y Mentalidad Eco</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Desafíos del Workforce — Reclutar y Retener a la Próxima Generación</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">El Profesional Aeronáutico del Futuro — Más Allá de las Habilidades Técnicas</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">17:15–18:30</div><div><p class="schedule-title">Cierre del día — Recepción de cóctel</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-1.avif" target="_blank" rel="noopener" aria-label="Abrir la imagen de la agenda del Día 1 en tamaño completo" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-1.avif" width="600" height="794" loading="lazy" alt="Agenda completa del Día 1 (martes 28 de septiembre) — Salas Bristol I y II: registro, ceremonia de apertura, keynote de apertura sobre Entrenamiento Aeronáutico en 2036, paneles sobre prioridades de entrenamiento, CBTA, seguridad y factores humanos y sostenibilidad, panel de desafíos del workforce, keynote de cierre y recepción de cóctel." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 
@@ -133,19 +121,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Sala Liverpool</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registro y café en el Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">CBTA y EBT en la Práctica</p><p class="schedule-desc">Revisión de los últimos desarrollos en la implementación de CBTA y EBT en las Américas, desafíos y mejores prácticas.</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">10:00–10:45</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">LOFT en el Entorno EBT y CBTA: Del Realismo de Línea al Desarrollo de Competencias</p><p class="schedule-desc">¿Cómo puede el LOFT servir mejor como herramienta para desarrollar y medir competencias de pilotos usando escenarios basados en evidencia?</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">10:45–11:15</div><div><p class="schedule-title">Networking Break en el Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:15–12:15</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">UPRT y Manejo Avanzado — Desafíos y Caminos hacia un Entrenamiento de Pilotos Efectivo</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">12:15–13:00</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">Entrenamiento Basado en Datos — Uso de FOQA y Analítica para Mejorar el Desempeño de los Pilotos</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">13:00–14:00</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><p class="schedule-title">Resolviendo la Escasez de Pilotos y Preparando a las Aerolíneas</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Presentación</span><p class="schedule-title">National Flight Training Alliance — Modernización de las Escuelas Part 141 y su Impacto Esperado en el Entrenamiento de Vuelo en EE. UU.</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break en el Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><p class="schedule-title">Formando Mejores Pilotos: Aplicando Factores Humanos y CRM Más Allá de los Checklists</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><p class="schedule-title">Entrenamiento de Pilotos Potenciado por IA: Transformando el Aprendizaje, la Seguridad y la Competencia en la Aviación</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-2.avif" target="_blank" rel="noopener" aria-label="Abrir la imagen de la agenda del Día 2 en tamaño completo" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-2.avif" width="600" height="779" loading="lazy" alt="Agenda completa del Día 2 (miércoles 29 de septiembre) — Sala Liverpool: CBTA y EBT en la práctica, LOFT, UPRT, entrenamiento basado en datos, panel sobre la escasez de pilotos, National Flight Training Alliance, factores humanos/CRM y entrenamiento de pilotos potenciado por IA." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 
@@ -157,24 +136,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Manchester / Liverpool / Bristol I y II</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">09:00–09:30</div><div><p class="schedule-title">Café networking en el Exhibit Hall</p></div></div>
-        <div class="schedule-row" style="align-items:flex-start;">
-          <div class="schedule-time">09:30–12:30</div>
-          <div>
-            <span class="schedule-tag">Workshops</span>
-            <div class="schedule-workshops">
-              <div class="schedule-workshop-card"><h4>Track de Pilotos y Reguladores</h4><p>Certificación FSTD según el Doc 9625 de la OACI — el cambio de paradigma.</p></div>
-              <div class="schedule-workshop-card"><h4>Track de ATC</h4><p>Programas de mentoría en un entorno de ATC.</p></div>
-              <div class="schedule-workshop-card"><h4>Track de Mantenimiento</h4><p>Aplicación de CBTA en el entrenamiento de mantenimiento.</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="schedule-row is-break"><div class="schedule-time">12:30–13:30</div><div><p class="schedule-title">Almuerzo networking</p></div></div>
-        <div class="schedule-divider">Sesión de cierre conjunta — fin del Día 3</div>
-        <div class="schedule-row"><div class="schedule-time">13:30–14:00</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">Una Sola Aviación, un Solo Futuro — Construyendo un Ecosistema de Entrenamiento Integrado</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:30</div><div><p class="schedule-title">Cierre y despedida</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">14:30–16:00</div><div><p class="schedule-title">Cierre de Networking Connect (por IAWA)</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-3.avif" target="_blank" rel="noopener" aria-label="Abrir la imagen de la agenda del Día 3 en tamaño completo" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-3.avif" width="600" height="849" loading="lazy" alt="Agenda completa del Día 3 (jueves 30 de septiembre) — Manchester / Liverpool / Bristol I y II: workshops en paralelo de los tracks de Pilotos, ATC y Mantenimiento, keynote de cierre conjunta Una Sola Aviación un Solo Futuro, cierre y despedida, Networking Connect de cierre (por IAWA)." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 

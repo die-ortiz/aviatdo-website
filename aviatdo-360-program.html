@@ -74,14 +74,11 @@
     </div>
   </nav>
 
-  <!-- DAY-BY-DAY SCHEDULE — real forum agenda (the client's live site pastes
-       this in as three flat exported images, one per day, with no markup
-       behind it). Same session data, rebuilt as native HTML behind a day
-       switcher: selectable/translatable text, keyboard-operable tabs, and
-       type that matches the rest of the site instead of a pasted-in flyer.
-       Breaks/meals are visually de-emphasized (.is-break) so the actual
-       program content reads first — the flat-image version treats every
-       line the same. -->
+  <!-- DAY-BY-DAY AGENDA — client decision (see commit): shown as an image
+       per day, same as the live site, instead of a hand-built schedule —
+       updating next year's program is a file swap in images/, not dev
+       hours re-editing markup. Day switcher kept for navigation/branding;
+       each panel just renders that day's exported agenda image. -->
   <section class="section-pad-x" style="max-width:1200px; margin:0 auto; padding:96px 40px 132px;">
     <p class="reveal" style="margin:0 0 32px; font-size:13px; color:var(--muted); font-family:var(--font-condensed); text-transform:uppercase; letter-spacing:0.04em;">Program subject to change</p>
 
@@ -108,20 +105,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Bristol I &amp; II meeting rooms</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registration &amp; Coffee at Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><p class="schedule-title">Opening Ceremony</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">10:00–10:30</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">Aviation Training in 2036 — Preparing for Growth, Sustainability, and Disruption</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">10:30–11:00</div><div><p class="schedule-title">Networking Break</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:00–11:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Airline, ANSP &amp; MRO Leaders on Global Training Priorities</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:45–12:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Competency-Based Training &amp; Assessment (CBTA) Across Pilots, Controllers and Engineers</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">12:30–14:00</div><div><p class="schedule-title">Networking Lunch</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Safety &amp; Human Factors — Lessons That Apply Across All Aviation Professions</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Sustainability in Training — Green Operations, SAF Awareness &amp; Eco-Mindset</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><span class="schedule-tag">Panel</span><p class="schedule-title">Workforce Challenges — Recruiting &amp; Retaining the Next Generation</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">The Aviation Professional of the Future — Beyond Technical Skills</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">17:15–18:30</div><div><p class="schedule-title">Wrap-Up Day — Cocktail Reception</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-1.avif" target="_blank" rel="noopener" aria-label="Open Day 1 agenda image full size" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-1.avif" width="600" height="794" loading="lazy" alt="Day 1 (Tue, Sep 28) full agenda — Bristol I &amp; II meeting rooms: registration, opening ceremony, opening keynote on Aviation Training in 2036, panels on training priorities, CBTA, safety &amp; human factors and sustainability, workforce challenges panel, closing keynote and cocktail reception." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 
@@ -133,19 +120,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Liverpool meeting room</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">08:30–09:00</div><div><p class="schedule-title">Registration &amp; Coffee at Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">09:00–10:00</div><div><span class="schedule-tag">Presentation</span><p class="schedule-title">CBTA &amp; EBT in Practice</p><p class="schedule-desc">Review of the latest developments in the implementation of CBTA and EBT in the Americas, challenges and best practices.</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">10:00–10:45</div><div><span class="schedule-tag">Presentation</span><p class="schedule-title">LOFT in the EBT and CBTA Environment: From Line Realism to Competency Development</p><p class="schedule-desc">How can LOFT best serve as a tool to develop and measure pilot competencies using evidence-based scenarios?</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">10:45–11:15</div><div><p class="schedule-title">Networking Break at Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">11:15–12:15</div><div><span class="schedule-tag">Presentation</span><p class="schedule-title">UPRT and Advanced Handling — Challenges and Pathways to Effective Pilot Training</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">12:15–13:00</div><div><span class="schedule-tag">Presentation</span><p class="schedule-title">Data-Driven Training — Using FOQA &amp; Analytics to Enhance Pilot Performance</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">13:00–14:00</div><div><p class="schedule-title">Networking Lunch</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:45</div><div><p class="schedule-title">Solving the Pilot Shortage and Developing Airline Readiness</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:45–15:30</div><div><span class="schedule-tag">Presentation</span><p class="schedule-title">National Flight Training Alliance — Modernization of Part 141 Schools and Expected Impact on Flight Training in the USA</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">15:30–16:00</div><div><p class="schedule-title">Networking Break at Exhibit Hall</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:00–16:45</div><div><p class="schedule-title">Building Better Pilots: Applying Human Factors and CRM Beyond Checklists</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">16:45–17:15</div><div><p class="schedule-title">AI-Enhanced Pilot Training: Transforming Learning, Safety, and Competency in Aviation</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-2.avif" target="_blank" rel="noopener" aria-label="Open Day 2 agenda image full size" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-2.avif" width="600" height="779" loading="lazy" alt="Day 2 (Wed, Sep 29) full agenda — Liverpool meeting room: CBTA &amp; EBT in practice, LOFT, UPRT, data-driven training, pilot shortage panel, National Flight Training Alliance, human factors/CRM and AI-enhanced pilot training sessions." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 
@@ -157,24 +135,10 @@
         </div>
         <span class="eyebrow-pill" style="white-space:nowrap;"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" aria-hidden="true"><path d="M12 21s7-7.5 7-12a7 7 0 1 0-14 0c0 4.5 7 12 7 12z"></path><circle cx="12" cy="9" r="2.2"></circle></svg>Manchester / Liverpool / Bristol I &amp; II</span>
       </div>
-      <div class="reveal card-flat" style="border-radius:16px; padding:8px 32px; border:1px solid var(--divider); background:var(--paper-white);">
-        <div class="schedule-row is-break"><div class="schedule-time">09:00–09:30</div><div><p class="schedule-title">Networking Coffee at Exhibit Hall</p></div></div>
-        <div class="schedule-row" style="align-items:flex-start;">
-          <div class="schedule-time">09:30–12:30</div>
-          <div>
-            <span class="schedule-tag">Workshops</span>
-            <div class="schedule-workshops">
-              <div class="schedule-workshop-card"><h4>Pilot Stream &amp; Regulators</h4><p>FSTD certification based on ICAO Doc 9625 — the change of paradigm.</p></div>
-              <div class="schedule-workshop-card"><h4>ATC Stream</h4><p>Mentoring programs in an ATC environment.</p></div>
-              <div class="schedule-workshop-card"><h4>Maintenance Stream</h4><p>CBTA application in maintenance training.</p></div>
-            </div>
-          </div>
-        </div>
-        <div class="schedule-row is-break"><div class="schedule-time">12:30–13:30</div><div><p class="schedule-title">Networking Lunch</p></div></div>
-        <div class="schedule-divider">Shared closing session — end of Day 3</div>
-        <div class="schedule-row"><div class="schedule-time">13:30–14:00</div><div><span class="schedule-tag">Keynote</span><p class="schedule-title">One Aviation, One Future — Building an Integrated Training Ecosystem</p></div></div>
-        <div class="schedule-row"><div class="schedule-time">14:00–14:30</div><div><p class="schedule-title">Closing and Farewell</p></div></div>
-        <div class="schedule-row is-break"><div class="schedule-time">14:30–16:00</div><div><p class="schedule-title">Closing Networking Connect (by IAWA)</p></div></div>
+      <div class="reveal" style="text-align:center;">
+        <a class="btn-focus grow-card" href="images/programe-day-3.avif" target="_blank" rel="noopener" aria-label="Open Day 3 agenda image full size" style="display:inline-block; border-radius:16px;">
+          <img src="images/programe-day-3.avif" width="600" height="849" loading="lazy" alt="Day 3 (Thu, Sep 30) full agenda — Manchester / Liverpool / Bristol I &amp; II: parallel workshops on the Pilot, ATC and Maintenance streams, shared closing keynote One Aviation One Future, closing and farewell, IAWA networking connect." style="max-width:600px; width:100%; height:auto; border-radius:16px; border:1px solid var(--divider); box-shadow:0 20px 40px -20px rgba(0,0,0,0.18); display:block;">
+        </a>
       </div>
     </div>
 
