@@ -162,7 +162,23 @@ class Component extends DCLogic {
       const scrollToHash = (id, behavior) => {
         const target = document.getElementById(id);
         if (!target) return false;
-        const y = target.getBoundingClientRect().top + window.scrollY;
+        // rect.top + window.scrollY only equals the absolute target position
+        // once #page-root's transform is in sync with window.scrollY — true
+        // after a real scroll (the in-page click case below), but NOT yet
+        // true right when a page first loads with the hash already in the
+        // URL: #page-root has just gone position:fixed with no transform
+        // applied yet, so it's still rendering at its raw, untransformed
+        // document position. Adding window.scrollY on top of that double-
+        // counts the offset and overshoots — observed as the link landing
+        // near the footer regardless of which section it pointed to.
+        // Measuring relative to #page-root's own rect sidesteps this: both
+        // rects move together under any transform, so their difference is
+        // always the target's constant offset from #page-root's top, which
+        // itself sits at document y0 (the fixed header/progress bar take no
+        // flow space).
+        const y = useSmoothTransform
+          ? target.getBoundingClientRect().top - pageRoot.getBoundingClientRect().top
+          : target.getBoundingClientRect().top + window.scrollY;
         window.scrollTo({ top: y, left: 0, behavior: behavior || 'auto' });
         return true;
       };
