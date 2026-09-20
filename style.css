@@ -739,12 +739,20 @@
       #contact{ padding:100px 0 112px !important; }
       #contact .ghost-link{ font-size:18px !important; }
       #contact h2{ font-size:30px !important; }
+      /* the outer contact grid (intro column + form column) never collapsed
+         on phone — minmax(320px,480px) forces its first column to stay at
+         least 320px wide even when the whole viewport is narrower than
+         that, so the form column got pushed off-screen to the right. */
+      #contact > div[style*="grid-template-columns:minmax(320px,480px) 1fr"]{ grid-template-columns:1fr !important; gap:40px !important; }
       /* the form's own First/Last-name, Company/Telephone and Email/Contact-
          method rows are a second, nested 2-up grid (independent of the outer
          minmax(320px,480px) 1fr layout above) — without this it stays
          2-column and its min-content width forces the whole contact grid
-         to overflow, clipping the heading and the fields alike. */
-      #contact form > div[style*="grid-template-columns:1fr 1fr"]{ grid-template-columns:1fr !important; }
+         to overflow, clipping the heading and the fields alike. These rows
+         sit inside a #contact-form-fields wrapper (form > div > div), one
+         level deeper than a direct child, so this needs a descendant
+         selector — `form >` alone never matched. */
+      #contact form div[style*="grid-template-columns:1fr 1fr"]{ grid-template-columns:1fr !important; }
 
       /* ---- footer ---- */
       footer{ padding:60px 20px 24px !important; }
