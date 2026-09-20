@@ -110,6 +110,13 @@
     .service-check-text strong{color:var(--obsidian);}
     @media (max-width: 900px){
       .service-row{grid-template-columns:1fr; gap:28px;}
+      /* desktop alternates which side gets the photo (left/right zigzag),
+         so the photo sits before or after the text in source order
+         depending on the row. Once this collapses to one column, that
+         alternation made every other card stack text-then-photo instead
+         of photo-then-text — forcing the photo first keeps all rows
+         consistent, photo always above the title. */
+      .service-row-photo{order:-1;}
       .service-row-badge{padding:10px 14px; gap:10px;}
       .service-row-badge .service-icon-badge{width:32px; height:32px;}
       .service-pill{padding:36px 24px; border-radius:20px;}
@@ -719,6 +726,16 @@
       .s360-date-num{ font-size:34px !important; }
       .s360-date-year{ font-size:13.5px !important; }
       .s360-info-row{ padding:13px 14px !important; }
+
+      /* ---- navy CTA pill (AviatDo 360 overview, Partners, Services) —
+         the button text was set to white-space:nowrap for the desktop
+         single-row layout, but on phone the row already wraps the button
+         onto its own line below the heading; kept as nowrap, the longer
+         labels (e.g. "Ver oportunidades de patrocinio →") don't fit that
+         line's available width and spill past the button's edge. Letting
+         it wrap and go full-width instead gives it as much room as the
+         row has, so it never needs more than that. */
+      .service-pill .btn-primary{ white-space:normal !important; width:100%; text-align:center; }
 
       /* ---- partners ---- */
       #partners{ padding-top:72px !important; padding-bottom:72px !important; }
