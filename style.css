@@ -24,7 +24,12 @@
        carries a style class like .btn-obsidian (e.g. the contact form's
        submit button) still wins its own background/padding from that class
        instead of being blanked out by this generic reset. */
-    :where(button.btn-focus){font:inherit; background:none; border:none; padding:0; margin:0; text-align:inherit;}
+    /* color:inherit here matters beyond tidiness: unlike <a>, a bare
+       <button> isn't covered by the `a{color:...}` rule below, and some
+       browsers (notably iOS Safari) paint an unstyled button's text in the
+       system accent blue instead of the page's ink color. Every ghost-link
+       "back"/"volver" button in the ticket flow was relying on this. */
+    :where(button.btn-focus){font:inherit; color:inherit; background:none; border:none; padding:0; margin:0; text-align:inherit;}
 
     /* ghost text link — underline sweep on hover, no shadow anywhere in this system */
     .ghost-link{position:relative; display:inline-block; font-family:var(--font-display); font-weight:600;}
