@@ -32,7 +32,14 @@
     :where(button.btn-focus){font:inherit; color:inherit; background:none; border:none; padding:0; margin:0; text-align:inherit;}
 
     /* ghost text link — underline sweep on hover, no shadow anywhere in this system */
-    .ghost-link{position:relative; display:inline-block; font-family:var(--font-display); font-weight:600;}
+    /* align-self:flex-start only matters when this sits inside a
+       flex-direction:column container (the footer link lists, the
+       contact section's email link) — default align-items:stretch there
+       otherwise stretches the link's box to the column's full width, so
+       its ::after hover underline (sized to that box, not the text)
+       spans edge-to-edge instead of just under the word. No-op anywhere
+       else, since it's ignored on a non-flex-item. */
+    .ghost-link{position:relative; display:inline-block; align-self:flex-start; font-family:var(--font-display); font-weight:600;}
     .ghost-link::after{content:''; position:absolute; left:0; right:0; bottom:-3px; height:1px; background:currentColor; transform:scaleX(0); transform-origin:left; transition:transform .25s ease;}
     .ghost-link:hover::after{transform:scaleX(1);}
     .ghost-link:visited{opacity:0.72;}
