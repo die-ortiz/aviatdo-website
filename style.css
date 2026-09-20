@@ -588,6 +588,12 @@
       html.nav-open #nav-toggle .burger-bar:nth-child(1){ transform:translateY(5px) rotate(45deg); }
       html.nav-open #nav-toggle .burger-bar:nth-child(2){ opacity:0; }
       html.nav-open #nav-toggle .burger-bar:nth-child(3){ transform:translateY(-5px) rotate(-45deg); }
+      /* the burger's bars (now an X) pick up --nav-ink, which #site-header
+         flips to obsidian once .scrolled is applied (dark icon for its own
+         white bar) — that class tracks scroll position, not menu state, so
+         opening the drawer after scrolling left the close X black against
+         the navy drawer. Force it white while the drawer is open. */
+      html.nav-open #nav-toggle .burger-bar{ background:var(--on-obsidian) !important; }
 
       #nav-panel{
         display:flex; flex-direction:column; align-items:center !important; gap:26px;
