@@ -717,7 +717,13 @@ class Component extends DCLogic {
         if (lastFocused && lastFocused.focus) lastFocused.focus();
       }
 
-      trigger.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+      // Booking isn't in scope yet (not part of the quoted work), so the
+      // hero CTA is disabled here for now and falls through to its plain
+      // href="#contact" — handled by the generic same-page hash-scroll
+      // listener above — instead of opening this modal. Re-enable by
+      // restoring this listener once booking is actually contracted; the
+      // rest of the modal (markup, CSS, state logic below) is untouched.
+      // trigger.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
       closeBtn.addEventListener('click', closeModal);
       doneBtn.addEventListener('click', closeModal);
       overlay.addEventListener('click', (e) => { if (e.target === overlay) closeModal(); });
