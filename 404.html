@@ -64,10 +64,11 @@
 <!-- NAV — same shared markup as every other page (see the comment on
      about.html for why it's a sibling of #page-root). No aria-current
      here since no nav item corresponds to a 404, and the EN/ES toggle is
-     dropped since there's only one 404.html for the whole site —
-     GitHub Pages serves it for any unmatched path regardless of the
-     language the visitor was on, so this page speaks both languages
-     itself instead of guessing which one to redirect to. -->
+     dropped since there's only one 404.html for the whole site — GitHub
+     Pages serves it for any unmatched path regardless of language, and
+     there's no matching other-language 404 to link the toggle to. The
+     hero further down infers the language from the path instead (see
+     the script at the bottom) rather than needing a toggle here. -->
 <header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
     <!-- data-light points at the dark logo variant here (not a typo) —
          script.js swaps src between data-light/data-dark on every scroll
@@ -101,14 +102,16 @@
 
 <div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
-  <!-- Bilingual 404 hero — deliberately breaks from the dark
-       radial-gradient hero every other inner page uses, so this page
-       reads as distinct rather than blending in. Light canvas instead,
-       built around a "broken flight route" motif: a dashed line (the
-       route) interrupted by a pulsing waypoint marker, with the 404
-       sitting where the route stops. EN block on top, ES block below a
-       plain divider — same two-language stack as before, restyled for
-       a light background. -->
+  <!-- 404 hero — deliberately breaks from the dark radial-gradient hero
+       every other inner page uses, so this page reads as distinct rather
+       than blending in. Light canvas instead, built around a "broken
+       flight route" motif: a dashed line (the route) interrupted by a
+       pulsing waypoint marker, with the 404 sitting where the route
+       stops. #s404-en and #s404-es both render server-side (both languages
+       are here in the markup, so it degrades gracefully with JS off) —
+       the script at the bottom hides whichever one doesn't match the
+       404'd path's language, falling back to showing both, separated by
+       #s404-divider, when it can't tell. -->
   <section style="position:relative; overflow:hidden; background:var(--paper-white); padding:calc(120px + 6vh) 40px 120px; min-height:82vh; display:flex; align-items:center;">
     <div class="s404-turbine" aria-hidden="true"></div>
     <div class="s404-content" style="position:relative; z-index:1; max-width:640px; margin:0 auto; text-align:center; width:100%;">
@@ -128,37 +131,44 @@
 
       <div style="font-family:var(--font-headline); font-weight:900; letter-spacing:-0.03em; line-height:1; font-size:clamp(72px,16vw,140px); color:var(--brand-red); margin-top:18px;">404</div>
 
-      <h1 style="margin:10px 0 0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Page not found</h1>
-      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">The page you're looking for doesn't exist, was moved, or the link might be broken.</p>
-      <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
-        <a class="btn-focus btn-primary" href="index.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Back to home →</a>
-        <a class="btn-focus ghost-link" href="services.html" style="align-self:center; color:var(--obsidian); font-size:15px;">View our services →</a>
-      </div>
-      <div style="display:flex; gap:10px 22px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
-        <a class="btn-focus ghost-link" href="experts.html" style="color:var(--muted); font-size:13px;">Our Experts</a>
-        <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--muted); font-size:13px;">AviatDo 360°</a>
-        <a class="btn-focus ghost-link" href="aviatdo-talks.html" style="color:var(--muted); font-size:13px;">AviatDo Talks</a>
-        <a class="btn-focus ghost-link" href="index.html#contact" style="color:var(--muted); font-size:13px;">Contact us</a>
-      </div>
-
-      <div style="height:1px; background:var(--divider); margin:44px 0;" aria-hidden="true"></div>
-
-      <h2 style="margin:0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Página no encontrada</h2>
-      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">La página que buscás no existe, fue movida, o el link puede estar roto.</p>
-      <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
-        <a class="btn-focus btn-primary" href="index-es.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Volver al inicio →</a>
-        <a class="btn-focus ghost-link" href="services-es.html" style="align-self:center; color:var(--obsidian); font-size:15px;">Ver nuestros servicios →</a>
-      </div>
-      <div style="display:flex; gap:10px 22px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
-        <a class="btn-focus ghost-link" href="experts-es.html" style="color:var(--muted); font-size:13px;">Nuestros Expertos</a>
-        <a class="btn-focus ghost-link" href="aviatdo-360-es.html" style="color:var(--muted); font-size:13px;">AviatDo 360°</a>
-        <a class="btn-focus ghost-link" href="aviatdo-talks-es.html" style="color:var(--muted); font-size:13px;">AviatDo Talks</a>
-        <a class="btn-focus ghost-link" href="index-es.html#contact" style="color:var(--muted); font-size:13px;">Contáctanos</a>
+      <!-- Shown/hidden by the script below based on the 404'd path: an
+           attempt at an "-es.html" file shows only this block, an EN-
+           looking attempt shows only the English one, and anything
+           ambiguous (a direct /404.html visit, a path with no language
+           signal) falls back to showing both, same as before. -->
+      <div id="s404-en">
+        <h1 style="margin:10px 0 0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Page not found</h1>
+        <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">The page you're looking for doesn't exist, was moved, or the link might be broken.</p>
+        <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
+          <a class="btn-focus btn-primary" href="index.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Back to home →</a>
+          <a class="btn-focus ghost-link" href="services.html" style="align-self:center; color:var(--obsidian); font-size:15px;">View our services →</a>
+        </div>
+        <div style="display:flex; gap:10px 22px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
+          <a class="btn-focus ghost-link" href="experts.html" style="color:var(--muted); font-size:13px;">Our Experts</a>
+          <a class="btn-focus ghost-link" href="aviatdo-360.html" style="color:var(--muted); font-size:13px;">AviatDo 360°</a>
+          <a class="btn-focus ghost-link" href="aviatdo-talks.html" style="color:var(--muted); font-size:13px;">AviatDo Talks</a>
+          <a class="btn-focus ghost-link" href="index.html#contact" style="color:var(--muted); font-size:13px;">Contact us</a>
+        </div>
+        <p style="margin:28px 0 0; font-size:14px; line-height:1.6; color:var(--muted);">Still stuck? Write to us at <a class="btn-focus ghost-link" href="mailto:communication@aviatdo.com" style="color:var(--graphite);">communication@aviatdo.com</a></p>
       </div>
 
-      <div style="height:1px; background:var(--divider); margin:44px 0;" aria-hidden="true"></div>
+      <div id="s404-divider" style="height:1px; background:var(--divider); margin:44px 0;" aria-hidden="true"></div>
 
-      <p style="margin:0; font-size:14px; line-height:1.6; color:var(--muted);">Still stuck? Write to us at <a class="btn-focus ghost-link" href="mailto:communication@aviatdo.com" style="color:var(--graphite);">communication@aviatdo.com</a><br>¿Seguís sin encontrarlo? Escribinos a <a class="btn-focus ghost-link" href="mailto:communication@aviatdo.com" style="color:var(--graphite);">communication@aviatdo.com</a></p>
+      <div id="s404-es">
+        <h2 style="margin:0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Página no encontrada</h2>
+        <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">La página que buscás no existe, fue movida, o el link puede estar roto.</p>
+        <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
+          <a class="btn-focus btn-primary" href="index-es.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Volver al inicio →</a>
+          <a class="btn-focus ghost-link" href="services-es.html" style="align-self:center; color:var(--obsidian); font-size:15px;">Ver nuestros servicios →</a>
+        </div>
+        <div style="display:flex; gap:10px 22px; justify-content:center; margin-top:24px; flex-wrap:wrap;">
+          <a class="btn-focus ghost-link" href="experts-es.html" style="color:var(--muted); font-size:13px;">Nuestros Expertos</a>
+          <a class="btn-focus ghost-link" href="aviatdo-360-es.html" style="color:var(--muted); font-size:13px;">AviatDo 360°</a>
+          <a class="btn-focus ghost-link" href="aviatdo-talks-es.html" style="color:var(--muted); font-size:13px;">AviatDo Talks</a>
+          <a class="btn-focus ghost-link" href="index-es.html#contact" style="color:var(--muted); font-size:13px;">Contáctanos</a>
+        </div>
+        <p style="margin:28px 0 0; font-size:14px; line-height:1.6; color:var(--muted);">¿Seguís sin encontrarlo? Escribinos a <a class="btn-focus ghost-link" href="mailto:communication@aviatdo.com" style="color:var(--graphite);">communication@aviatdo.com</a></p>
+      </div>
 
     </div>
   </section>
@@ -226,15 +236,37 @@
 
 <script src="script.js?v=10"></script>
 <script>
-  // Show the path that actually 404'd, skipping the no-op case where
-  // someone lands on /404.html directly (nothing useful to echo back).
   (function () {
     var path = window.location.pathname.replace(/\/404\.html\/?$/, '');
-    if (!path || path === '/') return;
-    var el = document.getElementById('s404-path');
-    if (!el) return;
-    el.textContent = 'You tried to open / Intentaste abrir: ' + path;
-    el.hidden = false;
+
+    // Show the path that actually 404'd, skipping the no-op case where
+    // someone lands on /404.html directly (nothing useful to echo back).
+    if (path && path !== '/') {
+      var pathEl = document.getElementById('s404-path');
+      if (pathEl) {
+        pathEl.textContent = 'You tried to open / Intentaste abrir: ' + path;
+        pathEl.hidden = false;
+      }
+    }
+
+    // Every ES page on this site ends in "-es.html" (index-es.html,
+    // about-es.html, ...) — no folders, just that suffix — so it's a
+    // reliable signal for which language the visitor was actually on,
+    // not a guess. An EN-looking attempt (ends in .html, no -es) shows
+    // only the English block; an -es.html attempt shows only Spanish.
+    // Anything else — a direct /404.html visit, a path with no
+    // extension, one that doesn't match either pattern — is ambiguous,
+    // so both blocks stay visible, same as before this was added.
+    var isES = /-es\.html$/i.test(path);
+    var isEN = !isES && /\.html$/i.test(path);
+    if (isES || isEN) {
+      var enBlock = document.getElementById('s404-en');
+      var esBlock = document.getElementById('s404-es');
+      var divider = document.getElementById('s404-divider');
+      if (isES && enBlock) enBlock.hidden = true;
+      if (isEN && esBlock) esBlock.hidden = true;
+      if (divider) divider.hidden = true;
+    }
   })();
 </script>
 </body>
