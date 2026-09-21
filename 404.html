@@ -15,6 +15,27 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&amp;family=Inter+Tight:wght@600;700&amp;family=Barlow:wght@700;900&amp;display=swap">
   <link rel="stylesheet" href="style.css?v=14">
 
+  <!-- Page-scoped: the "broken route" marker and its pulse are only used
+       here, so they live in this page instead of the shared stylesheet. -->
+  <style>
+    /* #site-header defaults --nav-ink to white, floating transparent over
+       the dark photo hero every other page opens with, then flips dark
+       once .scrolled (solid white bar) takes over further down. This
+       page's hero is light from the very first frame, so that white nav
+       text needs to start dark instead — .scrolled still applies its own
+       solid background further down regardless, so this only affects the
+       unscrolled moment at the top. */
+    #site-header{ --nav-ink:var(--obsidian); }
+    .s404-content{ animation:s404FadeUp .6s cubic-bezier(.16,1,.3,1) both; }
+    @keyframes s404FadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:translateY(0); } }
+    .s404-marker-ping{ animation:s404Ping 2.4s cubic-bezier(0,0,.2,1) infinite; }
+    @keyframes s404Ping{ 0%{ transform:scale(.6); opacity:.55; } 70%,100%{ transform:scale(2.2); opacity:0; } }
+    @media (prefers-reduced-motion: reduce){
+      .s404-content{ animation:none; }
+      .s404-marker-ping{ animation:none; opacity:0; }
+    }
+  </style>
+
 </head>
 <body>
 
@@ -28,7 +49,14 @@
      language the visitor was on, so this page speaks both languages
      itself instead of guessing which one to redirect to. -->
 <header id="site-header" style="position:fixed; top:0; left:0; right:0; z-index:20; display:flex; align-items:center; justify-content:space-between; padding:24px 40px; max-width:1200px; margin:0 auto;">
-    <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img class="header-logo" src="images/aviatdo-logo-light.svg" data-light="images/aviatdo-logo-light.svg" data-dark="images/aviatdo-logo.svg" width="899" height="512" alt="AviatDo" style="height:42px; width:auto; display:block;"></a>
+    <!-- data-light points at the dark logo variant here (not a typo) —
+         script.js swaps src between data-light/data-dark on every scroll
+         frame based on the .scrolled threshold, so pinning just the
+         initial src wouldn't stick once scrolling starts. Since this
+         page's hero is light at the very top too (unlike every other
+         page, which opens on a dark photo), the "unscrolled" logo needs
+         to be the dark-on-light variant regardless of scroll state. -->
+    <a class="btn-focus" href="index.html" aria-label="AviatDo home"><img class="header-logo" src="images/aviatdo-logo.svg" data-light="images/aviatdo-logo.svg" data-dark="images/aviatdo-logo.svg" width="899" height="512" alt="AviatDo" style="height:42px; width:auto; display:block;"></a>
     <div id="nav-panel">
       <nav style="display:flex; align-items:center; gap:20px; flex-wrap:wrap;">
         <a class="btn-focus ghost-link" href="services.html" style="color:var(--nav-ink); font-size:16px;">Services</a>
@@ -53,31 +81,42 @@
 
 <div id="page-root" style="width: 100%; color: var(--obsidian); font-family: var(--font-display); -webkit-font-smoothing: antialiased; background-color: #FAFAFA">
 
-  <!-- Bilingual 404 hero — same dark radial-gradient treatment as the
-       other inner-page heroes (#101116 + the two-blob gradient), sized
-       to fill most of the viewport since there's no photo layer here.
-       EN block on top, ES block below a hairline divider (same divider
-       pattern used between #contact and the footer on the homepage). -->
-  <section style="position:relative; overflow:hidden; background:#101116; padding:calc(120px + 8vh) 40px 120px; min-height:82vh; display:flex; align-items:center;">
-    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 1000px 640px at 8% 10%, rgba(0,198,198,0.18), transparent 65%), radial-gradient(ellipse 900px 640px at 100% 100%, rgba(144,109,255,0.2), transparent 65%); pointer-events:none;" aria-hidden="true"></div>
-    <div style="position:relative; max-width:640px; margin:0 auto; text-align:center;">
+  <!-- Bilingual 404 hero — deliberately breaks from the dark
+       radial-gradient hero every other inner page uses, so this page
+       reads as distinct rather than blending in. Light canvas instead,
+       built around a "broken flight route" motif: a dashed line (the
+       route) interrupted by a pulsing waypoint marker, with the 404
+       sitting where the route stops. EN block on top, ES block below a
+       plain divider — same two-language stack as before, restyled for
+       a light background. -->
+  <section style="position:relative; overflow:hidden; background:var(--paper-white); padding:calc(120px + 6vh) 40px 120px; min-height:82vh; display:flex; align-items:center;">
+    <div class="s404-content" style="position:relative; max-width:640px; margin:0 auto; text-align:center; width:100%;">
 
-      <div style="font-family:var(--font-headline); font-weight:900; letter-spacing:-0.03em; line-height:1; font-size:clamp(64px,14vw,128px); color:var(--brand-red);">404</div>
+      <div style="display:flex; align-items:center; gap:14px;" aria-hidden="true">
+        <div style="flex:1; height:0; border-top:2px dashed var(--divider);"></div>
+        <div style="flex-shrink:0; width:13px; height:13px; border-radius:50%; background:var(--brand-red); position:relative;">
+          <div class="s404-marker-ping" style="position:absolute; inset:-9px; border-radius:50%; border:2px solid var(--brand-red);"></div>
+        </div>
+        <div style="flex:1; height:0; border-top:2px dashed var(--divider);"></div>
+      </div>
+      <div style="font-family:var(--font-condensed); font-size:12px; font-weight:700; letter-spacing:0.12em; text-transform:uppercase; color:var(--muted); margin-top:14px;" aria-hidden="true">No flight plan on file</div>
 
-      <h1 style="margin:8px 0 0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--on-obsidian);">Page not found</h1>
-      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--hero-muted);">The page you're looking for doesn't exist, was moved, or the link might be broken.</p>
+      <div style="font-family:var(--font-headline); font-weight:900; letter-spacing:-0.03em; line-height:1; font-size:clamp(72px,16vw,140px); color:var(--brand-red); margin-top:18px;">404</div>
+
+      <h1 style="margin:10px 0 0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Page not found</h1>
+      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">The page you're looking for doesn't exist, was moved, or the link might be broken.</p>
       <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
         <a class="btn-focus btn-primary" href="index.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Back to home →</a>
-        <a class="btn-focus ghost-link" href="services.html" style="align-self:center; color:var(--on-obsidian); font-size:15px;">View our services →</a>
+        <a class="btn-focus ghost-link" href="services.html" style="align-self:center; color:var(--obsidian); font-size:15px;">View our services →</a>
       </div>
 
-      <div style="height:1px; background:rgba(255,255,255,0.14); margin:44px 0;" aria-hidden="true"></div>
+      <div style="height:1px; background:var(--divider); margin:44px 0;" aria-hidden="true"></div>
 
-      <h2 style="margin:0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--on-obsidian);">Página no encontrada</h2>
-      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--hero-muted);">La página que buscás no existe, fue movida, o el link puede estar roto.</p>
+      <h2 style="margin:0; font-family:var(--font-headline); font-weight:800; letter-spacing:-0.02em; font-size:clamp(24px,4vw,32px); color:var(--obsidian);">Página no encontrada</h2>
+      <p style="margin:14px 0 0; font-size:16px; line-height:1.6; color:var(--graphite);">La página que buscás no existe, fue movida, o el link puede estar roto.</p>
       <div style="display:flex; gap:14px; justify-content:center; margin-top:28px; flex-wrap:wrap;">
         <a class="btn-focus btn-primary" href="index-es.html" style="display:inline-block; color:var(--on-obsidian); font-family:var(--font-condensed); font-weight:600; font-size:13px; letter-spacing:0.05em; text-transform:uppercase; padding:14px 30px; border-radius:8px;">Volver al inicio →</a>
-        <a class="btn-focus ghost-link" href="services-es.html" style="align-self:center; color:var(--on-obsidian); font-size:15px;">Ver nuestros servicios →</a>
+        <a class="btn-focus ghost-link" href="services-es.html" style="align-self:center; color:var(--obsidian); font-size:15px;">Ver nuestros servicios →</a>
       </div>
 
     </div>
