@@ -252,13 +252,19 @@
     // Every ES page on this site ends in "-es.html" (index-es.html,
     // about-es.html, ...) — no folders, just that suffix — so it's a
     // reliable signal for which language the visitor was actually on,
-    // not a guess. An EN-looking attempt (ends in .html, no -es) shows
-    // only the English block; an -es.html attempt shows only Spanish.
+    // not a guess. An EN-looking attempt (has .html, no -es) shows only
+    // the English block; an -es.html attempt shows only Spanish.
     // Anything else — a direct /404.html visit, a path with no
     // extension, one that doesn't match either pattern — is ambiguous,
     // so both blocks stay visible, same as before this was added.
-    var isES = /-es\.html$/i.test(path);
-    var isEN = !isES && /\.html$/i.test(path);
+    // Matching "-es.html" anywhere rather than anchoring it to the very
+    // end (same idea for plain ".html" below) means a mistyped URL like
+    // "index-es.htmls" — someone fat-fingering an extra letter — still
+    // reads as Spanish instead of falling back to ambiguous; none of the
+    // real EN filenames contain "-es" anywhere, so this doesn't risk
+    // misreading an actual English page as Spanish.
+    var isES = /-es\.html/i.test(path);
+    var isEN = !isES && /\.html/i.test(path);
     if (isES || isEN) {
       var enBlock = document.getElementById('s404-en');
       var esBlock = document.getElementById('s404-es');
