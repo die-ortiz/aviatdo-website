@@ -34,6 +34,21 @@
       .s404-content{ animation:none; }
       .s404-marker-ping{ animation:none; opacity:0; }
     }
+    /* Turbine background accent — decorative, bleeds off the right edge,
+       masked so it fades into the page instead of showing a hard photo
+       edge. Only room for this on wide viewports without it crowding the
+       centered content column, so it's dropped below 1150px rather than
+       shrunk down to something illegible. */
+    .s404-turbine{
+      position:absolute; top:50%; right:-60px; transform:translateY(-50%);
+      width:min(38vw, 460px); aspect-ratio:500/667;
+      background-image:url('images/turbine-404-bg.webp');
+      background-size:cover; background-position:center;
+      -webkit-mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,.85) 32%, #000 62%);
+              mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,.85) 32%, #000 62%);
+      opacity:.92; pointer-events:none;
+    }
+    @media (max-width: 1150px){ .s404-turbine{ display:none; } }
   </style>
 
 </head>
@@ -90,7 +105,8 @@
        plain divider — same two-language stack as before, restyled for
        a light background. -->
   <section style="position:relative; overflow:hidden; background:var(--paper-white); padding:calc(120px + 6vh) 40px 120px; min-height:82vh; display:flex; align-items:center;">
-    <div class="s404-content" style="position:relative; max-width:640px; margin:0 auto; text-align:center; width:100%;">
+    <div class="s404-turbine" aria-hidden="true"></div>
+    <div class="s404-content" style="position:relative; z-index:1; max-width:640px; margin:0 auto; text-align:center; width:100%;">
 
       <div style="display:flex; align-items:center; gap:14px;" aria-hidden="true">
         <div style="flex:1; height:0; border-top:2px dashed var(--divider);"></div>
