@@ -34,19 +34,24 @@
       .s404-content{ animation:none; }
       .s404-marker-ping{ animation:none; opacity:0; }
     }
-    /* Turbine background accent — decorative, bleeds off the right edge,
-       masked so it fades into the page instead of showing a hard photo
-       edge. Only room for this on wide viewports without it crowding the
-       centered content column, so it's dropped below 1150px rather than
-       shrunk down to something illegible. */
+    /* Turbine background accent — a circular turbine-fan photo, centered
+       exactly on the section's right edge so only its left half shows
+       (the section's own overflow:hidden clips the rest), like it's
+       bleeding off the page. border-radius:50% doubles as a cheap mask:
+       the source crop has a sliver of checkerboard "transparency" baked
+       into its corner pixels (it's a flattened JPEG, no real alpha), and
+       clipping to a circle removes exactly those corners since the
+       turbine itself is already circular. Only room for this on wide
+       viewports without it crowding the centered content column, so
+       it's dropped below 1150px rather than shrunk down illegibly. */
     .s404-turbine{
-      position:absolute; top:50%; right:-60px; transform:translateY(-50%);
-      width:min(38vw, 460px); aspect-ratio:500/667;
+      position:absolute; top:50%; right:0; transform:translate(50%, -50%);
+      width:min(46vw, 640px); aspect-ratio:916/912;
+      border-radius:50%;
       background-image:url('images/turbine-404-bg.webp');
       background-size:cover; background-position:center;
-      -webkit-mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,.85) 32%, #000 62%);
-              mask-image:linear-gradient(to right, transparent 0%, rgba(0,0,0,.85) 32%, #000 62%);
-      opacity:.92; pointer-events:none;
+      box-shadow:0 40px 100px -30px rgba(0,0,0,.25);
+      pointer-events:none;
     }
     @media (max-width: 1150px){ .s404-turbine{ display:none; } }
   </style>
