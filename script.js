@@ -498,6 +498,25 @@ class Component extends DCLogic {
       }
     }
 
+    // --- #contact background parallax — the night-runway photo drifts a
+    // little behind the form, centered on the section's midpoint so it
+    // rests in place when the section fills the viewport. Kept subtler than
+    // the hero (people are filling in a form here) and skipped on phones,
+    // where the mobile crop is static (see style.css). ---
+    if (!reduceMotion && !isPhone) {
+      const contactSection = document.getElementById('contact');
+      const contactBg = contactSection && contactSection.querySelector('.contact-bg');
+      if (contactBg) {
+        const updateContactParallax = () => {
+          const traveled = scrollState.y + window.innerHeight / 2 - (contactSection.offsetTop + contactSection.offsetHeight / 2);
+          const y = Math.max(-50, Math.min(traveled * 0.1, 50));
+          contactBg.style.transform = `translate3d(0, ${y}px, 0)`;
+        };
+        frameCallbacks.push(updateContactParallax);
+        updateContactParallax();
+      }
+    }
+
     // --- Partners double carousel — ported from the Jack portfolio technique: two
     // rows drift in opposite directions as a function of scroll position, rather
     // than looping at a fixed CSS-animation speed. ---

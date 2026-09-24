@@ -483,6 +483,7 @@
       .hero-parallax{ transform:none !important; }
       .page-header-photo{ transform:none !important; }
       .s360-parallax{ transform:none !important; }
+      #contact .contact-bg{ transform:none !important; }
       #experts .photo-wipe, #experts .photo-wipe img, #experts .expert-name, #experts .expert-role{ transition:none !important; }
       #experts .reveal:hover .photo-wipe, #experts .experts-carousel-card:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
       #experts .reveal:hover .photo-wipe img, #experts .experts-carousel-card:hover .photo-wipe img{ transform:none !important; }
@@ -772,7 +773,7 @@
 
       /* ---- contact ---- */
       #contact{ padding:100px 0 112px !important; }
-      #contact .contact-bg{ background-image:linear-gradient(180deg, rgba(16,17,22,0.1) 0%, rgba(16,17,22,0.45) 30%, rgba(16,17,22,0.7) 100%), url('images/contact-runway-mobile.webp') !important; background-position:center top !important; }
+      #contact .contact-bg{ background-image:linear-gradient(180deg, rgba(16,17,22,0.1) 0%, rgba(16,17,22,0.45) 30%, rgba(16,17,22,0.7) 100%), url('images/contact-runway-mobile.webp') !important; background-position:center top !important; inset:0 !important; transform:none !important; }
       #contact .ghost-link{ font-size:18px !important; }
       #contact h2{ font-size:30px !important; }
       /* the outer contact grid (intro column + form column) never collapsed
@@ -986,5 +987,7 @@
    two hues (teal top-left, violet right). The overlay darkens toward the
    right where the form sits, so the image never competes with the fields.
    Mobile swaps to a 9:16 crop with the lights at the top (see the
-   max-width:767px block). */
-#contact .contact-bg{ position:absolute; inset:0; pointer-events:none; background-color:#101116; background-image:linear-gradient(90deg, rgba(16,17,22,0.35) 0%, rgba(16,17,22,0.45) 45%, rgba(16,17,22,0.7) 100%), url('images/contact-runway.webp'); background-size:cover; background-position:center; }
+   max-width:767px block). The layer overhangs the section by 8% top and
+   bottom so the desktop parallax drift (script.js, capped at 50px) never
+   exposes an edge; phones and reduced-motion keep it static. */
+#contact .contact-bg{ position:absolute; inset:-8% 0; will-change:transform; pointer-events:none; background-color:#101116; background-image:linear-gradient(90deg, rgba(16,17,22,0.35) 0%, rgba(16,17,22,0.45) 45%, rgba(16,17,22,0.7) 100%), url('images/contact-runway.webp'); background-size:cover; background-position:center; }
