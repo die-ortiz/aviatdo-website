@@ -504,17 +504,19 @@ class Component extends DCLogic {
     // the hero (people are filling in a form here) and skipped on phones,
     // where the mobile crop is static (see style.css). ---
     if (!reduceMotion && !isPhone) {
-      const contactSection = document.getElementById('contact');
-      const contactBg = contactSection && contactSection.querySelector('.contact-bg');
-      if (contactBg) {
-        const updateContactParallax = () => {
-          const traveled = scrollState.y + window.innerHeight / 2 - (contactSection.offsetTop + contactSection.offsetHeight / 2);
-          const y = Math.max(-50, Math.min(traveled * 0.1, 50));
-          contactBg.style.transform = `translate3d(0, ${y}px, 0)`;
+      // Same treatment for the About page quote band (#about-quote).
+      [['contact', '.contact-bg'], ['about-quote', '.about-quote-bg']].forEach(([id, sel]) => {
+        const section = document.getElementById(id);
+        const bg = section && section.querySelector(sel);
+        if (!bg) return;
+        const updateBgParallax = () => {
+          const traveled = scrollState.y + window.innerHeight / 2 - (section.offsetTop + section.offsetHeight / 2);
+          const y = Math.max(-40, Math.min(traveled * 0.1, 40));
+          bg.style.transform = `translate3d(0, ${y}px, 0)`;
         };
-        frameCallbacks.push(updateContactParallax);
-        updateContactParallax();
-      }
+        frameCallbacks.push(updateBgParallax);
+        updateBgParallax();
+      });
     }
 
     // --- Partners double carousel — ported from the Jack portfolio technique: two

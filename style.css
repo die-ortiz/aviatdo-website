@@ -484,6 +484,7 @@
       .page-header-photo{ transform:none !important; }
       .s360-parallax{ transform:none !important; }
       #contact .contact-bg{ transform:none !important; }
+      #about-quote .about-quote-bg{ transform:none !important; }
       #experts .photo-wipe, #experts .photo-wipe img, #experts .expert-name, #experts .expert-role{ transition:none !important; }
       #experts .reveal:hover .photo-wipe, #experts .experts-carousel-card:hover .photo-wipe{ transform:none !important; box-shadow:none !important; }
       #experts .reveal:hover .photo-wipe img, #experts .experts-carousel-card:hover .photo-wipe img{ transform:none !important; }
@@ -773,6 +774,7 @@
 
       /* ---- contact ---- */
       #contact{ padding:100px 0 112px !important; }
+      #about-quote .about-quote-bg{ background-image:linear-gradient(180deg, rgba(16,17,22,0.2) 0%, rgba(16,17,22,0.55) 30%, rgba(16,17,22,0.55) 70%, rgba(16,17,22,0.2) 100%), url('images/about-quote-sky-mobile.webp') !important; background-position:center !important; inset:0 !important; transform:none !important; }
       #contact .contact-bg{ background-image:linear-gradient(180deg, rgba(16,17,22,0.1) 0%, rgba(16,17,22,0.45) 30%, rgba(16,17,22,0.7) 100%), url('images/contact-runway-mobile.webp') !important; background-position:center top !important; inset:0 !important; transform:none !important; }
       #contact .ghost-link{ font-size:18px !important; }
       #contact h2{ font-size:30px !important; }
@@ -991,3 +993,12 @@
    bottom so the desktop parallax drift (script.js, capped at 50px) never
    exposes an edge; phones and reduced-motion keep it static. */
 #contact .contact-bg{ position:absolute; inset:-8% 0; will-change:transform; pointer-events:none; background-color:#101116; background-image:linear-gradient(90deg, rgba(16,17,22,0.35) 0%, rgba(16,17,22,0.45) 45%, rgba(16,17,22,0.7) 100%), url('images/contact-runway.webp'); background-size:cover; background-position:center; }
+
+/* About page quote band — night flight above the clouds
+   (images/about-quote-sky.webp), same idea as #contact: teal city glow far
+   left, violet dawn + wingtip far right, dark empty middle behind the
+   centered quote. Radial overlay darkens the center for the white text.
+   Same subtle desktop parallax as #contact (script.js); phones swap to a
+   9:16 crop (violet dawn on top, teal city below) and stay static
+   (max-width:767px block). */
+#about-quote .about-quote-bg{ position:absolute; inset:-10% 0; will-change:transform; pointer-events:none; background-color:#101116; background-image:radial-gradient(ellipse 60% 70% at 50% 50%, rgba(16,17,22,0.55), rgba(16,17,22,0.15) 100%), url('images/about-quote-sky.webp'); background-size:cover; background-position:center 55%; }
